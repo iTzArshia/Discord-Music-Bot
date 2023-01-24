@@ -18,7 +18,7 @@ module.exports = {
         name: `${client.user.username} Commands`,
         iconURL: client.user.displayAvatarURL({ size: 1024 })
       })
-      .setDescription(client.MessageCommands.map(c => `> \`${config.prefix}${c.name}\` \`(${c.aliases?.map(a => `${config.prefix}${a}`)?.join(' | ') || 'No Aliases'})\`\n> *${c.description}*`).join('\n\n'))
+      .setDescription(client.MessageCommands.map(c => `> \`${config.prefix}${c.name}\` \`(${c.aliases?.map(a => `${config.prefix}${a}`)?.join(' / ') || 'No Aliases'})\`\n> *${c.description}*`).join('\n\n'))
 
     return message.reply({ embeds: [helpEmbed] });
 
