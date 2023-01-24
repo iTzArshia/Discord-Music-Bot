@@ -24,8 +24,6 @@ module.exports = {
 
     } catch (error) {
 
-      console.error(error)
-
       const errorEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);

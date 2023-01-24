@@ -142,11 +142,9 @@ client.distube
     })
     .on('error', async (textChannel, error) => {        // Emitted when bot encounters an error while playing songs.
 
-        console.error(error);
-
         const embed = new Discord.EmbedBuilder()
             .setColor(config.errorColor)
-            .setDescription(`An error encountered: ${error.message.length > 4096 ? error.message.slice(0, 4093) + '...' : error.message}`);
+            .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + '...' : error.message);
 
         await textChannel?.send({ embeds: [embed] });
 
