@@ -16,8 +16,8 @@ module.exports = {
 
     const autoplayEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
-      .setTitle('Auto Play Stats')
-      .setDescription(`**Auto Play:** \`${autoPlayState ? 'ON' : 'OFF'}\``);
+      .setTitle("Auto Play Stats")
+      .setDescription(`**Auto Play:** \`${autoPlayState ? "ON" : "OFF"}\``);
 
     return message.reply({ embeds: [autoplayEmbed] });
 

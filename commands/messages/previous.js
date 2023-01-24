@@ -18,7 +18,7 @@ module.exports = {
 
       const skippedEmbed = new Discord.EmbedBuilder()
         .setColor(config.mainColor)
-        .setDescription('Skipping to the previus track...');
+        .setDescription("Skipping to the previus track...");
 
       return message.reply({ embeds: [skippedEmbed] });
 
@@ -28,8 +28,8 @@ module.exports = {
 
       const errorEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
-        .setTitle('An error encountered')
-        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + '...' : error.message);
+        .setTitle("An error encountered")
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
       return message.reply({ embeds: [errorEmbed] });
 

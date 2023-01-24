@@ -3,7 +3,7 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "nowplaying",
-  aliases: ['np', 'now', 'playing', 'current'],
+  aliases: ["np", "now", "playing", "current"],
   description: "Shows the server current queue",
   memberVoice: true,
   botVoice: true,
@@ -16,7 +16,7 @@ module.exports = {
 
     const nowEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
-      .setTitle('Now Playing')
+      .setTitle("Now Playing")
       .setDescription(`**I'm playing:** ${queue.songs[0].name} (${queue.songs[0].formattedDuration})\n\n${status(queue)}`)
       .setFooter({
         text: `Requested by ${queue.songs[0].user.tag}`,

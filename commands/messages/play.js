@@ -17,7 +17,7 @@ module.exports = {
 
       const stringEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
-        .setDescription('Please enter a song url or query to search.');
+        .setDescription("Please enter a song url or query to search.");
 
       return message.reply({ embeds: [stringEmbed] });
 

@@ -3,7 +3,7 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "loop",
-  aliases: ['repeat', 'rp'],
+  aliases: ["repeat", "rp"],
   description: "Changes loop mode",
   memberVoice: true,
   botVoice: true,
@@ -14,13 +14,13 @@ module.exports = {
 
     let mode = null
     switch (args[0]) {
-      case 'off':
+      case "off":
         mode = 0
         break
-      case 'song':
+      case "song":
         mode = 1
         break
-      case 'queue':
+      case "queue":
         mode = 2
         break
     };
@@ -31,7 +31,7 @@ module.exports = {
 
     const loopEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
-      .setTitle('Loop Mode Changed')
+      .setTitle("Loop Mode Changed")
       .setDescription(`Set loop mode to \`${mode}\`\n\n${status(queue)}`)
 
     return message.reply({ embeds: [loopEmbed] });

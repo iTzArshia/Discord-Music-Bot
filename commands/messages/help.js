@@ -3,7 +3,7 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "help",
-  aliases: ['commands', 'command', 'cmds', 'cmd', 'c', 'h'],
+  aliases: ['commands', 'command', 'cmds', 'cmd', 'h'],
   description: "Shows This!",
   memberVoice: false,
   botVoice: false,

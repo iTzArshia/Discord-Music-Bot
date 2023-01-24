@@ -16,7 +16,7 @@ module.exports = {
 
     const leaveEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
-      .setDescription('I\'ve disconnected from your Voice Channel.');
+      .setDescription("I\'ve disconnected from your Voice Channel.");
 
     return message.reply({ embeds: [leaveEmbed] });
 
