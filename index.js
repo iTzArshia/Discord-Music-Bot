@@ -122,15 +122,15 @@ client.distube
     //     await queue.textChannel?.send({ embeds: [embed] });
 
     // })
-    .on('disconnect', async (queue) => {                // Emitted when the bot is disconnected to a voice channel.
+    // .on('disconnect', async (queue) => {             // Emitted when the bot is disconnected to a voice channel.
 
-        const embed = new Discord.EmbedBuilder()
-            .setColor(config.errorColor)
-            .setDescription('Disconnected!');
+    //     const embed = new Discord.EmbedBuilder()
+    //         .setColor(config.errorColor)
+    //         .setDescription('Disconnected!');
 
-        await queue.textChannel?.send({ embeds: [embed] });
+    //     await queue.textChannel?.send({ embeds: [embed] });
 
-    })
+    // })
     .on('empty', async (queue) => {                     // Emitted when there is no user in the voice channel and there is a playing queue. If there is no playing queue, it will leave the channel without emitting this event.
 
         const embed = new Discord.EmbedBuilder()
@@ -171,10 +171,10 @@ client.distube
     //     await queue.textChannel?.send({ embeds: [embed] });
 
     // })
-    .on('initQueue', async (queue) => {                 // Emitted when bot initialize a queue to change queue default properties.
+    // .on('initQueue', async (queue) => {              // Emitted when bot initialize a queue to change queue default properties.
 
 
-    })
+    // })
     .on('noRelated', async (queue) => {                 // Emitted when autoplay is on, queue is empty, and bot cannot find related songs to play.
 
 
