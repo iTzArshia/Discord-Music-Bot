@@ -94,7 +94,11 @@ client.distube
 
         const embed = new Discord.EmbedBuilder()
             .setColor(config.mainColor)
-            .setDescription(`Added **${playlist.name}** playlist (${playlist.songs.length} songs) to queue\n\n${status(queue)}`);
+            .setAuthor({
+                name: `${playlist.songs[0].user.tag} Added new playlist to the queue`,
+                iconURL: playlist.songs[0].user.displayAvatarURL({ size: 1024 })
+            })
+            .setDescription(`**Playlist:** ${playlist.name} (${playlist.songs.length} songs)`);
 
         await queue.textChannel?.send({ embeds: [embed] });
 
@@ -103,20 +107,24 @@ client.distube
 
         const embed = new Discord.EmbedBuilder()
             .setColor(config.mainColor)
-            .setDescription(`${song.user.tag} Added **${song.name}** (${song.formattedDuration}) to the queue.`);
+            .setAuthor({
+                name: `${song.user.tag} Added new song to the queue`,
+                iconURL: song.user.displayAvatarURL({ size: 1024 })
+            })
+            .setDescription(`**Song:** ${song.name} (${song.formattedDuration})`);
 
         await queue.textChannel?.send({ embeds: [embed] });
 
     })
-    .on('deleteQueue', async (queue) => {               // Emitted when a Queue is deleted with any reasons.
+    // .on('deleteQueue', async (queue) => {            // Emitted when a Queue is deleted with any reasons.
 
-        const embed = new Discord.EmbedBuilder()
-            .setColor(config.errorColor)
-            .setDescription('Queue deleted!');
+    //     const embed = new Discord.EmbedBuilder()
+    //         .setColor(config.errorColor)
+    //         .setDescription('Queue deleted!');
 
-        await queue.textChannel?.send({ embeds: [embed] });
+    //     await queue.textChannel?.send({ embeds: [embed] });
 
-    })
+    // })
     .on('disconnect', async (queue) => {                // Emitted when the bot is disconnected to a voice channel.
 
         const embed = new Discord.EmbedBuilder()
@@ -146,15 +154,15 @@ client.distube
         await textChannel?.send({ embeds: [embed] });
 
     })
-    .on('finish', async (queue) => {                    // Emitted when there is no more song in the queue and autoplay is off. bot will leave voice channel.
+    // .on('finish', async (queue) => {                 // Emitted when there is no more song in the queue and autoplay is off. bot will leave voice channel.
 
-        const embed = new Discord.EmbedBuilder()
-            .setColor(config.errorColor)
-            .setDescription('Queue finished!');
+    //     const embed = new Discord.EmbedBuilder()
+    //         .setColor(config.errorColor)
+    //         .setDescription('Queue finished!');
 
-        await queue.textChannel?.send({ embeds: [embed] });
+    //     await queue.textChannel?.send({ embeds: [embed] });
 
-    })
+    // })
     // .on('finishSong', async (queue) => {             // Emitted when bot finished a song.
 
     //     console.log(queue);
@@ -187,9 +195,10 @@ client.distube
 
         const embed = new Discord.EmbedBuilder()
             .setColor(config.mainColor)
-            .setDescription(`Playing **${song.name}** (${song.formattedDuration}) for ${voiceChannelMembers.size} listeners in ${voiceChannel}\n\n${status(queue)}`)
+            .setTitle('Now Playing')
+            .setDescription(`Playing **${song.name} (${song.formattedDuration})** for ${voiceChannelMembers.size} listeners in ${voiceChannel}\n\n${status(queue)}`)
             .setFooter({
-                text: `Requested by ${song.user.username}`,
+                text: `Requested by ${song.user.tag}`,
                 iconURL: song.user.displayAvatarURL({ size: 1024 })
             });
 
