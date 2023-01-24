@@ -31,7 +31,7 @@ module.exports = {
           .setDescription(`Skipped to the **${args[0]}. ${song.name}**`);
 
         return message.reply({ embeds: [skippedEmbed] });
-      
+
       });
 
     } catch (error) {
