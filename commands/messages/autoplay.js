@@ -8,7 +8,7 @@ module.exports = {
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
-  queueNeeded: false,
+  queueNeeded: true,
 
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
