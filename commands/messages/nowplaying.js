@@ -13,31 +13,34 @@ module.exports = {
 
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
+    const voiceChannelMembers = botVC.members.filter(member => !member.user.bot);
+
     const nowEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
-      .setDescription(`**Now playing:** [${queue.songs[0].name} (${queue.songs[0].formattedDuration})](${queue.songs[0].url})\n\n${func.queueStatus(queue)}`)
-      .addFields(
-        {
-          name: '👀 Views:',
-          value: `${func.numberWithCommas(queue.songs[0].views)}`,
-          inline: true
-        },
-        {
-          name: '👍🏻 Likes:',
-          value: `${func.numberWithCommas(queue.songs[0].likes)}`,
-          inline: true
-        },
-        {
-          name: '👎🏻 DisLikes:',
-          value: `${func.numberWithCommas(queue.songs[0].dislikes)}`,
-          inline: true
-        },
-      )
+      .setDescription(`Now playing **[${queue.songs[0].name} (${queue.songs[0].formattedDuration})](${queue.songs[0].url})** for ${voiceChannelMembers.size} listeners in ${botVC}\n\n${func.queueStatus(queue)}`)
       .setThumbnail(queue.songs[0]?.thumbnail)
       .setFooter({
         text: `Requested by ${queue.songs[0].user.tag}`,
         iconURL: queue.songs[0].user.displayAvatarURL({ size: 1024 })
       });
+
+    if (queue.songs[0].views) nowEmbed.addFields({
+      name: '👀 Views:',
+      value: `${func.numberWithCommas(queue.songs[0].views)}`,
+      inline: true
+    });
+
+    if (queue.songs[0].likes) nowEmbed.addFields({
+      name: '👍🏻 Likes:',
+      value: `${func.numberWithCommas(queue.songs[0].likes)}`,
+      inline: true
+    });
+    
+    if (queue.songs[0].dislikes) nowEmbed.addFields({
+      name: '👎🏻 is:',
+      value: `${func.numberWithCommas(queue.songs[0].dislikes)}`,
+      inline: true
+    });
 
     return message.reply({ embeds: [nowEmbed] });
 
