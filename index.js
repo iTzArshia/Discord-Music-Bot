@@ -2,7 +2,9 @@ const Discord = require('discord.js');
 const { DisTube } = require('distube');
 const { SoundCloudPlugin } = require('@distube/soundcloud');
 const { SpotifyPlugin } = require('@distube/spotify');
-const { YtDlpPlugin } = require('@distube/yt-dlp')
+const { YtDlpPlugin } = require('@distube/yt-dlp');
+const { DeezerPlugin } = require("@distube/deezer");
+
 const fs = require('node:fs')
 const config = require('./config.json');
 
@@ -57,7 +59,8 @@ client.distube = new DisTube(client, {
             emitEventsAfterFetching: true
         }),
         new SoundCloudPlugin(),
-        new YtDlpPlugin()
+        new YtDlpPlugin(),
+        new DeezerPlugin()
     ]
 });
 
