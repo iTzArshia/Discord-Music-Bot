@@ -1,4 +1,10 @@
 {
+  "name": "itz-dj",
+  "author": "itzarshia",
+  "description": "music-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.8.0",
     "@discordjs/voice": "^0.14.0",
