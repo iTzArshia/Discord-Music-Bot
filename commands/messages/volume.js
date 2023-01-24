@@ -3,7 +3,7 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "volume",
-  aliases: ['v', 'set', 'set-volume'],
+  aliases: ["v", "set", "set-volume"],
   description: "Sets the player volume",
   memberVoice: true,
   botVoice: true,
@@ -17,7 +17,7 @@ module.exports = {
 
       const notValidNumberEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
-        .setDescription('Please enter a valid number.');
+        .setDescription("Please enter a valid number.");
 
       return message.reply({ embeds: [notValidNumberEmbed] });
 
@@ -29,7 +29,7 @@ module.exports = {
 
     const volumeEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
-      .setTitle('Volume Changed')
+      .setTitle("Volume Changed")
       .setDescription(`Volume set to \`${volume}\`\n\n${status(queue)}`)
 
     return message.reply({ embeds: [volumeEmbed] });

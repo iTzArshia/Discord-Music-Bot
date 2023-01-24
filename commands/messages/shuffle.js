@@ -15,8 +15,7 @@ module.exports = {
 
     const shuffleEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
-      .setTitle('Now Playing')
-      .setDescription('Shuffled songs in the queue');
+      .setDescription("Shuffled songs in the queue");
 
     return message.reply({ embeds: [shuffleEmbed] });
 

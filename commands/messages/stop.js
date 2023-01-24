@@ -15,7 +15,7 @@ module.exports = {
 
     const stopEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
-      .setDescription('Stopped playing.');
+      .setDescription("Stopped playing.");
 
     return message.reply({ embeds: [stopEmbed] });
 

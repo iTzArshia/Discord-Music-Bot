@@ -3,7 +3,7 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "Queue",
-  aliases: ['q'],
+  aliases: ["q"],
   description: "Shows the server current queue",
   memberVoice: true,
   botVoice: true,
