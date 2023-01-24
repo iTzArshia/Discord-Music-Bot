@@ -12,20 +12,7 @@ module.exports = async (client, message) => {
 
     if (message.content.toLowerCase().startsWith(config.prefix)) {
 
-        const botMissingPermissions = func.checkPermission(message.guild.members.me, ["ViewChannel", "SendMessages", "EmbedLinks", "ReadMessageHistory"], message.channel);
-        if (botMissingPermissions) {
-
-            const noPermEmbed = new Discord.EmbedBuilder()
-                .setColor('Purple')
-                .setTitle(`Hello Dear ${func.fixStrings(message.author.username)}`)
-                .setDescription(`I am missing ${botMissingPermissions} in ${message.channel}`);
-
-            const { supportButton } = require('../../utils/utils');
-
-            const row1 = new Discord.ActionRowBuilder().addComponents([supportButton]);
-            return await message.member.send({ embeds: [noPermEmbed], components: [row1] }).catch(() => null);
-
-        };
+        if (!message.channel.permissionsFor(message.guild.members.me).has(["ViewChannel", "SendMessages", "EmbedLinks", "ReadMessageHistory"])) return;
 
         const args = message.content.slice(config.prefix.length).split(/ +/);
         const cmd = args.shift().toLowerCase();
