@@ -2,9 +2,9 @@ const Discord = require('discord.js');
 const config = require('../../config.json');
 
 module.exports = {
-  name: "Play",
-  aliases: ["p"],
-  description: "Plays music for you",
+  name: "Join",
+  aliases: ["j", "connect"],
+  description: "Joins to your Voice Channel",
 
   async execute(client, message, args, cmd) {
 
