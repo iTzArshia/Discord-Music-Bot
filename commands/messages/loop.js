@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const func = require('../../utils/functions');
 const config = require('../../config.json');
 
 module.exports = {
@@ -27,12 +28,10 @@ module.exports = {
     mode = await queue.setRepeatMode(mode)
     mode = mode ? (mode === 2 ? 'Repeat queue' : 'Repeat song') : 'OFF'
 
-    const status = queue => `**Volume:** \`${queue.volume}%\` | **Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\` | **Loop:** \`${queue.repeatMode ? queue.repeatMode === 2 ? 'All Queue' : 'This Song' : 'OFF'}\` | **Autoplay:** \`${queue.autoplay ? 'ON' : 'OFF'}\``;
-
     const loopEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
       .setTitle("Loop Mode Changed")
-      .setDescription(`Set loop mode to \`${mode}\`\n\n${status(queue)}`)
+      .setDescription(`Set loop mode to \`${mode}\`\n\n${func.queueStatus(queue)}`)
 
     return message.reply({ embeds: [loopEmbed] });
 

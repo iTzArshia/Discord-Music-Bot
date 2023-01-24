@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const func = require('../../utils/functions');
 const config = require('../../config.json');
 
 module.exports = {
@@ -25,12 +26,10 @@ module.exports = {
 
     await queue.setVolume(volume);
 
-    const status = queue => `**Volume:** \`${queue.volume}%\` | **Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\` | **Loop:** \`${queue.repeatMode ? queue.repeatMode === 2 ? 'All Queue' : 'This Song' : 'OFF'}\` | **Autoplay:** \`${queue.autoplay ? 'ON' : 'OFF'}\``;
-
     const volumeEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
       .setTitle("Volume Changed")
-      .setDescription(`Volume set to \`${volume}\`\n\n${status(queue)}`)
+      .setDescription(`Volume set to \`${volume}\`\n\n${func.queueStatus(queue)}`)
 
     return message.reply({ embeds: [volumeEmbed] });
 

@@ -85,9 +85,6 @@ client.distube = new DisTube(client, {  // DisTube client constructor
 
 });
 
-// Queue status template
-const status = queue => `**Volume:** \`${queue.volume}%\` | **Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\` | **Loop:** \`${queue.repeatMode ? queue.repeatMode === 2 ? 'All Queue' : 'This Song' : 'OFF'}\` | **Autoplay:** \`${queue.autoplay ? 'ON' : 'OFF'}\``;
-
 // Music Player event listeners, more info https://distube.js.org/#/docs/DisTube/stable/class/DisTube
 client.distube
     .on('addList', async (queue, playlist) => {         // Emitted after bot add a new playlist to the playing Queue.
