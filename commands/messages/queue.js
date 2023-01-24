@@ -65,8 +65,8 @@ module.exports = {
       embeds.push(queueEmbed);
 
     };
-
-    const { paginationStartButton, paginationBackButton, paginationCloseButton, paginationForwardButton, paginationEndButton } = require('../../utils/components');
+    console.log(embeds)
+    const { paginationStartButton, paginationBackButton, paginationForwardButton, paginationEndButton } = require('../../utils/components');
     const startButton = Discord.ButtonBuilder.from(paginationStartButton);
     const backButton = Discord.ButtonBuilder.from(paginationBackButton);
     const forwardButton = Discord.ButtonBuilder.from(paginationForwardButton);
@@ -75,7 +75,11 @@ module.exports = {
     let group = new Discord.ActionRowBuilder().addComponents([startButton.setDisabled(true), backButton.setDisabled(true), forwardButton.setDisabled(true), endButton.setDisabled(true)]);
     if (embeds.length > 1) group = new Discord.ActionRowBuilder().addComponents([startButton.setDisabled(true), backButton.setDisabled(true), forwardButton.setDisabled(false), endButton.setDisabled(false)]);
 
-    const reply = await message.reply({ embeds: [embeds[0]], components: [group] });
+    const reply = await message.reply({
+      embeds: [embeds[0]],
+      components: [group]
+    });
+
     const collector = reply.createMessageComponentCollector({ time: 60000 });
 
     let currentPage = 0;
