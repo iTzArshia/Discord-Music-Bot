@@ -51,8 +51,8 @@ module.exports = {
 
     };
 
-    const queueSongs = queue.songs.map((song, i) => `${i === 0 ? '**Playing:**' : `**${i}.**`} ${song.name} (${song.formattedDuration})`);
-    const n = queue.songs / 20;
+    const queueSongs = queue.songs.map((song, i) => `${i === 0 ? '**Playing:**' : `**${i}.**`} ${song.name} (${song.formattedDuration}) - ${song.user}`);
+    const n = queue.songs.length / 21;
     const embeds = [];
 
     for (let i = 0; n > i; i++) {
@@ -60,12 +60,12 @@ module.exports = {
       const queueEmbed = new Discord.EmbedBuilder()
         .setColor(config.mainColor)
         .setTitle(`Server Queue [${i + 1}/${Math.ceil(n)}]`)
-        .setDescription(queueSongs.slice(i * 20, (i + 1) * 20).join('\n'));
+        .setDescription(queueSongs.slice(i * 21, (i + 1) * 21).join('\n'));
 
       embeds.push(queueEmbed);
 
     };
-    console.log(embeds)
+
     const { paginationStartButton, paginationBackButton, paginationForwardButton, paginationEndButton } = require('../../utils/components');
     const startButton = Discord.ButtonBuilder.from(paginationStartButton);
     const backButton = Discord.ButtonBuilder.from(paginationBackButton);
