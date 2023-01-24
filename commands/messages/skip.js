@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   name: "Skip",
   aliases: ["next", "n"],
-  description: "Skips the current music",
+  description: "Skips the current song",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
