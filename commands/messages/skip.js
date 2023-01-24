@@ -40,7 +40,7 @@ module.exports = {
 
     };
 
-    const queue = client.distube.getQueue(message)
+    const queue = client.distube.getQueue(message.guild)
     if (!queue) {
 
       const noQueueEmbed = new Discord.EmbedBuilder()
