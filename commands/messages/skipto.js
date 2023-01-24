@@ -28,7 +28,7 @@ module.exports = {
 
         const skippedEmbed = new Discord.EmbedBuilder()
           .setColor(config.mainColor)
-          .setDescription(`Skipped to the **${args[0]}. ${song.name}**`);
+          .setDescription(`Skipped to the **${args[0]}. [${song.name} (${song.formattedDuration})](${song.url})**`);
 
         return message.reply({ embeds: [skippedEmbed] });
 
