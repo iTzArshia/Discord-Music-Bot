@@ -196,7 +196,7 @@ client.distube
         const embed = new Discord.EmbedBuilder()
             .setColor(config.mainColor)
             .setTitle('Now Playing')
-            .setDescription(`Playing **${song.name} (${song.formattedDuration})** for ${voiceChannelMembers.size} listeners in ${voiceChannel}\n\n${status(queue)}`)
+            .setDescription(`Playing **${song.name} (${song.formattedDuration})** for ${voiceChannelMembers.size} listeners in ${voiceChannel}`)
             .setFooter({
                 text: `Requested by ${song.user.tag}`,
                 iconURL: song.user.displayAvatarURL({ size: 1024 })
