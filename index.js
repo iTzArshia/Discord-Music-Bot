@@ -180,7 +180,7 @@ client.distube
 
         const embed = new Discord.EmbedBuilder()
             .setColor(config.errorColor)
-            .setDescription('I can\'t find any related music to play');
+            .setDescription('I can\'t find any related song to play');
 
         await queue.textChannel?.send({ embeds: [embed] });
 

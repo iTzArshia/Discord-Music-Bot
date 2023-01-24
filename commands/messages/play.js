@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   name: "Play",
   aliases: ["p"],
-  description: "Plays music for you",
+  description: "Plays song for you",
   memberVoice: true,
   botVoice: false,
   sameVoice: true,
