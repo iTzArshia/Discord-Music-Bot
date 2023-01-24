@@ -30,8 +30,7 @@ module.exports = {
 
     const loopEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
-      .setTitle("Loop Mode Changed")
-      .setDescription(`Set loop mode to \`${mode}\`\n\n${func.queueStatus(queue)}`)
+      .setDescription(`Loop mode changed to \`${mode}\`\n\n${func.queueStatus(queue)}`);
 
     return message.reply({ embeds: [loopEmbed] });
 

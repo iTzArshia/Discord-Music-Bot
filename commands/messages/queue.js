@@ -20,7 +20,7 @@ module.exports = {
 
       const queueEmbed = new Discord.EmbedBuilder()
         .setColor(config.mainColor)
-        .setTitle(`Server Queue [${i + 1}/${Math.ceil(n)}]`)
+        .setTitle(`${message.guild.name}'s Queue [${i + 1}/${Math.ceil(n)}]`)
         .setDescription(queueSongs.slice(i * 21, (i + 1) * 21).join('\n'));
 
       embeds.push(queueEmbed);

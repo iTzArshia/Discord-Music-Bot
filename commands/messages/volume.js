@@ -28,8 +28,7 @@ module.exports = {
 
     const volumeEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
-      .setTitle("Volume Changed")
-      .setDescription(`Volume set to \`${volume}\`\n\n${func.queueStatus(queue)}`)
+      .setDescription(`Volume changed to \`${volume}\`\n\n${func.queueStatus(queue)}`);
 
     return message.reply({ embeds: [volumeEmbed] });
 
