@@ -4,7 +4,7 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "loop",
-  aliases: ["repeat", "rp"],
+  aliases: ["repeat"],
   description: "Changes loop mode",
   memberVoice: true,
   botVoice: true,
@@ -13,8 +13,18 @@ module.exports = {
 
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
+    if (!args[0]) {
+
+      const noArgsEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription('Please enter a valid mode.\n\n**Valid Modes:** `OFF` | `SONG` | `QUEUE`');
+
+      return message.reply({ embeds: [noArgsEmbed] });
+
+    };
+
     let mode = null
-    switch (args[0]) {
+    switch (args[0].toLowerCase()) {
       case "off":
         mode = 0
         break
@@ -26,7 +36,7 @@ module.exports = {
         break
     };
     mode = await queue.setRepeatMode(mode)
-    mode = mode ? (mode === 2 ? 'Repeat queue' : 'Repeat song') : 'OFF'
+    mode = mode ? (mode === 2 ? 'All Queue' : 'This Song') : 'OFF'
 
     const loopEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
