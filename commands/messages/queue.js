@@ -51,7 +51,7 @@ module.exports = {
         !(int.channel.permissionsFor(int.member).has('ManageMessages') && int.customId === 'messageDelete')
         && (int.member.id !== message.member.id)
       ) return await int.reply({
-        content: `This button is only works for ${message.member}`,
+        content: `This button is only works for ${message.user.tag}`,
         ephemeral: true
       });
 

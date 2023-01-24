@@ -16,7 +16,7 @@ module.exports = {
 
     const skippedEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
-      .setDescription("Skipping to the previus track...");
+      .setDescription("Skipping to the previus song.");
 
     return message.reply({ embeds: [skippedEmbed] });
 

@@ -16,7 +16,7 @@ module.exports = {
 
       const inVoiceEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
-        .setDescription("I\'m already connected to your Voice Channel");
+        .setDescription("I\'m already connected to your Voice Channel.");
 
       return message.reply({ embeds: [inVoiceEmbed] });
 
