@@ -1,4 +1,6 @@
 {
     "prefix": "+",
     "botToken": ""
+    "mainColor": "Blue",
+    "errorColor": "Red",
 }
