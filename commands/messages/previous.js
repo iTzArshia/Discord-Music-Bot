@@ -3,7 +3,7 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "Previous",
-  aliases: ["back", "b"],
+  aliases: ["b", "back"],
   description: "Plays previous song",
   memberVoice: true,
   botVoice: true,

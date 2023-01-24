@@ -24,15 +24,15 @@ module.exports = {
 
     try {
 
-      await client.distube.jump(message, num).then(song => {
-        message.channel.send({ content: `` })
-      })
+      await client.distube.jump(message, Number(args[0])).then(song => {
 
-      const skippedEmbed = new Discord.EmbedBuilder()
-        .setColor(config.mainColor)
-        .setDescription(`Skipped to the **${args[0]}. ${song.name}**`);
+        const skippedEmbed = new Discord.EmbedBuilder()
+          .setColor(config.mainColor)
+          .setDescription(`Skipped to the **${args[0]}. ${song.name}**`);
 
-      return message.reply({ embeds: [skippedEmbed] });
+        return message.reply({ embeds: [skippedEmbed] });
+      
+      });
 
     } catch (error) {
 
