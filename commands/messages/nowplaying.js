@@ -4,7 +4,7 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "nowplaying",
-  aliases: ["np", "now", "song", "music", "playing", "current"],
+  aliases: ["np", "now", "song", "music", "playing", "current", "nowplay"],
   description: "Shows the server current queue",
   memberVoice: true,
   botVoice: true,
