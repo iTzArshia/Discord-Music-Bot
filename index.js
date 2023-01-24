@@ -73,7 +73,7 @@ client.distube = new DisTube(client, {  // DisTube client constructor
     nsfw: false,                            // Whether or not playing age-restricted content and disabling safe search in non-NSFW channel.
     emitAddListWhenCreatingQueue: true,     // Whether or not emitting addList event when creating a new Queue
     emitAddSongWhenCreatingQueue: true,     // Whether or not emitting addSong event when creating a new Queue
-    joinNewVoiceChannel: true,              // Whether or not joining the new voice channel when using DisTube#play method
+    joinNewVoiceChannel: false,             // Whether or not joining the new voice channel when using DisTube#play method
     // streamType: DisTubeStream#type,      // Decide the DisTubeStream#type will be used (Not the same as DisTubeStream#type)
     directLink: true,                       // Whether or not play direct link of the song
     plugins: [                              // DisTube plugins.

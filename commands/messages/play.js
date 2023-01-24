@@ -8,12 +8,23 @@ module.exports = {
 
   async execute(client, message, args, cmd) {
 
-    const voiceChannel = message.member.voice.channel;
-    if (!voiceChannel) {
+    const memberVoiceChannel = message.member.voice.channel;
+    if (!memberVoiceChannel) {
 
       const inVoiceEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
         .setDescription('You must be in a Voice Channel.');
+
+      return message.reply({ embeds: [inVoiceEmbed] });
+
+    };
+
+    const botVoiceChannel = message.guild.members.me.voice.channel;
+    if (botVoiceChannel && memberVoiceChannel.id !== botVoiceChannel.id) {
+
+      const inVoiceEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription('You are not connected to my Voice Channel.');
 
       return message.reply({ embeds: [inVoiceEmbed] });
 

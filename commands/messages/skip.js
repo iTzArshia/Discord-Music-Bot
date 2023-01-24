@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const DiscordVoice = require('@discordjs/voice');
 const config = require('../../config.json');
 
 module.exports = {
@@ -8,8 +7,8 @@ module.exports = {
 
   async execute(client, message, args, cmd) {
 
-    const voiceChannel = message.member.voice.channel;
-    if (!voiceChannel) {
+    const memberVoiceChannel = message.member.voice.channel;
+    if (!memberVoiceChannel) {
 
       const inVoiceEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
@@ -19,8 +18,8 @@ module.exports = {
 
     };
 
-    const oldConnection = DiscordVoice.getVoiceConnection(message.guild.id);
-    if (!oldConnection) {
+    const botVoiceChannel = message.guild.members.me.voice.channel;
+    if (!botVoiceChannel) {
 
       const inVoiceEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
@@ -30,7 +29,7 @@ module.exports = {
 
     };
 
-    if (voiceChannel.id !== oldConnection.joinConfig.channelId) {
+    if (memberVoiceChannel.id !== botVoiceChannel.id) {
 
       const inVoiceEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
@@ -53,12 +52,11 @@ module.exports = {
 
     try {
 
-      const song = await queue.skip()
+      await queue.skip()
 
       const skippedEmbed = new Discord.EmbedBuilder()
         .setColor(config.mainColor)
-        .setTitle('Skipped')
-        .setDescription(`Now playing:\n**${song.name}**`);
+        .setDescription('Skipping to the next track...');
 
       return message.reply({ embeds: [skippedEmbed] });
 
@@ -68,7 +66,8 @@ module.exports = {
 
       const errorEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
-        .setDescription(`An error encountered: ${error.message.length > 4096 ? error.message.slice(0, 4093) + '...' : error.message}`);
+        .setTitle('An error encountered')
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + '...' : error.message);
 
       return message.reply({ embeds: [errorEmbed] });
 
@@ -77,3 +76,24 @@ module.exports = {
   },
 
 };
+
+    // const connection = DiscordVoice.getVoiceConnection(message.guildId);
+    // if (!connection) {
+
+    //   const inVoiceEmbed = new Discord.EmbedBuilder()
+    //     .setColor(config.errorColor)
+    //     .setDescription('I\'m not connected to any Voice Chnanel.');
+
+    //   return message.reply({ embeds: [inVoiceEmbed] });
+
+    // };
+
+    // if (voiceChannel.id !== connection.joinConfig.channelId) {
+
+    //   const inVoiceEmbed = new Discord.EmbedBuilder()
+    //     .setColor(config.errorColor)
+    //     .setDescription('You are not connected to my Voice Channel.');
+
+    //   return message.reply({ embeds: [inVoiceEmbed] });
+
+    // };

@@ -52,9 +52,9 @@ module.exports = {
     };
 
     const queueEmbed = new Discord.EmbedBuilder()
-      .setColor(config.errorColor)
+      .setColor(config.mainColor)
       .setTitle('Server Queue')
-      .setDescription(queue.songs.map((song, i) => `${i === 0 ? '**Playing:**' : `${i}.`} **${song.name} (${song.formattedDuration})**`).join('\n'));
+      .setDescription(queue.songs.map((song, i) => `${i === 0 ? '**Playing:**' : `**${i}.**`} ${song.name} (${song.formattedDuration})`).join('\n'));
 
     return message.reply({ embeds: [queueEmbed] });
 
