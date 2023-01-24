@@ -52,7 +52,7 @@ module.exports = async (client, message) => {
 
             if (command.sameVoice) {
 
-                if (memberVC.id !== botVC.id) {
+                if ((memberVC && botVC) && memberVC.id !== botVC.id) {
 
                     const inVoiceEmbed = new Discord.EmbedBuilder()
                         .setColor(config.errorColor)
