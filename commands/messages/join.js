@@ -12,7 +12,7 @@ module.exports = {
 
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
-    if (memberVC.id === botVC.id) {
+    if ((memberVC && botVC) && memberVC.id === botVC.id) {
 
       const inVoiceEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
