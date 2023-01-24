@@ -14,6 +14,7 @@ const { SpotifyPlugin } = require('@distube/spotify');
 const { YtDlpPlugin } = require('@distube/yt-dlp');
 const { DeezerPlugin } = require("@distube/deezer");
 const fs = require('node:fs');
+const func = require('./utils/functions');
 const config = require('./config.json');
 
 // Discord Client Constructor
@@ -191,7 +192,25 @@ client.distube
         const embed = new Discord.EmbedBuilder()
             .setColor(config.mainColor)
             .setTitle('Now Playing')
-            .setDescription(`Playing **${song.name} (${song.formattedDuration})** for ${voiceChannelMembers.size} listeners in ${voiceChannel}`)
+            .setDescription(`Playing **[${song.name} (${song.formattedDuration})](${song.url})** for ${voiceChannelMembers.size} listeners in ${voiceChannel}`)
+            .addFields(
+                {
+                    name: '👀 Views:',
+                    value: `${func.numberWithCommas(song.views)}`,
+                    inline: true
+                },
+                {
+                    name: '👍🏻 Likes:',
+                    value: `${func.numberWithCommas(song.likes)}`,
+                    inline: true
+                },
+                {
+                    name: '👎🏻 DisLikes:',
+                    value: `${func.numberWithCommas(song.dislikes)}`,
+                    inline: true
+                },
+            )
+            .setThumbnail(song?.thumbnail)
             .setFooter({
                 text: `Requested by ${song.user.tag}`,
                 iconURL: song.user.displayAvatarURL({ size: 1024 })
