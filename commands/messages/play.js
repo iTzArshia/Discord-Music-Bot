@@ -3,7 +3,6 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "Play",
-  usage: "Play",
   aliases: ["p"],
   description: "Plays music for you",
 
@@ -14,7 +13,7 @@ module.exports = {
 
       const inVoiceEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
-        .setDescription('You must be in a voice channel!');
+        .setDescription('You must be in a Voice Channel.');
 
       return message.reply({ embeds: [inVoiceEmbed] });
 
