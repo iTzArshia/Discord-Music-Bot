@@ -5,44 +5,24 @@ module.exports = {
   name: "Join",
   aliases: ["j", "connect"],
   description: "Joins to your Voice Channel",
+  memberVoice: true,
+  botVoice: false,
+  sameVoice: true,
+  queueNeeded: false,
 
-  async execute(client, message, args, cmd) {
+  async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
-    const memberVoiceChannel = message.member.voice.channel;
-    if (!memberVoiceChannel) {
+    if (memberVC.id === botVC.id) {
 
       const inVoiceEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
-        .setDescription('You must be in a Voice Channel.');
+        .setDescription('I\'m already connected to your Voice Channel');
 
       return message.reply({ embeds: [inVoiceEmbed] });
 
     };
 
-    const botVoiceChannel = message.guild.members.me.voice.channel;
-    if (botVoiceChannel) {
-
-      if (memberVoiceChannel.id === botVoiceChannel.id) {
-
-        const inVoiceEmbed = new Discord.EmbedBuilder()
-          .setColor(config.errorColor)
-          .setDescription('I\'m already connected to your Voice Channel');
-
-        return message.reply({ embeds: [inVoiceEmbed] });
-
-      } else {
-
-        const inVoiceEmbed = new Discord.EmbedBuilder()
-          .setColor(config.errorColor)
-          .setDescription('I\'m already connected to another Voice Channel');
-
-        return message.reply({ embeds: [inVoiceEmbed] });
-
-      };
-
-    };
-
-    await client.distube.voices.join(memberVoiceChannel);
+    await client.distube.voices.join(memberVC);
 
     const joinEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)

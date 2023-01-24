@@ -4,51 +4,12 @@ const config = require('../../config.json');
 module.exports = {
   name: "Skip",
   description: "Skips the current music",
+  memberVoice: true,
+  botVoice: true,
+  sameVoice: true,
+  queueNeeded: true,
 
-  async execute(client, message, args, cmd) {
-
-    const memberVoiceChannel = message.member.voice.channel;
-    if (!memberVoiceChannel) {
-
-      const inVoiceEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
-        .setDescription('You are not connected to any Voice Channel.');
-
-      return message.reply({ embeds: [inVoiceEmbed] });
-
-    };
-
-    const botVoiceChannel = message.guild.members.me.voice.channel;
-    if (!botVoiceChannel) {
-
-      const inVoiceEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
-        .setDescription('I\'m not connected to any Voice Chnanel.');
-
-      return message.reply({ embeds: [inVoiceEmbed] });
-
-    };
-
-    if (memberVoiceChannel.id !== botVoiceChannel.id) {
-
-      const inVoiceEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
-        .setDescription('You are not connected to my Voice Channel.');
-
-      return message.reply({ embeds: [inVoiceEmbed] });
-
-    };
-
-    const queue = client.distube.getQueue(message.guild)
-    if (!queue) {
-
-      const noQueueEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
-        .setDescription('There is nothing in the queue right now.');
-
-      return message.reply({ embeds: [noQueueEmbed] });
-
-    };
+  async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
     try {
 
@@ -76,24 +37,3 @@ module.exports = {
   },
 
 };
-
-    // const connection = DiscordVoice.getVoiceConnection(message.guildId);
-    // if (!connection) {
-
-    //   const inVoiceEmbed = new Discord.EmbedBuilder()
-    //     .setColor(config.errorColor)
-    //     .setDescription('I\'m not connected to any Voice Chnanel.');
-
-    //   return message.reply({ embeds: [inVoiceEmbed] });
-
-    // };
-
-    // if (voiceChannel.id !== connection.joinConfig.channelId) {
-
-    //   const inVoiceEmbed = new Discord.EmbedBuilder()
-    //     .setColor(config.errorColor)
-    //     .setDescription('You are not connected to my Voice Channel.');
-
-    //   return message.reply({ embeds: [inVoiceEmbed] });
-
-    // };

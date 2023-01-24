@@ -5,8 +5,12 @@ module.exports = {
   name: "help",
   aliases: ['commands', 'command', 'cmds', 'cmd', 'c', 'h'],
   description: "Shows This!",
+  memberVoice: false,
+  botVoice: false,
+  sameVoice: false,
+  queueNeeded: false,
 
-  async execute(client, message, args, cmd) {
+  async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
     const helpEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)

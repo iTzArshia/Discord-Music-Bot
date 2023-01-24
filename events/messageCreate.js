@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const config = require('../config.json');
-const commandCooldown = new Map();
 
 module.exports = async (client, message) => {
 
@@ -19,45 +18,74 @@ module.exports = async (client, message) => {
         const command = client.MessageCommands.get(cmd) || client.MessageCommands.find(c => c.aliases && c.aliases.includes(cmd));
         if (command) {
 
-            // if (!commandCooldown.has(command.name)) {
-            //     client.commandCooldown.set(command.name, new Discord.Collection());
-            // }
+            const memberVC = message.member.voice.channel || null;
+            const botVC = message.guild.members.me.voice.channel || null;
+            const queue = client.distube.getQueue(message.guild) || null;
 
-            // const currentTime = Date.now();
-            // const timeStamps = commandCooldown.get(command.name);
-            // const cooldownAmount = (command.cooldown) * 1000;
+            if (command.memberVoice) {
 
-            // if (timeStamps.has(message.author.id)) {
-            //     const expirationTime = timeStamps.get(message.author.id) + cooldownAmount;
+                if (!memberVC) {
 
-            //     if (currentTime < expirationTime) {
-            //         const timeLeft = (expirationTime - currentTime);
+                    const inVoiceEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.errorColor)
+                        .setDescription('You aren\'t connected to any Voice Channel.');
 
-            //         const cooldownEmbed = new Discord.EmbedBuilder()
-            //             .setColor('Red')
-            //             .setDescription(`Please wait ${func.convertTime(timeLeft)} before using \`${prefix}${command.name}\``)
+                    return message.reply({ embeds: [inVoiceEmbed] });
 
-            //         return await message.reply({ embeds: [cooldownEmbed] }).then(async (msg) => {
-            //             setTimeout(async () => {
-            //                 await message.delete().catch(() => null);
-            //                 await msg.delete().catch(() => null);
-            //             }, 10000);
-            //         });
+                };
 
-            //     };
+            };
 
-            // };
+            if (command.botVoice) {
 
-            // timeStamps.set(message.author.id, currentTime);
-            // setTimeout(() => timeStamps.delete(message.author.id), cooldownAmount);
+                if (!botVC) {
+
+                    const inVoiceEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.errorColor)
+                        .setDescription('I\'m not connected to any Voice Chnanel.');
+
+                    return message.reply({ embeds: [inVoiceEmbed] });
+
+                };
+
+            };
+
+            if (command.sameVoice) {
+
+                if (memberVC.id !== botVC.id) {
+
+                    const inVoiceEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.errorColor)
+                        .setDescription('You aren\'t connected to my Voice Channel.');
+
+                    return message.reply({ embeds: [inVoiceEmbed] });
+
+                };
+
+            };
+
+            if (command.queueNeeded) {
+
+                if (!queue) {
+
+                    const noQueueEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.errorColor)
+                        .setDescription('I\'m not playing anything right now.');
+
+                    return message.reply({ embeds: [noQueueEmbed] });
+
+                };
+
+            };
 
             try {
-                command.execute(client, message, args, cmd);
+                command.execute(client, message, args, cmd, memberVC, botVC, queue);
             } catch (error) {
-                console.log(message.guild.id, error)
-            }
+                console.log(message.guild.id, error);
+            };
 
-        }
+        };
+
     };
 
 };

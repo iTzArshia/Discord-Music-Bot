@@ -5,51 +5,12 @@ module.exports = {
   name: "volume",
   aliases: ['v', 'set', 'set-volume'],
   description: "Sets the player volume",
+  memberVoice: true,
+  botVoice: true,
+  sameVoice: true,
+  queueNeeded: true,
 
-  async execute(client, message, args, cmd) {
-
-    const memberVoiceChannel = message.member.voice.channel;
-    if (!memberVoiceChannel) {
-
-      const inVoiceEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
-        .setDescription('You are not connected to any Voice Channel.');
-
-      return message.reply({ embeds: [inVoiceEmbed] });
-
-    };
-
-    const botVoiceChannel = message.guild.members.me.voice.channel;
-    if (!botVoiceChannel) {
-
-      const inVoiceEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
-        .setDescription('I\'m not connected to any Voice Chnanel.');
-
-      return message.reply({ embeds: [inVoiceEmbed] });
-
-    };
-
-    if (memberVoiceChannel.id !== botVoiceChannel.id) {
-
-      const inVoiceEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
-        .setDescription('You are not connected to my Voice Channel.');
-
-      return message.reply({ embeds: [inVoiceEmbed] });
-
-    };
-
-    const queue = client.distube.getQueue(message.guild)
-    if (!queue) {
-
-      const noQueueEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
-        .setDescription('I\'m not playing anything right now.');
-
-      return message.reply({ embeds: [noQueueEmbed] });
-
-    };
+  async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
     const volume = parseInt(args[0]);
     if (isNaN(volume)) {
