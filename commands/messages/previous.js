@@ -12,28 +12,13 @@ module.exports = {
 
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
-    try {
+    await queue.previous();
 
-      await queue.previous();
+    const skippedEmbed = new Discord.EmbedBuilder()
+      .setColor(config.mainColor)
+      .setDescription("Skipping to the previus track...");
 
-      const skippedEmbed = new Discord.EmbedBuilder()
-        .setColor(config.mainColor)
-        .setDescription("Skipping to the previus track...");
-
-      return message.reply({ embeds: [skippedEmbed] });
-
-    } catch (error) {
-
-      console.error(error)
-
-      const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
-        .setTitle("An error encountered")
-        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
-
-      return message.reply({ embeds: [errorEmbed] });
-
-    };
+    return message.reply({ embeds: [skippedEmbed] });
 
   },
 
