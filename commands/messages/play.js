@@ -5,7 +5,6 @@ module.exports = {
   name: "Play",
   usage: "Play",
   aliases: ["p"],
-  cooldown: 3,
   description: "Plays music for you",
 
   async execute(client, message, args, cmd) {
