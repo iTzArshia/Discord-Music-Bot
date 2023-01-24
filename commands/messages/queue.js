@@ -13,7 +13,7 @@ module.exports = {
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
     const queueSongs = queue.songs.map((song, i) => `${i === 0 ? '**Playing:**' : `**${i}.**`} ${song.name} (${song.formattedDuration}) - ${song.user}`);
-    const n = queue.songs.length / 21;
+    const n = queue.songs.length / 20;
     const embeds = [];
 
     for (let i = 0; n > i; i++) {
@@ -21,7 +21,7 @@ module.exports = {
       const queueEmbed = new Discord.EmbedBuilder()
         .setColor(config.mainColor)
         .setTitle(`${message.guild.name}'s Queue [${i + 1}/${Math.ceil(n)}]`)
-        .setDescription(queueSongs.slice(i * 21, (i + 1) * 21).join('\n'));
+        .setDescription(queueSongs.slice(i * 20, (i + 1) * 20).join('\n'));
 
       embeds.push(queueEmbed);
 
