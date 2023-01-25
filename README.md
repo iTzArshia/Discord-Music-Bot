@@ -32,7 +32,7 @@ Go to `config.json` and fill out the values:
 ```
 ⚠️ **Note: Never commit or share your token publicly** ⚠️
 ## 📸 Screenshots
-
+Soon
 ## ❤️ Donations
 You can **[support](https://reymit.ir/itz_arshia)** me by donating me if you like the project!
 > Only available for Iranians :(
