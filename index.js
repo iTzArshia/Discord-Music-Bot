@@ -1,6 +1,6 @@
 /*
     Author: iTz Arshia
-    Github: https://github.com/iTzArshia
+    Github: https://github.com/iTzArshia/iTz-DJ
     Current Version: 1.0.0
     DiscordJs Version: 14.7.1
     DisTube Version: 4.0.4
@@ -45,16 +45,6 @@ for (const file of commands) {
     const command = require(`./commands/messages/${file}`);
     client.MessageCommands.set(command.name.toLowerCase(), command);
     delete require.cache[require.resolve(`./commands/messages/${file}`)];
-};
-
-// Slash Command Handler
-console.log(`Loading Slash Commands`);
-client.SlashCommands = new Discord.Collection();
-const commandFiles = fs.readdirSync(`./commands/interactions/`).filter(file => file.endsWith('.js'));
-for (const file of commandFiles) {
-    const command = require(`./commands/interactions/${file}`);
-    client.interactionCommands.set(command.data.name, command);
-    delete require.cache[require.resolve(`./commands/interactions/${file}`)];
 };
 
 client.distube = new DisTube(client, {  // DisTube client constructor
@@ -379,17 +369,17 @@ client.distube
 
                     const volumeEmbed = new Discord.EmbedBuilder()
                         .setColor(config.mainColor)
-                        .setDescription(`Volume changed to \`${volume}\`\n\n${func.queueStatus(queue)}`);
+                        .setDescription(`Volume changed to \`${queue.volume}\`\n\n${func.queueStatus(queue)}`);
 
                     return await int.editReply({ embeds: [volumeEmbed] });
 
                 } else if (int.customId === 'backward') {
 
-                    await queue.seek(queue.currentTime - 20);
+                    await queue.seek(queue.currentTime - 10);
 
                     const seekEmbed = new Discord.EmbedBuilder()
                         .setColor(config.mainColor)
-                        .setDescription(`Backwarded the song for ${time} seconds.`);
+                        .setDescription(`Backwarded the song for 10 seconds.`);
 
                     return await int.editReply({ embeds: [seekEmbed] });
 
@@ -407,11 +397,11 @@ client.distube
 
                 } else if (int.customId === 'forward') {
 
-                    await queue.seek(queue.currentTime + 20);
+                    await queue.seek(queue.currentTime + 10);
 
                     const seekEmbed = new Discord.EmbedBuilder()
                         .setColor(config.mainColor)
-                        .setDescription(`forwarded the song for 20 seconds.`);
+                        .setDescription(`forwarded the song for 10 seconds.`);
 
                     return await int.editReply({ embeds: [seekEmbed] });
 
