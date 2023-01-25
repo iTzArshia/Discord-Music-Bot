@@ -15,6 +15,4 @@ module.exports = async (client) => {
 
   console.log(`${client.user.tag} is online and ready to play music for you!`);
 
-  global.isReady = true;
-
 };

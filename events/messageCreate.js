@@ -3,8 +3,6 @@ const config = require('../config.json');
 
 module.exports = async (client, message) => {
 
-    if (!global.isReady) return;
-
     if (message.channel.type === Discord.ChannelType.DM || message.system || message.author.bot) return;
 
     ////////////////Execute Commands////////////////
