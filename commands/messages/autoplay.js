@@ -18,7 +18,7 @@ module.exports = {
 
       const autoplayEmbed = new Discord.EmbedBuilder()
         .setColor(config.mainColor)
-        .setDescription(`Auto Play mode changed to \`${autoPlayState ? "ON" : "OFF"}\``);
+        .setDescription(`Auto Play mode changed to \`${autoPlayState ? "ON" : "OFF"}\`\n\n${func.queueStatus(queue)}`);
 
       return await message.reply({ embeds: [autoplayEmbed] });
 

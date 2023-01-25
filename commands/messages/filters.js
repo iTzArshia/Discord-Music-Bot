@@ -50,7 +50,7 @@ module.exports = {
 
       const filtersEmbed = new Discord.EmbedBuilder()
         .setColor(config.mainColor)
-        .setDescription(`**Current Queue Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\``);
+        .setDescription(`**Current Queue Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\`\n\n${func.queueStatus(queue)}`);
 
       return await message.reply({ embeds: [filtersEmbed] });
 
