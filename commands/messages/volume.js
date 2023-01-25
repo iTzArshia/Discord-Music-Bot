@@ -17,7 +17,7 @@ module.exports = {
     if (isNaN(volume)) {
 
       const notValidNumberEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription("Please enter a valid number.");
 
       return await message.reply({ embeds: [notValidNumberEmbed] });
@@ -29,7 +29,7 @@ module.exports = {
       await queue.setVolume(volume);
 
       const volumeEmbed = new Discord.EmbedBuilder()
-        .setColor(config.mainColor)
+        .setColor(config.MainColor)
         .setDescription(`Volume changed to \`${volume}\`\n\n${func.queueStatus(queue)}`);
 
       return await message.reply({ embeds: [volumeEmbed] });
@@ -37,7 +37,7 @@ module.exports = {
     } catch (error) {
 
       const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
       return await message.reply({ embeds: [errorEmbed] });

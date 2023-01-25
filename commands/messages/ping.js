@@ -14,7 +14,7 @@ module.exports = {
     async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
         const embed = new Discord.EmbedBuilder()
-            .setColor(config.mainColor)
+            .setColor(config.MainColor)
             .setAuthor({
                 name: `Pong!`,
                 iconURL: client.user.displayAvatarURL({ size: 1024 })

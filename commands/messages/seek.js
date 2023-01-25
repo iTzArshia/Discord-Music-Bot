@@ -18,7 +18,7 @@ module.exports = {
     if (!args[0] || isNaN(time)) {
 
       const noArgsEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription('Please provide position (in seconds) to seek!\n**Example:** `10` for 10th second of song.');
 
       return await message.reply({ embeds: [noArgsEmbed] });
@@ -30,7 +30,7 @@ module.exports = {
       await queue.seek(time);
 
       const seekEmbed = new Discord.EmbedBuilder()
-        .setColor(config.mainColor)
+        .setColor(config.MainColor)
         .setDescription(`Seeked to ${func.suffix(time)} second of the song.`);
 
       return await message.reply({ embeds: [seekEmbed] });
@@ -38,7 +38,7 @@ module.exports = {
     } catch (error) {
 
       const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
       return await message.reply({ embeds: [errorEmbed] });

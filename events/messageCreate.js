@@ -7,11 +7,11 @@ module.exports = async (client, message) => {
 
     ////////////////Execute Commands////////////////
 
-    if (message.content.toLowerCase().startsWith(config.prefix)) {
+    if (message.content.toLowerCase().startsWith(config.Prefix)) {
 
         if (!message.channel.permissionsFor(message.guild.members.me).has(["ViewChannel", "SendMessages", "EmbedLinks", "ReadMessageHistory"])) return;
 
-        const args = message.content.slice(config.prefix.length).split(/ +/);
+        const args = message.content.slice(config.Prefix.length).split(/ +/);
         const cmd = args.shift().toLowerCase();
         const command = client.MessageCommands.get(cmd) || client.MessageCommands.find(c => c.aliases && c.aliases.includes(cmd));
         if (command) {
@@ -25,7 +25,7 @@ module.exports = async (client, message) => {
                 if (!memberVC) {
 
                     const inVoiceEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.errorColor)
+                        .setColor(config.ErrorColor)
                         .setDescription('You aren\'t connected to any Voice Channel.');
 
                     return await message.reply({ embeds: [inVoiceEmbed] });
@@ -39,7 +39,7 @@ module.exports = async (client, message) => {
                 if (!botVC) {
 
                     const inVoiceEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.errorColor)
+                        .setColor(config.ErrorColor)
                         .setDescription('I\'m not connected to any Voice Chnanel.');
 
                     return await message.reply({ embeds: [inVoiceEmbed] });
@@ -53,7 +53,7 @@ module.exports = async (client, message) => {
                 if ((memberVC && botVC) && memberVC.id !== botVC.id) {
 
                     const inVoiceEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.errorColor)
+                        .setColor(config.ErrorColor)
                         .setDescription('You aren\'t connected to my Voice Channel.');
 
                     return await message.reply({ embeds: [inVoiceEmbed] });
@@ -67,7 +67,7 @@ module.exports = async (client, message) => {
                 if (!queue) {
 
                     const noQueueEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.errorColor)
+                        .setColor(config.ErrorColor)
                         .setDescription('I\'m not playing anything right now.');
 
                     return await message.reply({ embeds: [noQueueEmbed] });

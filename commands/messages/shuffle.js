@@ -16,7 +16,7 @@ module.exports = {
       await queue.shuffle();
 
       const shuffleEmbed = new Discord.EmbedBuilder()
-        .setColor(config.mainColor)
+        .setColor(config.MainColor)
         .setDescription("Shuffled songs in the queue");
 
       return await message.reply({ embeds: [shuffleEmbed] });
@@ -24,7 +24,7 @@ module.exports = {
     } catch (error) {
 
       const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
       return await message.reply({ embeds: [errorEmbed] });

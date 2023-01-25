@@ -82,7 +82,7 @@ client.distube
     .on('addList', async (queue, playlist) => {         // Emitted after bot add a new playlist to the playing Queue.
 
         const embed = new Discord.EmbedBuilder()
-            .setColor(config.mainColor)
+            .setColor(config.MainColor)
             .setAuthor({
                 name: `${playlist.songs[0].user.tag} Added new playlist to the queue`,
                 iconURL: playlist.songs[0].user.displayAvatarURL({ size: 1024 })
@@ -95,7 +95,7 @@ client.distube
     .on('addSong', async (queue, song) => {             // Emitted after bot add a new song to the playing Queue.
 
         const embed = new Discord.EmbedBuilder()
-            .setColor(config.mainColor)
+            .setColor(config.MainColor)
             .setAuthor({
                 name: `${song.user.tag} Added new song to the queue`,
                 iconURL: song.user.displayAvatarURL({ size: 1024 })
@@ -108,7 +108,7 @@ client.distube
     // .on('deleteQueue', async (queue) => {            // Emitted when a Queue is deleted with any reasons.
 
     //     const embed = new Discord.EmbedBuilder()
-    //         .setColor(config.errorColor)
+    //         .setColor(config.ErrorColor)
     //         .setDescription('Queue deleted!');
 
     //     await queue.textChannel?.send({ embeds: [embed] });
@@ -117,7 +117,7 @@ client.distube
     // .on('disconnect', async (queue) => {             // Emitted when the bot is disconnected to a voice channel.
 
     //     const embed = new Discord.EmbedBuilder()
-    //         .setColor(config.errorColor)
+    //         .setColor(config.ErrorColor)
     //         .setDescription('Disconnected!');
 
     //     await queue.textChannel?.send({ embeds: [embed] });
@@ -126,7 +126,7 @@ client.distube
     .on('empty', async (queue) => {                     // Emitted when there is no user in the voice channel and there is a playing queue. If there is no playing queue, it will leave the channel without emitting this event.
 
         const embed = new Discord.EmbedBuilder()
-            .setColor(config.errorColor)
+            .setColor(config.ErrorColor)
             .setDescription('The voice channel is empty! Leaving the voice channel.');
 
         await queue.textChannel?.send({ embeds: [embed] });
@@ -135,7 +135,7 @@ client.distube
     .on('error', async (textChannel, error) => {        // Emitted when bot encounters an error while playing songs.
 
         const embed = new Discord.EmbedBuilder()
-            .setColor(config.errorColor)
+            .setColor(config.ErrorColor)
             .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + '...' : error.message);
 
         await textChannel?.send({ embeds: [embed] });
@@ -144,7 +144,7 @@ client.distube
     // .on('finish', async (queue) => {                 // Emitted when there is no more song in the queue and autoplay is off. bot will leave voice channel.
 
     //     const embed = new Discord.EmbedBuilder()
-    //         .setColor(config.errorColor)
+    //         .setColor(config.ErrorColor)
     //         .setDescription('Queue finished!');
 
     //     await queue.textChannel?.send({ embeds: [embed] });
@@ -155,7 +155,7 @@ client.distube
     //     console.log(queue);
 
     //     const embed = new Discord.EmbedBuilder()
-    //         .setColor(config.errorColor)
+    //         .setColor(config.ErrorColor)
     //         .setDescription('Finish song!');
 
     //     await queue.textChannel?.send({ embeds: [embed] });
@@ -163,13 +163,18 @@ client.distube
     // })
     // .on('initQueue', async (queue) => {              // Emitted when bot initialize a queue to change queue default properties.
 
+    //     const embed = new Discord.EmbedBuilder()
+    //         .setColor(config.MainColor)
+    //         .setDescription(`**Current Queue Settings:**\n\n${func.queueStatus(queue)}`);
+
+    //     await queue.textChannel?.send({ embeds: [embed] });
 
     // })
     .on('noRelated', async (queue) => {                 // Emitted when autoplay is on, queue is empty, and bot cannot find related songs to play.
 
 
         const embed = new Discord.EmbedBuilder()
-            .setColor(config.errorColor)
+            .setColor(config.ErrorColor)
             .setDescription('I can\'t find any related song to play');
 
         await queue.textChannel?.send({ embeds: [embed] });
@@ -181,7 +186,7 @@ client.distube
         const voiceChannelMembers = voiceChannel.members.filter(member => !member.user.bot);
 
         const embed = new Discord.EmbedBuilder()
-            .setColor(config.mainColor)
+            .setColor(config.MainColor)
             .setDescription(`Now Playing **[${song.name} (${song.formattedDuration})](${song.url})** for ${voiceChannelMembers.size} ${voiceChannelMembers.size > 1 ? 'listeners' : 'listener'} in ${voiceChannel}`)
             .setThumbnail(song?.thumbnail)
             .setFooter({
@@ -247,7 +252,7 @@ client.distube
             if ((memberVC && botVC) && memberVC.id !== botVC.id) {
 
                 const inVoiceEmbed = new Discord.EmbedBuilder()
-                    .setColor(config.errorColor)
+                    .setColor(config.ErrorColor)
                     .setDescription('You aren\'t connected to my Voice Channel.');
 
                 return await int.reply({
@@ -279,7 +284,7 @@ client.distube
                     });
 
                     const filtersEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.mainColor)
+                        .setColor(config.MainColor)
                         .setDescription(`**Current Queue Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\`\n\n${func.queueStatus(queue)}`);
 
                     return await int.editReply({ embeds: [filtersEmbed] });
@@ -317,7 +322,7 @@ client.distube
                     mode = mode ? (mode === 2 ? 'All Queue' : 'This Song') : 'OFF';
 
                     const loopEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.mainColor)
+                        .setColor(config.MainColor)
                         .setDescription(`Loop mode changed to \`${mode}\`\n\n${func.queueStatus(queue)}`);
 
                     return await int.editReply({ embeds: [loopEmbed] });
@@ -327,7 +332,7 @@ client.distube
                     await queue.previous();
 
                     const skippedEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.mainColor)
+                        .setColor(config.MainColor)
                         .setDescription("Skipping to the previus song.");
 
                     await int.editReply({ embeds: [skippedEmbed] });
@@ -343,7 +348,7 @@ client.distube
                     };
 
                     const pauseUnpauseEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.mainColor)
+                        .setColor(config.MainColor)
                         .setDescription(`${queue.playing ? 'Resumed' : 'Paused'} the song for you.`);
 
                     return await int.editReply({ embeds: [pauseUnpauseEmbed] });
@@ -353,7 +358,7 @@ client.distube
                     await queue.skip();
 
                     const skippedEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.mainColor)
+                        .setColor(config.MainColor)
                         .setDescription("Skipping to the next song.");
 
                     await int.editReply({ embeds: [skippedEmbed] });
@@ -368,7 +373,7 @@ client.distube
                     else if (volumeUpDown === 'down') await queue.setVolume(queue.volume - 10);
 
                     const volumeEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.mainColor)
+                        .setColor(config.MainColor)
                         .setDescription(`Volume changed to \`${queue.volume}\`\n\n${func.queueStatus(queue)}`);
 
                     return await int.editReply({ embeds: [volumeEmbed] });
@@ -378,7 +383,7 @@ client.distube
                     await queue.seek(queue.currentTime - 10);
 
                     const seekEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.mainColor)
+                        .setColor(config.MainColor)
                         .setDescription(`Backwarded the song for 10 seconds.`);
 
                     return await int.editReply({ embeds: [seekEmbed] });
@@ -388,7 +393,7 @@ client.distube
                     await queue.stop();
 
                     const stopEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.mainColor)
+                        .setColor(config.MainColor)
                         .setDescription("Stopped playing.");
 
                     await int.editReply({ embeds: [stopEmbed] });
@@ -400,7 +405,7 @@ client.distube
                     await queue.seek(queue.currentTime + 10);
 
                     const seekEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.mainColor)
+                        .setColor(config.MainColor)
                         .setDescription(`forwarded the song for 10 seconds.`);
 
                     return await int.editReply({ embeds: [seekEmbed] });
@@ -410,7 +415,7 @@ client.distube
             } catch (error) {
 
                 const errorEmbed = new Discord.EmbedBuilder()
-                    .setColor(config.errorColor)
+                    .setColor(config.ErrorColor)
                     .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
                 return await int.editReply({ embeds: [errorEmbed] });
@@ -430,7 +435,7 @@ client.distube
     .on('searchCancel', async (message) => {            // Emitted when the search canceled due to timeout.
 
         const embed = new Discord.EmbedBuilder()
-            .setColor(config.errorColor)
+            .setColor(config.ErrorColor)
             .setDescription('Searching canceled')
 
         await message.reply({ embeds: [embed] });
@@ -440,7 +445,7 @@ client.distube
     .on('searchInvalidAnswer', async (message) => {     // Emitted when the search canceled due to user's next message is not a number or out of results range.
 
         const embed = new Discord.EmbedBuilder()
-            .setColor(config.errorColor)
+            .setColor(config.ErrorColor)
             .setDescription('Invalid number of result.')
 
         await message.reply({ embeds: [embed] });
@@ -449,7 +454,7 @@ client.distube
     .on('searchNoResult', async (message) => {          // Emitted when bot cannot find any results for the query.
 
         const embed = new Discord.EmbedBuilder()
-            .setColor(config.errorColor)
+            .setColor(config.ErrorColor)
             .setDescription('No result found!')
 
         await message.reply({ embeds: [embed] });
@@ -460,7 +465,7 @@ client.distube
         let i = 0;
 
         const embed = new Discord.EmbedBuilder()
-            .setColor(config.mainColor)
+            .setColor(config.MainColor)
             .setTitle('Choose an option from below')
             .setDescription(result.map(song => `**${++i}**. ${song.name} (${song.formattedDuration})`).join('\n'))
             .setFooter({ text: 'Enter anything else or wait 30 seconds to cancel' });
@@ -484,4 +489,4 @@ process.on('uncaughtExceptionMonitor', (err, origin) => {
     console.log(err?.stack, origin);
 });
 
-client.login(config.botToken);
+client.login(config.Token);

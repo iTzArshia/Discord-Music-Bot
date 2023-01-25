@@ -15,7 +15,7 @@ module.exports = {
     if (!args[0] || isNaN(Number(args[0]))) {
 
       const noArgsEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription('Please enter a valid number.');
 
       return await message.reply({ embeds: [noArgsEmbed] });
@@ -27,7 +27,7 @@ module.exports = {
       await client.distube.jump(message, Number(args[0])).then(async song => {
 
         const skippedEmbed = new Discord.EmbedBuilder()
-          .setColor(config.mainColor)
+          .setColor(config.MainColor)
           .setDescription(`Skipped to the **${args[0]}. [${song.name} (${song.formattedDuration})](${song.url})**`);
 
         return await message.reply({ embeds: [skippedEmbed] });
@@ -39,7 +39,7 @@ module.exports = {
       console.error(error)
 
       const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
       return await message.reply({ embeds: [errorEmbed] });

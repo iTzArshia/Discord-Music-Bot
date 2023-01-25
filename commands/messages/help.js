@@ -13,12 +13,12 @@ module.exports = {
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
     const helpEmbed = new Discord.EmbedBuilder()
-      .setColor(config.mainColor)
+      .setColor(config.MainColor)
       .setAuthor({
         name: `${client.user.username} Commands`,
         iconURL: client.user.displayAvatarURL({ size: 1024 })
       })
-      .setDescription(client.MessageCommands.map(c => `> \`${config.prefix}${c.name}\` \`(${c.aliases?.map(a => `${config.prefix}${a}`)?.join(' / ') || 'No Aliases'})\`\n> *${c.description}*`).join('\n\n'))
+      .setDescription(client.MessageCommands.map(c => `> \`${config.Prefix}${c.name}\` \`(${c.aliases?.map(a => `${config.Prefix}${a}`)?.join(' / ') || 'No Aliases'})\`\n> *${c.description}*`).join('\n\n'))
       .setFooter({ name: 'Developed by iTz Arshia#7650 https://github.com/iTzArshia/iTz-DJ'})
 
     return await message.reply({ embeds: [helpEmbed] });

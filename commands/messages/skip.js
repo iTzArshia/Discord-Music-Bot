@@ -17,7 +17,7 @@ module.exports = {
       await queue.skip();
 
       const skippedEmbed = new Discord.EmbedBuilder()
-        .setColor(config.mainColor)
+        .setColor(config.MainColor)
         .setDescription("Skipping to the next song.");
 
       return await message.reply({ embeds: [skippedEmbed] });
@@ -25,7 +25,7 @@ module.exports = {
     } catch (error) {
 
       const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
       return await message.reply({ embeds: [errorEmbed] });

@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const func = require('../../utils/functions');
 const config = require('../../config.json');
 
 module.exports = {
@@ -17,7 +18,7 @@ module.exports = {
       const autoPlayState = await queue.toggleAutoplay();
 
       const autoplayEmbed = new Discord.EmbedBuilder()
-        .setColor(config.mainColor)
+        .setColor(config.MainColor)
         .setDescription(`Auto Play mode changed to \`${autoPlayState ? "ON" : "OFF"}\`\n\n${func.queueStatus(queue)}`);
 
       return await message.reply({ embeds: [autoplayEmbed] });
@@ -25,7 +26,7 @@ module.exports = {
     } catch (error) {
 
       const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
       return await message.reply({ embeds: [errorEmbed] });

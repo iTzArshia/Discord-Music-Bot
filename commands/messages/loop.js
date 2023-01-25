@@ -16,7 +16,7 @@ module.exports = {
     if (!args[0] || !['off', 'song', 'queue'].includes(args[0].toLowerCase())) {
 
       const noArgsEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription('Please enter a valid mode.\n\n**Valid Modes:** `OFF` | `SONG` | `QUEUE`');
 
       return await message.reply({ embeds: [noArgsEmbed] });
@@ -33,7 +33,7 @@ module.exports = {
       mode = mode ? (mode === 2 ? 'All Queue' : 'This Song') : 'OFF';
 
       const loopEmbed = new Discord.EmbedBuilder()
-        .setColor(config.mainColor)
+        .setColor(config.MainColor)
         .setDescription(`Loop mode changed to \`${mode}\`\n\n${func.queueStatus(queue)}`);
 
       return await message.reply({ embeds: [loopEmbed] });
@@ -41,7 +41,7 @@ module.exports = {
     } catch (error) {
 
       const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
       return await message.reply({ embeds: [errorEmbed] });

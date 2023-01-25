@@ -6,7 +6,7 @@ module.exports = async (client) => {
   await client.user.setPresence({
     activities: [
       {
-        name: `to ${config.prefix}Play`,
+        name: `to ${config.Prefix}Play`,
         type: Discord.ActivityType.Listening
       }
     ],

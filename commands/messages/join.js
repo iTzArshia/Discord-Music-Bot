@@ -15,7 +15,7 @@ module.exports = {
     if ((memberVC && botVC) && memberVC.id === botVC.id) {
 
       const inVoiceEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription("I\'m already connected to your Voice Channel.");
 
       return await message.reply({ embeds: [inVoiceEmbed] });
@@ -27,7 +27,7 @@ module.exports = {
       await client.distube.voices.join(memberVC);
 
       const joinEmbed = new Discord.EmbedBuilder()
-        .setColor(config.mainColor)
+        .setColor(config.MainColor)
         .setDescription("I\'ve connected to your Voice Channel.");
 
       return await message.reply({ embeds: [joinEmbed] });
@@ -35,7 +35,7 @@ module.exports = {
     } catch (error) {
 
       const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
       return await message.reply({ embeds: [errorEmbed] });

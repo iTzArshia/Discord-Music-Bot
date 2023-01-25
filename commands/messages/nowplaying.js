@@ -16,7 +16,7 @@ module.exports = {
     const voiceChannelMembers = botVC.members.filter(member => !member.user.bot);
 
     const nowEmbed = new Discord.EmbedBuilder()
-      .setColor(config.mainColor)
+      .setColor(config.MainColor)
       .setDescription(`Now playing **[${queue.songs[0].name} (${queue.songs[0].formattedDuration})](${queue.songs[0].url})** for ${voiceChannelMembers.size} ${voiceChannelMembers.size > 1 ? 'listeners' : 'listener'} in ${botVC}\n\n${func.queueStatus(queue)}`)
       .setThumbnail(queue.songs[0]?.thumbnail)
       .setFooter({

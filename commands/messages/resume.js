@@ -15,7 +15,7 @@ module.exports = {
     if (queue.playing) {
 
       const pauseEmbed = new Discord.EmbedBuilder()
-        .setColor(config.mainColor)
+        .setColor(config.MainColor)
         .setDescription("Queue isn't paused.");
 
       return await message.reply({ embeds: [pauseEmbed] });
@@ -27,7 +27,7 @@ module.exports = {
       await queue.resume();
 
       const pauseEmbed = new Discord.EmbedBuilder()
-        .setColor(config.mainColor)
+        .setColor(config.MainColor)
         .setDescription("Resumed the song for you.");
 
       return await message.reply({ embeds: [pauseEmbed] });
@@ -35,7 +35,7 @@ module.exports = {
     } catch (error) {
 
       const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.errorColor)
+        .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
       return await message.reply({ embeds: [errorEmbed] });
