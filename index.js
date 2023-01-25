@@ -15,6 +15,7 @@ const { YtDlpPlugin } = require('@distube/yt-dlp');
 const { DeezerPlugin } = require("@distube/deezer");
 const fs = require('node:fs');
 const func = require('./utils/functions');
+const { row2, row3 } = require('./utils/components');
 const config = require('./config.json');
 
 // Discord Client Constructor
@@ -136,7 +137,7 @@ client.distube
 
         const embed = new Discord.EmbedBuilder()
             .setColor(config.errorColor)
-            .setDescription('The voice channel is empty! Leaving the voice channel...');
+            .setDescription('The voice channel is empty! Leaving the voice channel.');
 
         await queue.textChannel?.send({ embeds: [embed] });
 
@@ -216,7 +217,209 @@ client.distube
             inline: true
         });
 
-        await queue.textChannel?.send({ embeds: [embed] });
+        const filters = new Discord.StringSelectMenuBuilder()
+            .setCustomId('filters')
+            .setPlaceholder('Select Filters');
+
+        const options = [];
+
+        for (const filter of Object.keys(queue.distube.filters)) {
+            options.push(
+                {
+                    label: filter.charAt(0).toUpperCase() + filter.slice(1),
+                    value: filter
+                }
+            );
+        };
+
+        filters.addOptions(options);
+        const row1 = new Discord.ActionRowBuilder()
+            .addComponents([
+                filters
+            ]);
+
+        const reply = await queue.textChannel?.send({
+            embeds: [embed],
+            components: [
+                row1,
+                row2,
+                row3
+            ]
+        });
+
+        const collector = await reply.createMessageComponentCollector({ time: song.duration * 1000 });
+
+        collector.on('collect', async (int) => {
+
+            const memberVC = int.member.voice.channel || null;
+            const botVC = int.guild.members.me.voice.channel || null;
+
+            if ((memberVC && botVC) && memberVC.id !== botVC.id) {
+
+                const inVoiceEmbed = new Discord.EmbedBuilder()
+                    .setColor(config.errorColor)
+                    .setDescription('You aren\'t connected to my Voice Channel.');
+
+                return await int.reply({
+                    embeds: [inVoiceEmbed],
+                    ephemeral: true
+                });
+
+            };
+
+            await int.deferReply();
+
+            try {
+
+
+                if (int.customId === 'filters') {
+
+                    if (queue.filters.has(int.values[0])) {
+                        await queue.filters.remove(int.values[0]);
+                    } else {
+                        await queue.filters.add(int.values[0]);
+                    };
+
+                } else if (int.customId.startsWith('loop')) {
+
+                    const loopState = int.customId.split('-')[1];
+                    const currentLoopState = queue.repeatMode;
+                    const convertedLoopStates = {
+                        0: 'off',
+                        1: 'song',
+                        2: 'queue'
+                    };
+
+                    let mode = 0;
+
+                    if (convertedLoopStates[currentLoopState] === 'off') {
+
+                        if (loopState === 'song') mode = 1;
+                        else if (loopState === 'queue') mode = 2;
+
+                    } else {
+
+                        if (loopState !== convertedLoopStates[currentLoopState]) {
+
+                            if (loopState === 'song') mode = 1;
+                            else if (loopState === 'queue') mode = 2;
+
+                        };
+
+                    };
+
+                    mode = await queue.setRepeatMode(mode);
+                    mode = mode ? (mode === 2 ? 'All Queue' : 'This Song') : 'OFF';
+
+                    const loopEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.mainColor)
+                        .setDescription(`Loop mode changed to \`${mode}\`\n\n${func.queueStatus(queue)}`);
+
+                    return await int.editReply({ embeds: [loopEmbed] });
+
+                } else if (int.customId === 'previous') {
+
+                    await queue.previous();
+
+                    const skippedEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.mainColor)
+                        .setDescription("Skipping to the previus song.");
+
+                    await message.reply({ embeds: [skippedEmbed] });
+
+                    return await collector.stop();
+
+                } else if (int.customId === 'pauseUnpause') {
+
+                    if (queue.playing) {
+                        await queue.pause();
+                    } else {
+                        await queue.resume();
+                    };
+
+                    const pauseUnpauseEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.mainColor)
+                        .setDescription(`${queue.playing ? 'Resumed' : 'Paused'} the song for you.`);
+
+                    return await message.reply({ embeds: [pauseUnpauseEmbed] });
+
+                } else if (int.customId === 'next') {
+
+                    await queue.skip();
+
+                    const skippedEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.mainColor)
+                        .setDescription("Skipping to the next song.");
+
+                    await message.reply({ embeds: [skippedEmbed] });
+
+                    return await collector.stop();
+
+                } else if (int.customId.startsWith('vol')) {
+
+                    const volumeUpDown = int.customId.split('-')[1];
+
+                    if (volumeUpDown === 'up') await queue.setVolume(queue.volume + 10);
+                    else if (volumeUpDown === 'down') await queue.setVolume(queue.volume - 10);
+
+                    const volumeEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.mainColor)
+                        .setDescription(`Volume changed to \`${volume}\`\n\n${func.queueStatus(queue)}`);
+
+                    return await message.reply({ embeds: [volumeEmbed] });
+
+                } else if (int.customId === 'backward') {
+
+                    await queue.seek(queue.currentTime - 20);
+
+                    const seekEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.mainColor)
+                        .setDescription(`Backwarded the song for ${time} seconds.`);
+
+                    return await message.reply({ embeds: [seekEmbed] });
+
+                } else if (int.customId === 'stop') {
+
+                    await queue.stop();
+
+                    const stopEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.mainColor)
+                        .setDescription("Stopped playing.");
+
+                    await message.reply({ embeds: [stopEmbed] });
+
+                    return await collector.stop();
+
+                } else if (int.customId === 'forward') {
+
+                    await queue.seek(queue.currentTime + 20);
+
+                    const seekEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.mainColor)
+                        .setDescription(`forwarded the song for 20 seconds.`);
+
+                    return await message.reply({ embeds: [seekEmbed] });
+
+                };
+
+            } catch (error) {
+
+                const errorEmbed = new Discord.EmbedBuilder()
+                    .setColor(config.errorColor)
+                    .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+
+                return await int.editReply({ embeds: [errorEmbed] });
+
+            };
+
+        });
+
+        collector.on('end', async (collection, reason) => {
+
+            if (["messageDelete", "messageDeleteBulk"].includes(reason)) return;
+            await reply.edit({ components: [] }).catch(() => null);
+
+        });
 
     })
     .on('searchCancel', async (message) => {            // Emitted when the search canceled due to timeout.
