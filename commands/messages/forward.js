@@ -1,25 +1,9 @@
-module.exports = {
-  name: 'forward',
-  inVoiceChannel: true,
-  run: async (client, message, args) => {
-    const queue = client.distube.getQueue(message)
-    if (!queue) return message.channel.send(`${client.emotes.error} | There is nothing in the queue right now!`)
-    if (!args[0]) {
-      return message.channel.send(`${client.emotes.error} | Please provide time (in seconds) to go forward!`)
-    }
-    const time = Number(args[0])
-    if (isNaN(time)) return message.channel.send(`${client.emotes.error} | Please enter a valid number!`)
-    queue.seek((queue.currentTime + time))
-    message.channel.send(`Forwarded the song for ${time}!`)
-  }
-}
-
-
 const Discord = require('discord.js');
 const config = require('../../config.json');
 
 module.exports = {
   name: "forward",
+  aliases: ["fw"],
   description: "-",
   memberVoice: true,
   botVoice: true,
@@ -27,8 +11,10 @@ module.exports = {
   queueNeeded: true,
 
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
+   
+    const time = Number(args[0]);
 
-    if (!args[0] || isNaN(Number(args[0]))) {
+    if (!args[0] || isNaN(time)) {
 
       const noArgsEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
@@ -38,13 +24,25 @@ module.exports = {
 
     };
 
-    await queue.seek(queue.currentTime + Number(args[0]));
+    try {
 
-    const seekEmbed = new Discord.EmbedBuilder()
-      .setColor(config.mainColor)
-      .setDescription(`forwarded the song for ${Number(args[0])} seconds.`);
+      await queue.seek(queue.currentTime + time);
 
-    return await message.reply({ embeds: [seekEmbed] });
+      const seekEmbed = new Discord.EmbedBuilder()
+        .setColor(config.mainColor)
+        .setDescription(`forwarded the song for ${time} seconds.`);
+
+      return await message.reply({ embeds: [seekEmbed] });
+
+    } catch (error) {
+
+      const errorEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+
+      return await message.reply({ embeds: [errorEmbed] });
+
+    };
 
   },
 
