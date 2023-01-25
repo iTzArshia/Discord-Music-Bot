@@ -1,6 +1,6 @@
 {
-    "prefix": "+",
-    "botToken": ""
-    "mainColor": "Blue",
-    "errorColor": "Red",
+    "prefix": "Put Anything you want as prefix",
+    "mainColor": "Put any #HexCode you want for embeds",
+    "errorColor": "Put any #HexCode you want for embeds when there is an error!",
+    "botToken": "Put Bot Token Here"
 }
