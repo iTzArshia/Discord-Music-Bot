@@ -1,8 +1,5 @@
 <h1 align="center">"iTz DJ" an Advanced Discord Music Bot for YOU</h1>
 
-[![GitHub stars](https://img.shields.io/github/stars/iTzArshia/iTz-DJ.svg)](https://github.com/iTzArshia/iTz-DJ/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/iTzArshia/iTz-DJ.svg)](https://github.com/iTzArshia/iTz-DJ/network)
-[![Downloads](https://img.shields.io/github/downloads/iTzArshia/iTz-DJ.svg)](https://github.com/iTzArshia/iTz-DJ/releases/latest)
 [![iTz Club Discord](https://badgen.net/discord/members/8hr9CRqmfc)](https://discord.gg/8hr9CRqmfc)
 [![iTz Development Discord](https://badgen.net/discord/members/nKrBshQvcK)](https://discord.gg/nKrBshQvcK)
 
