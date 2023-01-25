@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const config = require('../../config.json');
+const func = require('../../utils/functions');
 
 module.exports = {
   name: "Seek",
@@ -12,7 +13,9 @@ module.exports = {
 
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
-    if (!args[0] || isNaN(Number(args[0]))) {
+    const time = Number(args[0]);
+
+    if (!args[0] || isNaN(time)) {
 
       const noArgsEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
@@ -22,13 +25,25 @@ module.exports = {
 
     };
 
-    await queue.seek(Number(args[0]));
+    try {
 
-    const seekEmbed = new Discord.EmbedBuilder()
-      .setColor(config.mainColor)
-      .setDescription(`Seeked to ${Number(args[0])} seconds.`);
+      await queue.seek(time);
 
-    return await message.reply({ embeds: [seekEmbed] });
+      const seekEmbed = new Discord.EmbedBuilder()
+        .setColor(config.mainColor)
+        .setDescription(`Seeked to ${func.suffix(time)} second of the song.`);
+
+      return await message.reply({ embeds: [seekEmbed] });
+
+    } catch (error) {
+
+      const errorEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+
+      return await message.reply({ embeds: [errorEmbed] });
+
+    };
 
   },
 
