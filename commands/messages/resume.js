@@ -3,7 +3,7 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "Resume",
-  aliases: ["unpause"],
+  aliases: ["r", "unpause"],
   description: "Resumes the current song",
   memberVoice: true,
   botVoice: true,
@@ -12,7 +12,7 @@ module.exports = {
 
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
-    if (!queue.paused) {
+    if (queue.playing) {
 
       const pauseEmbed = new Discord.EmbedBuilder()
         .setColor(config.mainColor)
@@ -22,13 +22,25 @@ module.exports = {
 
     };
 
-    await queue.resume()
+    try {
 
-    const pauseEmbed = new Discord.EmbedBuilder()
-      .setColor(config.mainColor)
-      .setDescription("Resumed the song for you.");
+      await queue.resume();
 
-    return await message.reply({ embeds: [pauseEmbed] });
+      const pauseEmbed = new Discord.EmbedBuilder()
+        .setColor(config.mainColor)
+        .setDescription("Resumed the song for you.");
+
+      return await message.reply({ embeds: [pauseEmbed] });
+
+    } catch (error) {
+
+      const errorEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+
+      return await message.reply({ embeds: [errorEmbed] });
+
+    };
 
   },
 

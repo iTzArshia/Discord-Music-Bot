@@ -11,13 +11,25 @@ module.exports = {
 
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
-    await queue.shuffle();
+    try {
 
-    const shuffleEmbed = new Discord.EmbedBuilder()
-      .setColor(config.mainColor)
-      .setDescription("Shuffled songs in the queue");
+      await queue.shuffle();
 
-    return await message.reply({ embeds: [shuffleEmbed] });
+      const shuffleEmbed = new Discord.EmbedBuilder()
+        .setColor(config.mainColor)
+        .setDescription("Shuffled songs in the queue");
+
+      return await message.reply({ embeds: [shuffleEmbed] });
+
+    } catch (error) {
+
+      const errorEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+
+      return await message.reply({ embeds: [errorEmbed] });
+
+    };
 
   },
 

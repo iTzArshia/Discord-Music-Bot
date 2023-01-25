@@ -22,13 +22,25 @@ module.exports = {
 
     };
 
-    await client.distube.voices.join(memberVC);
+    try {
 
-    const joinEmbed = new Discord.EmbedBuilder()
-      .setColor(config.mainColor)
-      .setDescription("I\'ve connected to your Voice Channel.");
+      await client.distube.voices.join(memberVC);
 
-    return await message.reply({ embeds: [joinEmbed] });
+      const joinEmbed = new Discord.EmbedBuilder()
+        .setColor(config.mainColor)
+        .setDescription("I\'ve connected to your Voice Channel.");
+
+      return await message.reply({ embeds: [joinEmbed] });
+
+    } catch (error) {
+
+      const errorEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+
+      return await message.reply({ embeds: [errorEmbed] });
+
+    };
 
   },
 

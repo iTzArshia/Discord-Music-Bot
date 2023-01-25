@@ -11,13 +11,25 @@ module.exports = {
 
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
-    await queue.stop()
+    try {
 
-    const stopEmbed = new Discord.EmbedBuilder()
-      .setColor(config.mainColor)
-      .setDescription("Stopped playing.");
+      await queue.stop();
 
-    return await message.reply({ embeds: [stopEmbed] });
+      const stopEmbed = new Discord.EmbedBuilder()
+        .setColor(config.mainColor)
+        .setDescription("Stopped playing.");
+
+      return await message.reply({ embeds: [stopEmbed] });
+
+    } catch (error) {
+
+      const errorEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+
+      return await message.reply({ embeds: [errorEmbed] });
+
+    };
 
   },
 

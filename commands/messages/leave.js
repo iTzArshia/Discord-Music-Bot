@@ -12,13 +12,25 @@ module.exports = {
 
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
-    await client.distube.voices.leave(message.guild);
+    try {
 
-    const leaveEmbed = new Discord.EmbedBuilder()
-      .setColor(config.mainColor)
-      .setDescription("I\'ve disconnected from your Voice Channel.");
+      await client.distube.voices.leave(message.guild);
 
-    return await message.reply({ embeds: [leaveEmbed] });
+      const leaveEmbed = new Discord.EmbedBuilder()
+        .setColor(config.mainColor)
+        .setDescription("I\'ve disconnected from your Voice Channel.");
+
+      return await message.reply({ embeds: [leaveEmbed] });
+
+    } catch (error) {
+
+      const errorEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+
+      return await message.reply({ embeds: [errorEmbed] });
+
+    };
 
   },
 

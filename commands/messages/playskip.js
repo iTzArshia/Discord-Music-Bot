@@ -23,12 +23,24 @@ module.exports = {
 
     };
 
-    client.distube.play(memberVC, string, {
-      member: message.member,
-      textChannel: message.channel,
-      message,
-      skip: true
-    })
+    try {
+
+      await client.distube.play(memberVC, string, {
+        member: message.member,
+        textChannel: message.channel,
+        message,
+        skip: true
+      });
+
+    } catch (error) {
+
+      const errorEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+
+      return await message.reply({ embeds: [errorEmbed] });
+
+    };
 
   },
 

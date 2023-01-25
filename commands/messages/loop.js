@@ -4,7 +4,7 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "loop",
-  aliases: ["repeat"],
+  aliases: ["lo", "lp", "repeat"],
   description: "Changes loop mode",
   memberVoice: true,
   botVoice: true,
@@ -13,7 +13,7 @@ module.exports = {
 
   async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
-    if (!args[0]) {
+    if (!args[0] || !['off', 'song', 'queue'].includes(args[0].toLowerCase())) {
 
       const noArgsEmbed = new Discord.EmbedBuilder()
         .setColor(config.errorColor)
@@ -23,26 +23,30 @@ module.exports = {
 
     };
 
-    let mode = null
-    switch (args[0].toLowerCase()) {
-      case "off":
-        mode = 0
-        break
-      case "song":
-        mode = 1
-        break
-      case "queue":
-        mode = 2
-        break
+    try {
+
+      let mode = 0;
+      if (args[0].toLowerCase() === 'song') mode = 1;
+      else if (args[0].toLowerCase === 'queue') mode = 2
+
+      mode = await queue.setRepeatMode(mode);
+      mode = mode ? (mode === 2 ? 'All Queue' : 'This Song') : 'OFF';
+
+      const loopEmbed = new Discord.EmbedBuilder()
+        .setColor(config.mainColor)
+        .setDescription(`Loop mode changed to \`${mode}\`\n\n${func.queueStatus(queue)}`);
+
+      return await message.reply({ embeds: [loopEmbed] });
+
+    } catch (error) {
+
+      const errorEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+
+      return await message.reply({ embeds: [errorEmbed] });
+
     };
-    mode = await queue.setRepeatMode(mode)
-    mode = mode ? (mode === 2 ? 'All Queue' : 'This Song') : 'OFF'
-
-    const loopEmbed = new Discord.EmbedBuilder()
-      .setColor(config.mainColor)
-      .setDescription(`Loop mode changed to \`${mode}\`\n\n${func.queueStatus(queue)}`);
-
-    return await message.reply({ embeds: [loopEmbed] });
 
   },
 

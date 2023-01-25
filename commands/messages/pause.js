@@ -22,13 +22,25 @@ module.exports = {
 
     };
 
-    await queue.pause()
+    try {
 
-    const pauseEmbed = new Discord.EmbedBuilder()
-      .setColor(config.mainColor)
-      .setDescription("Paused the song for you.");
+      await queue.pause()
 
-    return await message.reply({ embeds: [pauseEmbed] });
+      const pauseEmbed = new Discord.EmbedBuilder()
+        .setColor(config.mainColor)
+        .setDescription("Paused the song for you.");
+
+      return await message.reply({ embeds: [pauseEmbed] });
+
+    } catch (error) {
+
+      const errorEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+
+      return await message.reply({ embeds: [errorEmbed] });
+
+    };
 
   },
 

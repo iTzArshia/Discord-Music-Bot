@@ -3,7 +3,7 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "Play",
-  aliases: ["p", "start"],
+  aliases: ["p", "pl", "start"],
   description: "Plays song for you",
   memberVoice: true,
   botVoice: false,
@@ -23,11 +23,23 @@ module.exports = {
 
     };
 
-    await client.distube.play(memberVC, string, {
-      member: message.member,
-      textChannel: message.channel,
-      message
-    });
+    try {
+
+      await client.distube.play(memberVC, string, {
+        member: message.member,
+        textChannel: message.channel,
+        message
+      });
+
+    } catch (error) {
+
+      const errorEmbed = new Discord.EmbedBuilder()
+        .setColor(config.errorColor)
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+
+      return await message.reply({ embeds: [errorEmbed] });
+
+    };
 
   },
 
