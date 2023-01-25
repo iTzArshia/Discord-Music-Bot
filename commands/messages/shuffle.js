@@ -17,7 +17,7 @@ module.exports = {
       .setColor(config.mainColor)
       .setDescription("Shuffled songs in the queue");
 
-    return message.reply({ embeds: [shuffleEmbed] });
+    return await message.reply({ embeds: [shuffleEmbed] });
 
   },
 

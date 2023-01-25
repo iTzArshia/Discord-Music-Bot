@@ -18,7 +18,7 @@ module.exports = {
       .setColor(config.mainColor)
       .setDescription("Skipping to the previus song.");
 
-    return message.reply({ embeds: [skippedEmbed] });
+    return await message.reply({ embeds: [skippedEmbed] });
 
   },
 

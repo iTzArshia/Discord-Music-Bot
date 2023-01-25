@@ -30,7 +30,7 @@ module.exports = async (client, message) => {
                         .setColor(config.errorColor)
                         .setDescription('You aren\'t connected to any Voice Channel.');
 
-                    return message.reply({ embeds: [inVoiceEmbed] });
+                    return await message.reply({ embeds: [inVoiceEmbed] });
 
                 };
 
@@ -44,7 +44,7 @@ module.exports = async (client, message) => {
                         .setColor(config.errorColor)
                         .setDescription('I\'m not connected to any Voice Chnanel.');
 
-                    return message.reply({ embeds: [inVoiceEmbed] });
+                    return await message.reply({ embeds: [inVoiceEmbed] });
 
                 };
 
@@ -58,7 +58,7 @@ module.exports = async (client, message) => {
                         .setColor(config.errorColor)
                         .setDescription('You aren\'t connected to my Voice Channel.');
 
-                    return message.reply({ embeds: [inVoiceEmbed] });
+                    return await message.reply({ embeds: [inVoiceEmbed] });
 
                 };
 
@@ -72,7 +72,7 @@ module.exports = async (client, message) => {
                         .setColor(config.errorColor)
                         .setDescription('I\'m not playing anything right now.');
 
-                    return message.reply({ embeds: [noQueueEmbed] });
+                    return await message.reply({ embeds: [noQueueEmbed] });
 
                 };
 

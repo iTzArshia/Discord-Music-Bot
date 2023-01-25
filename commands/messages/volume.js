@@ -20,7 +20,7 @@ module.exports = {
         .setColor(config.errorColor)
         .setDescription("Please enter a valid number.");
 
-      return message.reply({ embeds: [notValidNumberEmbed] });
+      return await message.reply({ embeds: [notValidNumberEmbed] });
 
     };
 
@@ -30,7 +30,7 @@ module.exports = {
       .setColor(config.mainColor)
       .setDescription(`Volume changed to \`${volume}\`\n\n${func.queueStatus(queue)}`);
 
-    return message.reply({ embeds: [volumeEmbed] });
+    return await message.reply({ embeds: [volumeEmbed] });
 
   },
 

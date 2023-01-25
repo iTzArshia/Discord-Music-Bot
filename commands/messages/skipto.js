@@ -18,7 +18,7 @@ module.exports = {
         .setColor(config.errorColor)
         .setDescription('Please enter a valid number.');
 
-      return message.reply({ embeds: [noArgsEmbed] });
+      return await message.reply({ embeds: [noArgsEmbed] });
 
     };
 
@@ -30,7 +30,7 @@ module.exports = {
           .setColor(config.mainColor)
           .setDescription(`Skipped to the **${args[0]}. [${song.name} (${song.formattedDuration})](${song.url})**`);
 
-        return message.reply({ embeds: [skippedEmbed] });
+        return await message.reply({ embeds: [skippedEmbed] });
 
       });
 
@@ -42,7 +42,7 @@ module.exports = {
         .setColor(config.errorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
-      return message.reply({ embeds: [errorEmbed] });
+      return await message.reply({ embeds: [errorEmbed] });
 
     };
 

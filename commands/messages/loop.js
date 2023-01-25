@@ -19,7 +19,7 @@ module.exports = {
         .setColor(config.errorColor)
         .setDescription('Please enter a valid mode.\n\n**Valid Modes:** `OFF` | `SONG` | `QUEUE`');
 
-      return message.reply({ embeds: [noArgsEmbed] });
+      return await message.reply({ embeds: [noArgsEmbed] });
 
     };
 
@@ -42,7 +42,7 @@ module.exports = {
       .setColor(config.mainColor)
       .setDescription(`Loop mode changed to \`${mode}\`\n\n${func.queueStatus(queue)}`);
 
-    return message.reply({ embeds: [loopEmbed] });
+    return await message.reply({ embeds: [loopEmbed] });
 
   },
 

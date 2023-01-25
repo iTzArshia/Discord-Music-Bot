@@ -18,7 +18,7 @@ module.exports = {
         .setColor(config.errorColor)
         .setDescription("I\'m already connected to your Voice Channel.");
 
-      return message.reply({ embeds: [inVoiceEmbed] });
+      return await message.reply({ embeds: [inVoiceEmbed] });
 
     };
 
@@ -28,7 +28,7 @@ module.exports = {
       .setColor(config.mainColor)
       .setDescription("I\'ve connected to your Voice Channel.");
 
-    return message.reply({ embeds: [joinEmbed] });
+    return await message.reply({ embeds: [joinEmbed] });
 
   },
 

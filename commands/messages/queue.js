@@ -94,7 +94,7 @@ module.exports = {
     collector.on('end', async (collected, reason) => {
 
       if (["messageDelete", "messageDeleteBulk"].includes(reason)) return;
-      await reply.edit({ components: [new Discord.ActionRowBuilder().addComponents(startButton.setDisabled(true), backButton.setDisabled(true), forwardButton.setDisabled(true), endButton.setDisabled(true))] });
+      return await reply.edit({ components: [new Discord.ActionRowBuilder().addComponents(startButton.setDisabled(true), backButton.setDisabled(true), forwardButton.setDisabled(true), endButton.setDisabled(true))] });
 
     });
 

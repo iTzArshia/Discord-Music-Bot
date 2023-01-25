@@ -18,7 +18,7 @@ module.exports = {
         .setColor(config.mainColor)
         .setDescription("Queue isn't paused.");
 
-      return message.reply({ embeds: [pauseEmbed] });
+      return await message.reply({ embeds: [pauseEmbed] });
 
     };
 
@@ -28,7 +28,7 @@ module.exports = {
       .setColor(config.mainColor)
       .setDescription("Resumed the song for you.");
 
-    return message.reply({ embeds: [pauseEmbed] });
+    return await message.reply({ embeds: [pauseEmbed] });
 
   },
 

@@ -17,7 +17,7 @@ module.exports = {
       .setColor(config.mainColor)
       .setDescription("Stopped playing.");
 
-    return message.reply({ embeds: [stopEmbed] });
+    return await message.reply({ embeds: [stopEmbed] });
 
   },
 

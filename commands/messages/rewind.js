@@ -18,7 +18,7 @@ module.exports = {
         .setColor(config.errorColor)
         .setDescription('Please provide time (in seconds) to go backward!\n**Example:** `10` for 10 seconds backward.');
 
-      return message.reply({ embeds: [noArgsEmbed] });
+      return await message.reply({ embeds: [noArgsEmbed] });
 
     };
 
@@ -28,7 +28,7 @@ module.exports = {
       .setColor(config.mainColor)
       .setDescription(`Backwarded the song for ${Number(args[0])} seconds.`);
 
-    return message.reply({ embeds: [seekEmbed] });
+    return await message.reply({ embeds: [seekEmbed] });
 
   },
 

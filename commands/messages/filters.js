@@ -20,7 +20,7 @@ module.exports = {
         .setColor(config.errorColor)
         .setDescription('Please enter a valid filter or `OFF`.\n\n**Valid Filters:** `3D` | `BassBoost` | `Echo` | `Karaoke` | `NightCore` | `VaporWave` | `Flanger` | `Gate` | `Haas` | `Reverse` | `Surround` | `Mcompand` | `Phaser` | `Tremolo` | `Earwax`');
 
-      return message.reply({ embeds: [noArgsEmbed] });
+      return await message.reply({ embeds: [noArgsEmbed] });
 
     };
 
@@ -42,7 +42,7 @@ module.exports = {
         .setColor(config.errorColor)
         .setDescription('Please enter a valid filter or `OFF`.\n\n**Valid Filters:** `3D` | `BassBoost` | `Echo` | `Karaoke` | `NightCore` | `VaporWave` | `Flanger` | `Gate` | `Haas` | `Reverse` | `Surround` | `Mcompand` | `Phaser` | `Tremolo` | `Earwax`');
 
-      return message.reply({ embeds: [notAvalidFilter] });
+      return await message.reply({ embeds: [notAvalidFilter] });
 
     };
 
@@ -50,7 +50,7 @@ module.exports = {
       .setColor(config.mainColor)
       .setDescription(`**Current Queue Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\``);
 
-    return message.reply({ embeds: [filtersEmbed] });
+    return await message.reply({ embeds: [filtersEmbed] });
 
   },
 

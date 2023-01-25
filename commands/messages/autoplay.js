@@ -18,7 +18,7 @@ module.exports = {
       .setColor(config.mainColor)
       .setDescription(`Auto Play mode changed to \`${autoPlayState ? "ON" : "OFF"}\``);
 
-    return message.reply({ embeds: [autoplayEmbed] });
+    return await message.reply({ embeds: [autoplayEmbed] });
 
   },
 

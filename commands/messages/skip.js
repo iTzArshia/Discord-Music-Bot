@@ -20,7 +20,7 @@ module.exports = {
         .setColor(config.mainColor)
         .setDescription("Skipping to the next track...");
 
-      return message.reply({ embeds: [skippedEmbed] });
+      return await message.reply({ embeds: [skippedEmbed] });
 
     } catch (error) {
 
@@ -28,7 +28,7 @@ module.exports = {
         .setColor(config.errorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
 
-      return message.reply({ embeds: [errorEmbed] });
+      return await message.reply({ embeds: [errorEmbed] });
 
     };
 

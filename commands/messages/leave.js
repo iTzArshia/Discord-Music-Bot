@@ -18,7 +18,7 @@ module.exports = {
       .setColor(config.mainColor)
       .setDescription("I\'ve disconnected from your Voice Channel.");
 
-    return message.reply({ embeds: [leaveEmbed] });
+    return await message.reply({ embeds: [leaveEmbed] });
 
   },
 

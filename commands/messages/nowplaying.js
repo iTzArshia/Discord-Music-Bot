@@ -42,7 +42,7 @@ module.exports = {
       inline: true
     });
 
-    return message.reply({ embeds: [nowEmbed] });
+    return await message.reply({ embeds: [nowEmbed] });
 
   },
 

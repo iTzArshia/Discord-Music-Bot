@@ -20,7 +20,7 @@ module.exports = {
       })
       .setDescription(client.MessageCommands.map(c => `> \`${config.prefix}${c.name}\` \`(${c.aliases?.map(a => `${config.prefix}${a}`)?.join(' / ') || 'No Aliases'})\`\n> *${c.description}*`).join('\n\n'))
 
-    return message.reply({ embeds: [helpEmbed] });
+    return await message.reply({ embeds: [helpEmbed] });
 
   },
 

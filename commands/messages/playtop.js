@@ -19,7 +19,7 @@ module.exports = {
         .setColor(config.errorColor)
         .setDescription("Please enter a song url or query to search.");
 
-      return message.reply({ embeds: [stringEmbed] });
+      return await message.reply({ embeds: [stringEmbed] });
 
     };
 
