@@ -19,7 +19,7 @@ module.exports = {
       const leaveEmbed = new Discord.EmbedBuilder()
         .setColor(config.MainColor)
         .setDescription("I\'ve disconnected from your Voice Channel.")
-        .setAuthor({
+        .setFooter({
           text: `Commanded by ${message.author.tag}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
