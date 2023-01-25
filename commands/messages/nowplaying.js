@@ -17,7 +17,7 @@ module.exports = {
 
     const nowEmbed = new Discord.EmbedBuilder()
       .setColor(config.mainColor)
-      .setDescription(`Now playing **[${queue.songs[0].name} (${queue.songs[0].formattedDuration})](${queue.songs[0].url})** for ${voiceChannelMembers.size} listeners in ${botVC}\n\n${func.queueStatus(queue)}`)
+      .setDescription(`Now playing **[${queue.songs[0].name} (${queue.songs[0].formattedDuration})](${queue.songs[0].url})** for ${voiceChannelMembers.size} ${voiceChannelMembers.size > 1 ? 'listeners' : 'listener'} in ${botVC}\n\n${func.queueStatus(queue)}`)
       .setThumbnail(queue.songs[0]?.thumbnail)
       .setFooter({
         text: `Requested by ${queue.songs[0].user.tag}`,
@@ -35,7 +35,7 @@ module.exports = {
       value: `${func.numberWithCommas(queue.songs[0].likes)}`,
       inline: true
     });
-    
+
     if (queue.songs[0].dislikes) nowEmbed.addFields({
       name: '👎🏻 is:',
       value: `${func.numberWithCommas(queue.songs[0].dislikes)}`,
