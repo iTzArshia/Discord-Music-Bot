@@ -14,11 +14,11 @@ module.exports = {
 
     try {
 
-      await queue.skip()
+      await queue.skip();
 
       const skippedEmbed = new Discord.EmbedBuilder()
         .setColor(config.mainColor)
-        .setDescription("Skipping to the next track...");
+        .setDescription("Skipping to the next song.");
 
       return await message.reply({ embeds: [skippedEmbed] });
 
