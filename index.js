@@ -325,7 +325,7 @@ client.distube
                         .setColor(config.mainColor)
                         .setDescription("Skipping to the previus song.");
 
-                    await message.reply({ embeds: [skippedEmbed] });
+                    await int.editReply({ embeds: [skippedEmbed] });
 
                     return await collector.stop();
 
@@ -341,7 +341,7 @@ client.distube
                         .setColor(config.mainColor)
                         .setDescription(`${queue.playing ? 'Resumed' : 'Paused'} the song for you.`);
 
-                    return await message.reply({ embeds: [pauseUnpauseEmbed] });
+                    return await int.editReply({ embeds: [pauseUnpauseEmbed] });
 
                 } else if (int.customId === 'next') {
 
@@ -351,7 +351,7 @@ client.distube
                         .setColor(config.mainColor)
                         .setDescription("Skipping to the next song.");
 
-                    await message.reply({ embeds: [skippedEmbed] });
+                    await int.editReply({ embeds: [skippedEmbed] });
 
                     return await collector.stop();
 
@@ -366,7 +366,7 @@ client.distube
                         .setColor(config.mainColor)
                         .setDescription(`Volume changed to \`${volume}\`\n\n${func.queueStatus(queue)}`);
 
-                    return await message.reply({ embeds: [volumeEmbed] });
+                    return await int.editReply({ embeds: [volumeEmbed] });
 
                 } else if (int.customId === 'backward') {
 
@@ -376,7 +376,7 @@ client.distube
                         .setColor(config.mainColor)
                         .setDescription(`Backwarded the song for ${time} seconds.`);
 
-                    return await message.reply({ embeds: [seekEmbed] });
+                    return await int.editReply({ embeds: [seekEmbed] });
 
                 } else if (int.customId === 'stop') {
 
@@ -386,7 +386,7 @@ client.distube
                         .setColor(config.mainColor)
                         .setDescription("Stopped playing.");
 
-                    await message.reply({ embeds: [stopEmbed] });
+                    await int.editReply({ embeds: [stopEmbed] });
 
                     return await collector.stop();
 
@@ -398,7 +398,7 @@ client.distube
                         .setColor(config.mainColor)
                         .setDescription(`forwarded the song for 20 seconds.`);
 
-                    return await message.reply({ embeds: [seekEmbed] });
+                    return await int.editReply({ embeds: [seekEmbed] });
 
                 };
 
