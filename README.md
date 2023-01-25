@@ -3,7 +3,7 @@
 [![iTz Club Discord](https://badgen.net/discord/members/8hr9CRqmfc)](https://discord.gg/8hr9CRqmfc)
 [![iTz Development Discord](https://badgen.net/discord/members/nKrBshQvcK)](https://discord.gg/nKrBshQvcK)
 
-iTz DJ is the original Discord music bot written for **[JavaScript](https://www.javascript.com/)**, using the **[Discord.js](discord.js.org/)** library. It plays requested songs from everywhere you can imagine (YouTube, Spotify, SoundCloud, Deezer, Discord Links and 900 more websites) also it has many awsome features and commands that you can see in **[Screenshots](https://github.com/iTzArshia/iTz-DJ/edit/main/README.md#-screenshots)**!
+iTz DJ is the original Discord music bot written for **[JavaScript](https://www.javascript.com/)**, using the **[Discord.js](discord.js.org/)** library. It plays requested songs from everywhere you can imagine (YouTube, Spotify, SoundCloud, Deezer, Discord Links and 900+ more websites) also it has many awsome features and commands that you can see in **[Screenshots](https://github.com/iTzArshia/iTz-DJ/edit/main/README.md#-screenshots)**!
 ## ✨Latest Updates
 This is the first version of the bot, in the feature when I update the bot I will write updates here.
 ## 🚧 Requirements
