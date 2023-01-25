@@ -43,7 +43,11 @@ module.exports = {
 
         const notAvalidFilter = new Discord.EmbedBuilder()
           .setColor(config.ErrorColor)
-          .setDescription('Please enter a valid filter or `OFF`.\n\n**Valid Filters:** `3D` | `Bassboost` | `Echo` | `Karaoke` | `Nightcore` | `Vaporwave` | `Flanger` | `Gate` | `Haas` | `Reverse` | `Surround` | `Mcompand` | `Phaser` | `Tremolo` | `Earwax`');
+          .setDescription('Please enter a valid filter or `OFF`.\n\n**Valid Filters:** `3D` | `Bassboost` | `Echo` | `Karaoke` | `Nightcore` | `Vaporwave` | `Flanger` | `Gate` | `Haas` | `Reverse` | `Surround` | `Mcompand` | `Phaser` | `Tremolo` | `Earwax`')
+          .setFooter({
+            text: `Commanded by ${message.author.tag}`,
+            iconURL: message.author.displayAvatarURL({ size: 1024 })
+          });
 
         return await message.reply({ embeds: [notAvalidFilter] });
 
@@ -51,7 +55,11 @@ module.exports = {
 
       const filtersEmbed = new Discord.EmbedBuilder()
         .setColor(config.MainColor)
-        .setDescription(`**Current Queue Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\`\n\n${func.queueStatus(queue)}`);
+        .setDescription(`**Current Queue Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\`\n\n${func.queueStatus(queue)}`)
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [filtersEmbed] });
 
@@ -59,7 +67,11 @@ module.exports = {
 
       const errorEmbed = new Discord.EmbedBuilder()
         .setColor(config.ErrorColor)
-        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [errorEmbed] });
 

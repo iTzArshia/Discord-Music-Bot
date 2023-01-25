@@ -19,7 +19,11 @@ module.exports = {
 
       const noArgsEmbed = new Discord.EmbedBuilder()
         .setColor(config.ErrorColor)
-        .setDescription('Please provide position (in seconds) to seek!\n**Example:** `10` for 10th second of song.');
+        .setDescription('Please provide position (in seconds) to seek!\n**Example:** `10` for 10th second of song.')
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [noArgsEmbed] });
 
@@ -31,7 +35,11 @@ module.exports = {
 
       const seekEmbed = new Discord.EmbedBuilder()
         .setColor(config.MainColor)
-        .setDescription(`Seeked to ${func.suffix(time)} second of the song.`);
+        .setDescription(`Seeked to ${func.suffix(time)} second of the song.`)
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });;
 
       return await message.reply({ embeds: [seekEmbed] });
 
@@ -39,7 +47,11 @@ module.exports = {
 
       const errorEmbed = new Discord.EmbedBuilder()
         .setColor(config.ErrorColor)
-        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [errorEmbed] });
 

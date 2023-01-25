@@ -26,7 +26,11 @@ module.exports = async (client, message) => {
 
                     const inVoiceEmbed = new Discord.EmbedBuilder()
                         .setColor(config.ErrorColor)
-                        .setDescription('You aren\'t connected to any Voice Channel.');
+                        .setDescription('You aren\'t connected to any Voice Channel.')
+                        .setFooter({
+                            text: `Commanded by ${message.author.tag}`,
+                            iconURL: message.author.displayAvatarURL({ size: 1024 })
+                        });
 
                     return await message.reply({ embeds: [inVoiceEmbed] });
 
@@ -40,7 +44,11 @@ module.exports = async (client, message) => {
 
                     const inVoiceEmbed = new Discord.EmbedBuilder()
                         .setColor(config.ErrorColor)
-                        .setDescription('I\'m not connected to any Voice Chnanel.');
+                        .setDescription('I\'m not connected to any Voice Chnanel.')
+                        .setFooter({
+                            text: `Commanded by ${message.author.tag}`,
+                            iconURL: message.author.displayAvatarURL({ size: 1024 })
+                        });
 
                     return await message.reply({ embeds: [inVoiceEmbed] });
 
@@ -54,7 +62,11 @@ module.exports = async (client, message) => {
 
                     const inVoiceEmbed = new Discord.EmbedBuilder()
                         .setColor(config.ErrorColor)
-                        .setDescription('You aren\'t connected to my Voice Channel.');
+                        .setDescription('You aren\'t connected to my Voice Channel.')
+                        .setFooter({
+                            text: `Commanded by ${message.author.tag}`,
+                            iconURL: message.author.displayAvatarURL({ size: 1024 })
+                        });
 
                     return await message.reply({ embeds: [inVoiceEmbed] });
 
@@ -68,7 +80,11 @@ module.exports = async (client, message) => {
 
                     const noQueueEmbed = new Discord.EmbedBuilder()
                         .setColor(config.ErrorColor)
-                        .setDescription('I\'m not playing anything right now.');
+                        .setDescription('I\'m not playing anything right now.')
+                        .setFooter({
+                            text: `Commanded by ${message.author.tag}`,
+                            iconURL: message.author.displayAvatarURL({ size: 1024 })
+                        });
 
                     return await message.reply({ embeds: [noQueueEmbed] });
 
@@ -77,9 +93,21 @@ module.exports = async (client, message) => {
             };
 
             try {
+
                 command.execute(client, message, args, cmd, memberVC, botVC, queue);
+
             } catch (error) {
-                console.log(message.guild.id, error);
+
+                const errorEmbed = new Discord.EmbedBuilder()
+                    .setColor(config.ErrorColor)
+                    .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
+                    .setFooter({
+                        text: `Commanded by ${message.author.tag}`,
+                        iconURL: message.author.displayAvatarURL({ size: 1024 })
+                    });
+
+                return await message.reply({ embeds: [errorEmbed] });
+
             };
 
         };

@@ -18,7 +18,11 @@ module.exports = {
 
       const notValidNumberEmbed = new Discord.EmbedBuilder()
         .setColor(config.ErrorColor)
-        .setDescription("Please enter a valid number.");
+        .setDescription("Please enter a valid number.")
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [notValidNumberEmbed] });
 
@@ -30,7 +34,11 @@ module.exports = {
 
       const volumeEmbed = new Discord.EmbedBuilder()
         .setColor(config.MainColor)
-        .setDescription(`Volume changed to \`${volume}\`\n\n${func.queueStatus(queue)}`);
+        .setDescription(`Volume changed to \`${volume}\`\n\n${func.queueStatus(queue)}`)
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [volumeEmbed] });
 
@@ -38,7 +46,11 @@ module.exports = {
 
       const errorEmbed = new Discord.EmbedBuilder()
         .setColor(config.ErrorColor)
-        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [errorEmbed] });
 

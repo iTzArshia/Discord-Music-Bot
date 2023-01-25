@@ -16,7 +16,11 @@ module.exports = {
 
       const inVoiceEmbed = new Discord.EmbedBuilder()
         .setColor(config.ErrorColor)
-        .setDescription("I\'m already connected to your Voice Channel.");
+        .setDescription("I\'m already connected to your Voice Channel.")
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [inVoiceEmbed] });
 
@@ -28,7 +32,11 @@ module.exports = {
 
       const joinEmbed = new Discord.EmbedBuilder()
         .setColor(config.MainColor)
-        .setDescription("I\'ve connected to your Voice Channel.");
+        .setDescription("I\'ve connected to your Voice Channel.")
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [joinEmbed] });
 
@@ -36,7 +44,11 @@ module.exports = {
 
       const errorEmbed = new Discord.EmbedBuilder()
         .setColor(config.ErrorColor)
-        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [errorEmbed] });
 

@@ -16,7 +16,11 @@ module.exports = {
 
       const noArgsEmbed = new Discord.EmbedBuilder()
         .setColor(config.ErrorColor)
-        .setDescription('Please enter a valid number.');
+        .setDescription('Please enter a valid number.')
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [noArgsEmbed] });
 
@@ -28,7 +32,11 @@ module.exports = {
 
         const skippedEmbed = new Discord.EmbedBuilder()
           .setColor(config.MainColor)
-          .setDescription(`Skipped to the **${args[0]}. [${song.name} (${song.formattedDuration})](${song.url})**`);
+          .setDescription(`Skipped to the **${args[0]}. [${song.name} (${song.formattedDuration})](${song.url})**`)
+          .setFooter({
+            text: `Commanded by ${message.author.tag}`,
+            iconURL: message.author.displayAvatarURL({ size: 1024 })
+          });
 
         return await message.reply({ embeds: [skippedEmbed] });
 
@@ -36,11 +44,13 @@ module.exports = {
 
     } catch (error) {
 
-      console.error(error)
-
       const errorEmbed = new Discord.EmbedBuilder()
         .setColor(config.ErrorColor)
-        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [errorEmbed] });
 

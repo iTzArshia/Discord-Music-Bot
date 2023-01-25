@@ -21,7 +21,11 @@ module.exports = {
       const queueEmbed = new Discord.EmbedBuilder()
         .setColor(config.MainColor)
         .setTitle(`${message.guild.name}'s Queue [${i + 1}/${Math.ceil(n)}]`)
-        .setDescription(queueSongs.slice(i * 20, (i + 1) * 20).join('\n'));
+        .setDescription(queueSongs.slice(i * 20, (i + 1) * 20).join('\n'))
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       embeds.push(queueEmbed);
 

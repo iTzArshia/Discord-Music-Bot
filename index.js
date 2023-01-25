@@ -83,11 +83,11 @@ client.distube
 
         const embed = new Discord.EmbedBuilder()
             .setColor(config.MainColor)
-            .setAuthor({
-                name: `${playlist.songs[0].user.tag} Added new playlist to the queue`,
+            .setDescription(`New playlist to the queue\n**Playlist:** ${playlist.name} (${playlist.songs.length} songs)`)
+            .setFooter({
+                text: `Commanded by ${playlist.songs[0].user.tag}`,
                 iconURL: playlist.songs[0].user.displayAvatarURL({ size: 1024 })
-            })
-            .setDescription(`**Playlist:** ${playlist.name} (${playlist.songs.length} songs)`);
+            });
 
         await queue.textChannel?.send({ embeds: [embed] });
 
@@ -96,11 +96,11 @@ client.distube
 
         const embed = new Discord.EmbedBuilder()
             .setColor(config.MainColor)
-            .setAuthor({
-                name: `${song.user.tag} Added new song to the queue`,
+            .setDescription(`New song added to the queue\n**Song:** [${song.name} (${song.formattedDuration})](${song.url})`)
+            .setFooter({
+                text: `Commanded by ${song.user.tag}`,
                 iconURL: song.user.displayAvatarURL({ size: 1024 })
-            })
-            .setDescription(`**Song:** ${song.name} (${song.formattedDuration})`);
+            });
 
         await queue.textChannel?.send({ embeds: [embed] });
 
@@ -285,7 +285,11 @@ client.distube
 
                     const filtersEmbed = new Discord.EmbedBuilder()
                         .setColor(config.MainColor)
-                        .setDescription(`**Current Queue Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\`\n\n${func.queueStatus(queue)}`);
+                        .setDescription(`**Current Queue Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\`\n\n${func.queueStatus(queue)}`)
+                        .setFooter({
+                            text: `Commanded by ${int.user.tag}`,
+                            iconURL: int.user.displayAvatarURL({ size: 1024 })
+                        });
 
                     return await int.editReply({ embeds: [filtersEmbed] });
 
@@ -323,7 +327,11 @@ client.distube
 
                     const loopEmbed = new Discord.EmbedBuilder()
                         .setColor(config.MainColor)
-                        .setDescription(`Loop mode changed to \`${mode}\`\n\n${func.queueStatus(queue)}`);
+                        .setDescription(`Loop mode changed to \`${mode}\`\n\n${func.queueStatus(queue)}`)
+                        .setFooter({
+                            text: `Commanded by ${int.user.tag}`,
+                            iconURL: int.user.displayAvatarURL({ size: 1024 })
+                        });
 
                     return await int.editReply({ embeds: [loopEmbed] });
 
@@ -333,7 +341,11 @@ client.distube
 
                     const skippedEmbed = new Discord.EmbedBuilder()
                         .setColor(config.MainColor)
-                        .setDescription("Skipping to the previus song.");
+                        .setDescription("Skipping to the previus song.")
+                        .setFooter({
+                            text: `Commanded by ${int.user.tag}`,
+                            iconURL: int.user.displayAvatarURL({ size: 1024 })
+                        });
 
                     await int.editReply({ embeds: [skippedEmbed] });
 
@@ -349,7 +361,11 @@ client.distube
 
                     const pauseUnpauseEmbed = new Discord.EmbedBuilder()
                         .setColor(config.MainColor)
-                        .setDescription(`${queue.playing ? 'Resumed' : 'Paused'} the song for you.`);
+                        .setDescription(`${queue.playing ? 'Resumed' : 'Paused'} the song for you.`)
+                        .setFooter({
+                            text: `Commanded by ${int.user.tag}`,
+                            iconURL: int.user.displayAvatarURL({ size: 1024 })
+                        });
 
                     return await int.editReply({ embeds: [pauseUnpauseEmbed] });
 
@@ -359,7 +375,11 @@ client.distube
 
                     const skippedEmbed = new Discord.EmbedBuilder()
                         .setColor(config.MainColor)
-                        .setDescription("Skipping to the next song.");
+                        .setDescription("Skipping to the next song.")
+                        .setFooter({
+                            text: `Commanded by ${int.user.tag}`,
+                            iconURL: int.user.displayAvatarURL({ size: 1024 })
+                        });
 
                     await int.editReply({ embeds: [skippedEmbed] });
 
@@ -374,7 +394,11 @@ client.distube
 
                     const volumeEmbed = new Discord.EmbedBuilder()
                         .setColor(config.MainColor)
-                        .setDescription(`Volume changed to \`${queue.volume}\`\n\n${func.queueStatus(queue)}`);
+                        .setDescription(`Volume changed to \`${queue.volume}\`\n\n${func.queueStatus(queue)}`)
+                        .setFooter({
+                            text: `Commanded by ${int.user.tag}`,
+                            iconURL: int.user.displayAvatarURL({ size: 1024 })
+                        });
 
                     return await int.editReply({ embeds: [volumeEmbed] });
 
@@ -384,7 +408,11 @@ client.distube
 
                     const seekEmbed = new Discord.EmbedBuilder()
                         .setColor(config.MainColor)
-                        .setDescription(`Backwarded the song for 10 seconds.`);
+                        .setDescription(`Backwarded the song for 10 seconds.`)
+                        .setFooter({
+                            text: `Commanded by ${int.user.tag}`,
+                            iconURL: int.user.displayAvatarURL({ size: 1024 })
+                        });
 
                     return await int.editReply({ embeds: [seekEmbed] });
 
@@ -394,7 +422,11 @@ client.distube
 
                     const stopEmbed = new Discord.EmbedBuilder()
                         .setColor(config.MainColor)
-                        .setDescription("Stopped playing.");
+                        .setDescription("Stopped playing.")
+                        .setFooter({
+                            text: `Commanded by ${int.user.tag}`,
+                            iconURL: int.user.displayAvatarURL({ size: 1024 })
+                        });
 
                     await int.editReply({ embeds: [stopEmbed] });
 
@@ -406,7 +438,11 @@ client.distube
 
                     const seekEmbed = new Discord.EmbedBuilder()
                         .setColor(config.MainColor)
-                        .setDescription(`forwarded the song for 10 seconds.`);
+                        .setDescription(`forwarded the song for 10 seconds.`)
+                        .setFooter({
+                            text: `Commanded by ${int.user.tag}`,
+                            iconURL: int.user.displayAvatarURL({ size: 1024 })
+                        });
 
                     return await int.editReply({ embeds: [seekEmbed] });
 
@@ -416,7 +452,11 @@ client.distube
 
                 const errorEmbed = new Discord.EmbedBuilder()
                     .setColor(config.ErrorColor)
-                    .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+                    .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
+                    .setFooter({
+                        text: `Commanded by ${int.user.tag}`,
+                        iconURL: int.user.displayAvatarURL({ size: 1024 })
+                    });
 
                 return await int.editReply({ embeds: [errorEmbed] });
 
@@ -437,6 +477,10 @@ client.distube
         const embed = new Discord.EmbedBuilder()
             .setColor(config.ErrorColor)
             .setDescription('Searching canceled')
+            .setFooter({
+                text: `Commanded by ${message.author.tag}`,
+                iconURL: message.author.displayAvatarURL({ size: 1024 })
+            });
 
         await message.reply({ embeds: [embed] });
 
@@ -447,6 +491,10 @@ client.distube
         const embed = new Discord.EmbedBuilder()
             .setColor(config.ErrorColor)
             .setDescription('Invalid number of result.')
+            .setFooter({
+                text: `Commanded by ${message.author.tag}`,
+                iconURL: message.author.displayAvatarURL({ size: 1024 })
+            });
 
         await message.reply({ embeds: [embed] });
 
@@ -456,6 +504,10 @@ client.distube
         const embed = new Discord.EmbedBuilder()
             .setColor(config.ErrorColor)
             .setDescription('No result found!')
+            .setFooter({
+                text: `Commanded by ${message.author.tag}`,
+                iconURL: message.author.displayAvatarURL({ size: 1024 })
+            });
 
         await message.reply({ embeds: [embed] });
 
@@ -467,8 +519,11 @@ client.distube
         const embed = new Discord.EmbedBuilder()
             .setColor(config.MainColor)
             .setTitle('Choose an option from below')
-            .setDescription(result.map(song => `**${++i}**. ${song.name} (${song.formattedDuration})`).join('\n'))
-            .setFooter({ text: 'Enter anything else or wait 30 seconds to cancel' });
+            .setDescription(`${result.map(song => `**${++i}**. ${song.name} (${song.formattedDuration})`).join('\n')}\n\n*Enter anything else or wait 30 seconds to cancel!*`)
+            .setFooter({
+                text: `Commanded by ${message.author.tag}`,
+                iconURL: message.author.displayAvatarURL({ size: 1024 })
+            });
 
         await message.reply({ embeds: [embed] });
 

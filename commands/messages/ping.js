@@ -35,7 +35,11 @@ module.exports = {
                     value: `<t:${Math.trunc(client.readyTimestamp / 1000)}:D> | <t:${Math.trunc(client.readyTimestamp / 1000)}:R>`,
                     inline: false
                 },
-            );
+            )
+            .setFooter({
+                text: `Commanded by ${message.author.tag}`,
+                iconURL: message.author.displayAvatarURL({ size: 1024 })
+            });
 
         return await message.reply({ embeds: [embed] });
 

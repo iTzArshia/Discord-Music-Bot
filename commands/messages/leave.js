@@ -18,7 +18,11 @@ module.exports = {
 
       const leaveEmbed = new Discord.EmbedBuilder()
         .setColor(config.MainColor)
-        .setDescription("I\'ve disconnected from your Voice Channel.");
+        .setDescription("I\'ve disconnected from your Voice Channel.")
+        .setAuthor({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [leaveEmbed] });
 
@@ -26,7 +30,11 @@ module.exports = {
 
       const errorEmbed = new Discord.EmbedBuilder()
         .setColor(config.ErrorColor)
-        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message);
+        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
+        .setFooter({
+          text: `Commanded by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL({ size: 1024 })
+        });
 
       return await message.reply({ embeds: [errorEmbed] });
 
