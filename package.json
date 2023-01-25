@@ -2,6 +2,7 @@
   "name": "itz-dj",
   "author": "itzarshia",
   "description": "music-bot",
+  "source": "https://github.com/iTzArshia/iTz-DJ",
   "version": "1.0.0",
   "main": "index.js",
   "license": "ISC",
