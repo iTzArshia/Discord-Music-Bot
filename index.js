@@ -280,6 +280,21 @@ client.distube
                         await queue.filters.add(int.values[0]);
                     };
 
+                    await reply.edit({
+                        components: [
+                            row1,
+                            row2,
+                            row3
+                        ]
+                    });
+
+                    const filtersEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.mainColor)
+                        .setDescription(`**Current Queue Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\`\n\n${func.queueStatus(queue)}`);
+
+                    return await int.editReply({ embeds: [filtersEmbed] });
+
+
                 } else if (int.customId.startsWith('loop')) {
 
                     const loopState = int.customId.split('-')[1];
