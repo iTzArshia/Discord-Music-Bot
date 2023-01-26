@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+const axios = require('axios');
 const Discord = require('discord.js');
 const config = require('../../config.json');
 const { json } = require('@distube/yt-dlp');
@@ -29,24 +29,23 @@ module.exports = {
 
         };
 
-        fetch('https://some-random-api.ml/lyrics?title="' + string + '"')
-            .then(res => res.json())
+        axios.get('https://some-random-api.ml/lyrics?title="' + string + '"')
             .then(json => {
                 try {
                     const Lyrics = new Discord.EmbedBuilder()
                         .setColor(config.MainColor)
-                        .setTitle("**" + json.author + " - " + json.title + "**")
-                        .setDescription(json.lyrics)
-                        .setThumbnail(json.thumbnail.genius)
+                        .setTitle("**" + json.data.author + " - " + json.data.title + "**")
+                        .setDescription(json.data.lyrics)
+                        .setThumbnail(json.data.thumbnail.genius)
                         .setFooter({
                             text: `Commanded by ${message.author.tag}`,
                             iconURL: message.author.displayAvatarURL({ size: 1024 })
                         });
-                    return message.reply({ embeds: [Lyrics], allowedMentions: { users: [] } })
+                    return message.reply({ embeds: [Lyrics] });
                 } catch (error) {
                     const stringEmbed = new Discord.EmbedBuilder()
                         .setColor(config.ErrorColor)
-                        .setDescription(json.error)
+                        .setDescription(json.data.error)
                         .setFooter({
                             text: `Commanded by ${message.author.tag}`,
                             iconURL: message.author.displayAvatarURL({ size: 1024 })
