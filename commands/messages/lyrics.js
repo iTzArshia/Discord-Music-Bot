@@ -1,6 +1,7 @@
 const fetch = require('node-fetch')
 const Discord = require('discord.js');
 const config = require('../../config.json');
+const { json } = require('@distube/yt-dlp');
 
 module.exports = {
     name: "lyrics",
@@ -28,10 +29,10 @@ module.exports = {
 
         };
 
-        try {
-            fetch('https://some-random-api.ml/lyrics?title="' + string + '"')
-                .then(res => res.json())
-                .then(json => {
+        fetch('https://some-random-api.ml/lyrics?title="' + string + '"')
+            .then(res => res.json())
+            .then(json => {
+                try {
                     const Lyrics = new Discord.EmbedBuilder()
                         .setColor(config.MainColor)
                         .setTitle("**" + json.author + " - " + json.title + "**")
@@ -41,17 +42,18 @@ module.exports = {
                             text: `Commanded by ${message.author.tag}`,
                             iconURL: message.author.displayAvatarURL({ size: 1024 })
                         });
-                    return message.reply({ embeds: [Lyrics] })
-                });
-        } catch (error) {
-            const stringEmbed = new Discord.EmbedBuilder()
-                .setColor(config.ErrorColor)
-                .setDescription("`Error:" + error + "`")
-                .setFooter({
-                    text: `Commanded by ${message.author.tag}`,
-                    iconURL: message.author.displayAvatarURL({ size: 1024 })
-                });
-            return await message.reply({ embeds: [stringEmbed] });
-        }
+                    return message.reply({ embeds: [Lyrics], allowedMentions: { users: [] } })
+                } catch (error) {
+                    const stringEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.ErrorColor)
+                        .setDescription(json.error)
+                        .setFooter({
+                            text: `Commanded by ${message.author.tag}`,
+                            iconURL: message.author.displayAvatarURL({ size: 1024 })
+                        })
+                    return message.reply({ embeds: [stringEmbed] });
+                }
+
+            });
     }
 }
