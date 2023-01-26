@@ -6,11 +6,11 @@
     "@distube/soundcloud": "^1.3.0",
     "@distube/spotify": "^1.5.1",
     "@distube/yt-dlp": "^1.1.3",
+    "axios": "^1.2.5",
     "discord.js": "^14.7.1",
     "distube": "^4.0.4",
     "ffmpeg-static": "^4.4.1",
-    "libsodium-wrappers": "^0.7.10",
-    "node-fetch": "^2.6.8"
+    "libsodium-wrappers": "^0.7.10"
   },
   "name": "itz-dj",
   "description": "\"iTz DJ\" an Advanced Discord Music Bot for YOU",
