@@ -5,7 +5,7 @@ const func = require('../../utils/functions');
 module.exports = {
   name: "Seek",
   aliases: ["goto"],
-  description: "-",
+  description: "Seeks the playing song",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,

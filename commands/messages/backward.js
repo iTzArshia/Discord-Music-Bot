@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   name: "backward",
   aliases: ["bw", "rewind"],
-  description: "-",
+  description: "backwards the playing song",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,

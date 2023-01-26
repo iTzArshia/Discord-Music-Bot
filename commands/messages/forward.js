@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   name: "forward",
   aliases: ["fw"],
-  description: "-",
+  description: "forwards the playing song",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
