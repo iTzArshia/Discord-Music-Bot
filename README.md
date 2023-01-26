@@ -16,7 +16,7 @@ Open your terminal and install required packages with
 ```sh
 npm install
 ```
-After installation finishes follow configuration instructions then run `node .` or `node index.js` in terminal to start the bot.
+After installation finishes follow configuration instructions then run `node index.js` in terminal to start the bot.
 ## ⚙️ Configuration
 Go to `config.json` and fill out the values:
 ```json
