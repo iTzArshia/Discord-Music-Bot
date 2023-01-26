@@ -5,7 +5,7 @@ const { json } = require('@distube/yt-dlp');
 
 module.exports = {
     name: "lyrics",
-    aliases: ["lyric", "lyr", "l"],
+    aliases: ["lyric", "lyr"],
     description: "Search you the lyrics!",
     memberVoice: false,
     botVoice: false,
