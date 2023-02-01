@@ -33,7 +33,7 @@ Go to `config.json` and fill out the values:
 ## 📸 Screenshots
 Soon
 ## ❤️ Donations
-You can **[support](https://reymit.ir/itz_arshia)** me by donating me if you like the project!
+You can **[support](https://reymit.ir/itz_arshia)** me by donating if you like the project!
 > Only available for Iranians :(
 
 Made with ❤️ and JavaScript, Don't Forget to ⭐
