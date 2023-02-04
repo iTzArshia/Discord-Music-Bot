@@ -16,6 +16,8 @@ module.exports = async (client, message) => {
         const command = client.MessageCommands.get(cmd) || client.MessageCommands.find(c => c.aliases && c.aliases.includes(cmd));
         if (command) {
 
+            await message.channel.sendTyping();
+
             const memberVC = message.member.voice.channel || null;
             const botVC = message.guild.members.me.voice.channel || null;
             const queue = client.distube.getQueue(message.guild) || null;
