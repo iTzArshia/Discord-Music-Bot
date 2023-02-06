@@ -10,7 +10,7 @@ iTz DJ is the original Discord music bot written for **[JavaScript](https://www.
 This is the first version of the bot, in the feature when I update the bot I will write updates here.
 ## 🚧 Requirements
 1. Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**  
-   1.1. Enable 'Message Content Intent' in Discord Developer Portal
+   1.1. Enable "Message Content Intent" in Discord Developer Portal
 2. **[Node.js 16.9.0](https://nodejs.org/en/download/)** or higher
 > NOTE: You don't need any API Key to setup the bot! only thing you need is Node.js and a Discord bot Token to run your bot!
 ## 🚀 Getting Started
