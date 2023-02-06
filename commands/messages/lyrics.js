@@ -1,4 +1,4 @@
-const axios = require('axios');
+const lyricsFinder = require('lyrics-finder');
 const Discord = require('discord.js');
 const config = require('../../config.json');
 
@@ -13,15 +13,13 @@ module.exports = {
 
     async execute(client, message, args, cmd, memberVC, botVC, queue) {
 
-        const response = await axios.get(`https://some-random-api.ml/lyrics?title="${queue.songs[0].name}"`);
-        const data = response?.data;
-        
-        if (data) {
-
+        const response = await lyricsFinder(queue.songs[0].name, "");
+      
+        if (response) {
             const lyricsEmbed = new Discord.EmbedBuilder()
                 .setColor(config.MainColor)
                 .setTitle(`${queue.songs[0].name}'s Lyrics`)
-                .setDescription(data.lyrics)
+                .setDescription(response)
                 .setThumbnail(queue.songs[0]?.thumbnail)
                 .setFooter({
                     text: `Commanded by ${message.author.tag}`,
@@ -31,7 +29,6 @@ module.exports = {
             return await message.reply({ embeds: [lyricsEmbed] });
 
         } else {
-
             const lyricsEmbed = new Discord.EmbedBuilder()
                 .setColor(config.ErrorColor)
                 .setTitle(`${queue.songs[0].name}'s Lyrics`)

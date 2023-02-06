@@ -17,6 +17,8 @@ const fs = require('node:fs');
 const func = require('./utils/functions');
 const { row2, row3 } = require('./utils/components');
 const config = require('./config.json');
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database('mysql.db');
 
 // Discord Client Constructor
 const client = new Discord.Client({
@@ -543,5 +545,11 @@ process.on('uncaughtExceptionMonitor', (err, origin) => {
     console.log('[antiCrash] :: Uncaught Exception/Catch (MONITOR)');
     console.log(err?.stack, origin);
 });
+
+db.serialize(function () {
+    db.run("CREATE TABLE if not exists playlists (userid NUMBER, name TEXT , list TEXT)");
+});
+db.close();
+module.exports = {db};
 
 client.login(config.Token);

@@ -10,7 +10,10 @@
     "discord.js": "^14.7.1",
     "distube": "^4.0.4",
     "ffmpeg-static": "^4.4.1",
-    "libsodium-wrappers": "^0.7.10"
+    "libsodium-wrappers": "^0.7.10",
+    "lyrics-finder": "^21.7.0",
+    "sqlite": "^4.1.2",
+    "sqlite3": "^5.1.4"
   },
   "name": "itz-dj",
   "description": "\"iTz DJ\" an Advanced Discord Music Bot for YOU",
