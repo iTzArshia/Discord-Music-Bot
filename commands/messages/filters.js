@@ -5,7 +5,7 @@ const config = require('../../config.json');
 module.exports = {
   name: "filter",
   aliases: ["f", "mode", "filters"],
-  description: "Changes loop mode",
+  description: "Applies different audio filters",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
