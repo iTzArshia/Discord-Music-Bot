@@ -207,7 +207,7 @@ client.distube
         });
 
         if (song.dislikes) embed.addFields({
-            name: '👎🏻 is:',
+            name: '👎🏻 Dislikes:',
             value: `${func.numberWithCommas(song.dislikes)}`,
             inline: true
         });
