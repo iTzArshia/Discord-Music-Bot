@@ -37,7 +37,7 @@ module.exports = {
     });
 
     if (queue.songs[0].dislikes) nowEmbed.addFields({
-      name: '👎🏻 is:',
+      name: '👎🏻 Dislikes:',
       value: `${func.numberWithCommas(queue.songs[0].dislikes)}`,
       inline: true
     });
