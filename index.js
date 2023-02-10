@@ -40,11 +40,21 @@ for (const file of events) {
 // Message Command Handler
 console.log(`Loading Message Commands`);
 client.MessageCommands = new Discord.Collection();
-const commands = fs.readdirSync(`./commands/messages/`).filter(files => files.endsWith('.js'));
-for (const file of commands) {
+const messageCommands = fs.readdirSync(`./commands/messages/`).filter(files => files.endsWith('.js'));
+for (const file of messageCommands) {
     const command = require(`./commands/messages/${file}`);
     client.MessageCommands.set(command.name.toLowerCase(), command);
     delete require.cache[require.resolve(`./commands/messages/${file}`)];
+};
+
+// Slash Command Handler
+console.log(`Loading Slash Commands`);
+client.SlashCommands = new Discord.Collection();
+const slashCommands = fs.readdirSync(`./commands/interactions/`).filter(files => files.endsWith('.js'));
+for (const file of slashCommands) {
+    const command = require(`./commands/interactions/${file}`);
+    client.MessageCommands.set(command.data.name, command);
+    delete require.cache[require.resolve(`./commands/interactions/${file}`)];
 };
 
 client.distube = new DisTube(client, {  // DisTube client constructor
