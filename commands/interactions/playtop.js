@@ -38,6 +38,8 @@ module.exports = {
         textChannel: interaction.channel,
         position: 1
       });
+      
+      await interaction.deleteReply();
 
     } catch (error) {
 
