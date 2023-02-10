@@ -20,7 +20,7 @@ module.exports = {
 
     await interaction.deferReply({ ephemeral: true });
 
-    const string = interaction.options.getString('name');
+    const query = interaction.options.getString('query');
 
     const searchEmbed = new Discord.EmbedBuilder()
       .setColor(config.MainColor)
@@ -34,13 +34,13 @@ module.exports = {
 
     try {
 
-      await client.distube.play(memberVC, string, {
+      await client.distube.play(memberVC, query, {
         member: interaction.member,
         textChannel: interaction.channel
       });
 
       await interaction.deleteReply();
-      
+
     } catch (error) {
 
       const errorEmbed = new Discord.EmbedBuilder()
