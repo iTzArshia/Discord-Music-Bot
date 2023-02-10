@@ -33,7 +33,7 @@ module.exports = {
             iconURL: interaction.user.displayAvatarURL({ size: 1024 })
           });
 
-        return await interaction.reply({ embeds: [skippedEmbed] });
+        return await interaction.editReply({ embeds: [skippedEmbed] });
 
       });
 
@@ -47,7 +47,7 @@ module.exports = {
           iconURL: interaction.user.displayAvatarURL({ size: 1024 })
         });
 
-      return await interaction.reply({ embeds: [errorEmbed] });
+      return await interaction.editReply({ embeds: [errorEmbed] });
 
     };
 
