@@ -64,7 +64,7 @@ module.exports = {
           iconURL: interaction.user.displayAvatarURL({ size: 1024 })
         });
 
-      return await interaction.reply({ embeds: [filtersEmbed] });
+      return await interaction.editReply({ embeds: [filtersEmbed] });
 
     } catch (error) {
 
@@ -76,7 +76,7 @@ module.exports = {
           iconURL: interaction.user.displayAvatarURL({ size: 1024 })
         });
 
-      return await interaction.reply({ embeds: [errorEmbed] });
+      return await interaction.editReply({ embeds: [errorEmbed] });
 
     };
 
