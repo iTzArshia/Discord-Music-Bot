@@ -27,6 +27,7 @@ module.exports = {
       return await interaction.editReply({ embeds: [inVoiceEmbed] });
 
     };
+    
     try {
 
       await client.distube.voices.join(memberVC);
