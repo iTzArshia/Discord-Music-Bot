@@ -28,7 +28,7 @@ module.exports = {
 
     try {
 
-      await client.distube.jump(message, Number(args[0])).then(async song => {
+      await client.distube.jump(message.guild, Number(args[0])).then(async song => {
 
         const skippedEmbed = new Discord.EmbedBuilder()
           .setColor(config.MainColor)
