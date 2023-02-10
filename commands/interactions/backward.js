@@ -5,7 +5,7 @@ module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("backward")
     .setDescription("backwards the playing song")
-    .addNumberOption(option => option
+    .addIntegerOption(option => option
       .setName('time')
       .setDescription('Provide time in seconds')
       .setRequired(true)
@@ -19,7 +19,7 @@ module.exports = {
 
     await interaction.deferReply();
 
-    const time = interaction.options.getNumber('time');
+    const time = interaction.options.getInteger('time');
 
     try {
 
