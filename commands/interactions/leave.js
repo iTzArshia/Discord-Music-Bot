@@ -11,6 +11,8 @@ module.exports = {
   queueNeeded: false,
 
   async execute(client, interaction, memberVC, botVC, queue) {
+   
+    await interaction.deferReply();
 
     try {
 
@@ -24,7 +26,7 @@ module.exports = {
           iconURL: interaction.user.displayAvatarURL({ size: 1024 })
         });
 
-      return await interaction.reply({ embeds: [leaveEmbed] });
+      return await interaction.editReply({ embeds: [leaveEmbed] });
 
     } catch (error) {
 
@@ -36,7 +38,7 @@ module.exports = {
           iconURL: interaction.user.displayAvatarURL({ size: 1024 })
         });
 
-      return await interaction.reply({ embeds: [errorEmbed] });
+      return await interaction.editReply({ embeds: [errorEmbed] });
 
     };
 
