@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("join")
-    .setDescription("Joins to your Voice Channel"),
+    .setDescription("Joins to your current Voice Channel"),
   memberVoice: true,
   botVoice: false,
   sameVoice: true,
