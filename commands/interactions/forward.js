@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("forward").setDescription("forwards the playing song")
-    .addNumberOption(option => option
+    .addIntegerOption(option => option
       .setName('time')
       .setDescription('Time to go forward in seconds')
       .setRequired(true)
@@ -18,7 +18,7 @@ module.exports = {
 
     await interaction.deferReply();
 
-    const time = Number(interaction.options.getNumber('time'));
+    const time = Number(interaction.options.getInteger('time'));
 
     try {
 
