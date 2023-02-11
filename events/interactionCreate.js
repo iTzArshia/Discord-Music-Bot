@@ -43,7 +43,7 @@ module.exports = async (client, interaction) => {
         try {
             command.execute(client, interaction, memberVC, botVC, queue);
         } catch (error) {
-            return await interaction.reply({ content: error.interaction.length > 4096 ? error.interaction.slice(0, 4093) + "..." : error.message, ephemeral: true });
+            return await interaction.reply({ content: error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message, ephemeral: true }).catch(() => null);
         };
 
     };
