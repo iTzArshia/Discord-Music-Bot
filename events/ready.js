@@ -10,7 +10,7 @@ module.exports = async (client) => {
         type: Discord.ActivityType.Listening
       }
     ],
-    status: 'idle'
+    status: 'online'
   });
 
   console.log(`${client.user.tag} is online and ready to play music for you!`);
