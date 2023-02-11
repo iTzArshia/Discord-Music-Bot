@@ -24,10 +24,10 @@ Go to `config.json` and fill out the values:
 ```json
 {
     "Prefix": "Put anything you want as prefix",
-    "MainColor": "Put any #HexCode you want for embeds",
-    "ErrorColor": "Put any #HexCode you want for embeds when there is an error",
+    "MainColor": "Put any #HexCode you want for embeds color",
+    "ErrorColor": "Put any #HexCode you want for embeds color when there is an error",
     "ClientID": "Put your Bot ID/Client ID here",
-    "Token": "Put Bot Token here"
+    "Token": "Put your Bot Token here"
 }
 ```
 ⚠️ **Note: Never commit or share your token publicly** ⚠️
