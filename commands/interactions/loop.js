@@ -5,10 +5,10 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("loop")
-    .setDescription("Changes loop mode")
+    .setDescription("Changes loop mode.")
     .addStringOption(option => option
       .setName('mode')
-      .setDescription('loop song or queue')
+      .setDescription('loop song or queue.')
       .setChoices(
         { name: 'OFF', value: '0' },
         { name: 'Song', value: '1' },
