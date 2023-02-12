@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("queue")
-    .setDescription("Shows the server current queue"),
+    .setDescription("Shows the server current queue."),
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
