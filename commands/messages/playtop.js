@@ -3,8 +3,8 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "PlayTop",
-  aliases: ["pt"],
-  description: "Plays the song before other songs in the queue",
+  aliases: ["PT"],
+  description: "Plays the song before other songs in the queue.",
   memberVoice: true,
   botVoice: false,
   sameVoice: true,
