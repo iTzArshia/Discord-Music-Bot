@@ -2,8 +2,9 @@ const Discord = require('discord.js');
 const config = require('../../config.json');
 
 module.exports = {
-  name: "shuffle",
-  description: "Shuffles the queue song",
+  name: "Shuffle",
+  aliases: ["Sh"],
+  description: "Shuffles the queue song.",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
