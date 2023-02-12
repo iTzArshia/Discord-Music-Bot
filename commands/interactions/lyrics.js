@@ -5,7 +5,7 @@ const config = require('../../config.json');
 module.exports = {
     data: new Discord.SlashCommandBuilder()
         .setName("lyrics")
-        .setDescription("Shows the current playing song's lyrics"),
+        .setDescription("Shows the current playing song's lyrics."),
     memberVoice: true,
     botVoice: true,
     sameVoice: true,
