@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("pause")
-    .setDescription("Pauses the current song"),
+    .setDescription("Pauses the current song."),
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
