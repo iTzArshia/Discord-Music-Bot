@@ -4,10 +4,10 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("playskip")
-    .setDescription("Plays the song and skips current song")
+    .setDescription("Plays the song and skips current song.")
     .addStringOption(option => option
       .setName('query')
-      .setDescription('Enter song name or playlist list')
+      .setDescription('Enter song name or playlist list.')
       .setRequired(true)
     ),
   memberVoice: true,
