@@ -539,6 +539,7 @@ client.distube
 
     });
 
+// Anti Crash
 process.on('unhandledRejection', (reason, p) => {
     console.log('[antiCrash] :: Unhandled Rejection/Catch');
     console.log(reason?.stack, p);
@@ -554,4 +555,5 @@ process.on('uncaughtExceptionMonitor', (err, origin) => {
     console.log(err?.stack, origin);
 });
 
+// Discord Client login
 client.login(config.Token);
