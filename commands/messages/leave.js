@@ -3,8 +3,8 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "Leave",
-  aliases: ["l", "left", "disconnect"],
-  description: "Leaves from your Voice Channel",
+  aliases: ["L", "DC", "Left", "Disconnect"],
+  description: "Leaves from your Voice Channel.",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
