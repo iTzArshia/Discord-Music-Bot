@@ -3,8 +3,8 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "Pause",
-  aliases: ["hold"],
-  description: "Pauses the current song",
+  aliases: ["Hold"],
+  description: "Pauses the current song.",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
