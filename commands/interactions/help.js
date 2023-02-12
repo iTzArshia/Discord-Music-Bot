@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("help")
-    .setDescription("Shows This!"),
+    .setDescription("Shows the Bot's commands list and information."),
   memberVoice: false,
   botVoice: false,
   sameVoice: false,
