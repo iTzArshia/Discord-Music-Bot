@@ -3,8 +3,8 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "Play",
-  aliases: ["p", "pl", "start"],
-  description: "Plays song for you",
+  aliases: ["P", "start"],
+  description: "Plays song for you.",
   memberVoice: true,
   botVoice: false,
   sameVoice: true,
