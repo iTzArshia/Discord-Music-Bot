@@ -4,10 +4,10 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("skipto")
-    .setDescription("Skips to the provided song id in the queue")
+    .setDescription("Skips to the provided song id in the queue.")
     .addStringOption(option => option
       .setName('song-id')
-      .setDescription('Enter the song id you want skip to')
+      .setDescription('Enter the song id you want skip to.')
       .setRequired(true)
     ),
   memberVoice: true,
