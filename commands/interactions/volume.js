@@ -1,15 +1,14 @@
 const Discord = require('discord.js');
 const func = require('../../utils/functions');
 const config = require('../../config.json');
-const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("volume")
-    .setDescription("Sets the player volume")
+    .setDescription("Sets the player volume.")
     .addIntegerOption(option => option
       .setName('volume')
-      .setDescription('Enter new volume value to set')
+      .setDescription('Enter new volume value to set.')
       .setRequired(true)
     ),
   memberVoice: true,
