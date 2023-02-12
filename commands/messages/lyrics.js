@@ -3,9 +3,9 @@ const Discord = require('discord.js');
 const config = require('../../config.json');
 
 module.exports = {
-    name: "lyrics",
-    aliases: ["ly", "lyr", "lyric", "text"],
-    description: "Shows the current playing song's lyrics",
+    name: "Lyrics",
+    aliases: ["LY", "Lyric", "Text"],
+    description: "Shows the current playing song's lyrics.",
     memberVoice: true,
     botVoice: true,
     sameVoice: true,
