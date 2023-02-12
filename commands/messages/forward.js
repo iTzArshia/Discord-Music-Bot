@@ -2,9 +2,9 @@ const Discord = require('discord.js');
 const config = require('../../config.json');
 
 module.exports = {
-  name: "forward",
-  aliases: ["fw"],
-  description: "forwards the playing song",
+  name: "Forward",
+  aliases: ["FW"],
+  description: "Forwards the playing song.",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
