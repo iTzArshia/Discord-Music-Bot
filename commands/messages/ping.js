@@ -4,7 +4,7 @@ const config = require('../../config.json');
 
 module.exports = {
     name: "Ping",
-    aliases: ["latency"],
+    aliases: ["L", "Latency"],
     description: "Shows the bot\'s latency.",
     memberVoice: false,
     botVoice: false,
