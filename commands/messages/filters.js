@@ -3,9 +3,9 @@ const func = require('../../utils/functions');
 const config = require('../../config.json');
 
 module.exports = {
-  name: "filter",
-  aliases: ["f", "mode", "filters"],
-  description: "Applies different audio filters",
+  name: "Filter",
+  aliases: ["F", "Mode", "Filters"],
+  description: "Applies different audio filters.",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
