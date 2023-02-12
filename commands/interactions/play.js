@@ -5,10 +5,10 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("play")
-    .setDescription("Plays song for you")
+    .setDescription("Plays song for you.")
     .addStringOption(option => option
       .setName('query')
-      .setDescription('Enter song name or playlist list')
+      .setDescription('Enter song name or playlist list.')
       .setRequired(true)
     ),
   memberVoice: true,
