@@ -1,9 +1,11 @@
 <h1 align="center">"iTz DJ" an Advanced Discord Music Bot for YOU</h1>
 
-[![GitHub stars](https://img.shields.io/github/stars/iTzArshia/iTz-DJ.svg)](https://github.com/iTzArshia/iTz-DJ/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/iTzArshia/iTz-DJ.svg)](https://github.com/iTzArshia/iTz-DJ/network)
-[![iTz Development Discord](https://badgen.net/discord/members/nKrBshQvcK)](https://discord.gg/nKrBshQvcK)
-[![iTz Club Discord](https://badgen.net/discord/members/8hr9CRqmfc)](https://discord.gg/8hr9CRqmfc)
+<div align="center">
+    <a href="https://github.com/iTzArshia/iTz-DJ/stargazers"> <img src="https://img.shields.io/github/stars/iTzArshia/iTz-DJ.svg" alt="GitHub stars"/> </a>
+    <a href="https://github.com/iTzArshia/iTz-DJ/network"> <img src="https://img.shields.io/github/forks/iTzArshia/iTz-DJ.svg" alt="GitHub forks"/> </a>
+    <a href="https://discord.gg/nKrBshQvcK"> <img src="https://badgen.net/discord/members/nKrBshQvcK" alt="iTz Development Discord"/> </a>
+    <a href="https://discord.gg/8hr9CRqmfc"> <img src="https://badgen.net/discord/members/8hr9CRqmfc" alt="iTz Club Discord"/> </a>
+</div>
 
 iTz DJ is the original Discord music bot written for **[JavaScript](https://www.javascript.com/)**, using the **[Discord.js V14](discord.js.org/)** library. It plays requested songs from everywhere you can imagine (YouTube, Spotify, SoundCloud, Deezer, Discord Links and 900+ more websites) also it has many awsome features and commands that you can see in **[Screenshots](https://github.com/iTzArshia/iTz-DJ/edit/main/README.md#-screenshots)**!
 ## 🚧 Requirements
