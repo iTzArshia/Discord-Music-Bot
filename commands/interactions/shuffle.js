@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("shuffle")
-    .setDescription("Shuffles the queue song"),
+    .setDescription("Shuffles the queue song."),
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
