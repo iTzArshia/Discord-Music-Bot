@@ -3,9 +3,9 @@ const func = require('../../utils/functions');
 const config = require('../../config.json');
 
 module.exports = {
-  name: "loop",
-  aliases: ["lo", "lp", "repeat"],
-  description: "Changes loop mode",
+  name: "Loop",
+  aliases: ["Repeat"],
+  description: "Changes loop mode.",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
