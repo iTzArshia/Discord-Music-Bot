@@ -3,9 +3,9 @@ const func = require('../../utils/functions');
 const config = require('../../config.json');
 
 module.exports = {
-  name: "autoplay",
-  aliases: ["a", "ap", "auto"],
-  description: "Toggles auto play",
+  name: "AutoPlay",
+  aliases: ["A", "AP", "Auto"],
+  description: "Toggles auto play.",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
