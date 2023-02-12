@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("resume")
-    .setDescription("Resumes the current song"),
+    .setDescription("Resumes the current song."),
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
