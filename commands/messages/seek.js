@@ -4,8 +4,8 @@ const func = require('../../utils/functions');
 
 module.exports = {
   name: "Seek",
-  aliases: ["goto"],
-  description: "Seeks the playing song",
+  aliases: ["Go", "To", "GoTo"],
+  description: "Seeks the playing song.",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
