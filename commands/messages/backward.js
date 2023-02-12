@@ -2,9 +2,9 @@ const Discord = require('discord.js');
 const config = require('../../config.json');
 
 module.exports = {
-  name: "backward",
-  aliases: ["bw", "rewind"],
-  description: "backwards the playing song",
+  name: "BackWard",
+  aliases: ["BW", "Rewind"],
+  description: "Backwards the playing song.",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
