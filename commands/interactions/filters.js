@@ -5,10 +5,10 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("filter")
-    .setDescription("Applies different audio filters")
+    .setDescription("Applies different audio filters.")
     .addStringOption(option => option
       .setName('filter')
-      .setDescription('Select any filter you want to ON/OFF')
+      .setDescription('Select any filter you want to ON/OFF.')
       .setChoices(
         { name: 'OFF', value: 'off' },
         { name: '3D', value: '3d' },
