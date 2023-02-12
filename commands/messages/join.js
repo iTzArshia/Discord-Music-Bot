@@ -3,8 +3,8 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "Join",
-  aliases: ["j", "connect"],
-  description: "Joins to your current Voice Channel",
+  aliases: ["J","C", "Connect"],
+  description: "Joins to your current Voice Channel.",
   memberVoice: true,
   botVoice: false,
   sameVoice: true,
