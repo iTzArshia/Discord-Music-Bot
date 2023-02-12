@@ -5,7 +5,7 @@ const config = require('../../config.json');
 module.exports = {
     data: new Discord.SlashCommandBuilder()
         .setName("autoplay")
-        .setDescription("Toggles auto play"),
+        .setDescription("Toggles auto play."),
     memberVoice: true,
     botVoice: true,
     sameVoice: true,
