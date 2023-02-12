@@ -3,7 +3,8 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "Stop",
-  description: "Stops the queue",
+  aliases: ["OFF", "Exit", "Quit"],
+  description: "Stops the queue.",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
