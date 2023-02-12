@@ -5,10 +5,10 @@ const func = require('../../utils/functions');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("seek")
-    .setDescription("Seeks the playing song")
+    .setDescription("Seeks the playing song.")
     .addIntegerOption(option => option
       .setName('time')
-      .setDescription('Time in seconds')
+      .setDescription('Time in seconds.')
       .setRequired(true)
     ),
   memberVoice: true,
