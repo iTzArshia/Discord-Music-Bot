@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("stop")
-    .setDescription("Stops the queue"),
+    .setDescription("Stops the queue."),
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
