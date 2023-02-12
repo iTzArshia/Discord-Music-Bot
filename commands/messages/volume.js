@@ -4,8 +4,8 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "volume",
-  aliases: ["v", "vol", "set", "setvolume"],
-  description: "Sets the player volume",
+  aliases: ["V", "Vol", "Set", "SetVolume"],
+  description: "Sets the player volume.",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
