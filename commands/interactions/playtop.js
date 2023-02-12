@@ -4,10 +4,10 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("playtop")
-    .setDescription("Plays the song before other songs in the queue")
+    .setDescription("Plays the song before other songs in the queue.")
     .addStringOption(option => option
       .setName('query')
-      .setDescription('Enter song name or playlist list')
+      .setDescription('Enter song name or playlist list.')
       .setRequired(true)
     ),
   memberVoice: true,
