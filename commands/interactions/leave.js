@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("leave")
-    .setDescription("Leaves from your current Voice Channel"),
+    .setDescription("Leaves from your current Voice Channel."),
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
