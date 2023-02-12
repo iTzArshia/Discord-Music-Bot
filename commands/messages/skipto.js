@@ -3,8 +3,8 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "SkipTo",
-  aliases: ["st", "to", "jump"],
-  description: "Skips to the provided song id in the queue",
+  aliases: ["ST", "Jump"],
+  description: "Skips to the provided song id in the queue.",
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
