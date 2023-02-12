@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("skip")
-    .setDescription("Skips the current song"),
+    .setDescription("Skips the current song."),
   memberVoice: true,
   botVoice: true,
   sameVoice: true,
