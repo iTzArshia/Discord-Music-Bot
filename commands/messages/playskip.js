@@ -3,8 +3,8 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "PlaySkip",
-  aliases: ["ps"],
-  description: "Plays the song and skips current song",
+  aliases: ["PS"],
+  description: "Plays the song and skips current song.",
   memberVoice: true,
   botVoice: false,
   sameVoice: true,
