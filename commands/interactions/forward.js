@@ -3,10 +3,11 @@ const config = require('../../config.json');
 
 module.exports = {
   data: new Discord.SlashCommandBuilder()
-    .setName("forward").setDescription("forwards the playing song")
+    .setName("forward")
+    .setDescription("Forwards the playing song.")
     .addIntegerOption(option => option
       .setName('time')
-      .setDescription('Time to go forward in seconds')
+      .setDescription('Time to go forward in seconds.')
       .setRequired(true)
     ),
   memberVoice: true,
