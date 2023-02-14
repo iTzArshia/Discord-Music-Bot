@@ -13,13 +13,6 @@ iTz DJ is the original Discord music bot written for **[JavaScript](https://www.
    1.1. Enable "Message Content Intent" in Discord Developer Portal
 2. **[Node.js 16.9.0](https://nodejs.org/en/download/)** or higher
 > NOTE: You don't need any API Key to setup the bot! only thing you need is Node.js and a Discord bot Token to run your bot!
-## 📸 Screenshots
-Soon
-## ❤️ Donations
-You can **[support](https://reymit.ir/itz_arshia)** me by donating if you like the project!
-> Only available for Iranians :(
-
-Made with ❤️ and JavaScript, Don't Forget to ⭐
 # 🚀 Getting Started
 ## ⚙️ Configuration
 Go to `config.json` and fill out the values:
@@ -39,6 +32,10 @@ Open your terminal and install required packages with
 npm install
 ```
 After installation finishes run `node register.js` to deploy slash commands and then run `node index.js` in terminal to start the bot.
-# ✨Latest Updates
-## 11th February 2023:
-Added slash commands
+## 📸 Screenshots
+Soon
+## ❤️ Donations
+You can **[support](https://reymit.ir/itz_arshia)** me by donating if you like the project!
+> Only available for Iranians :(
+
+Made with ❤️ and JavaScript, Don't Forget to ⭐
