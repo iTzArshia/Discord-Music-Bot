@@ -35,7 +35,7 @@ module.exports = {
                 },
                 {
                     name: `⏳ Uptime:`,
-                    value: `<t:${Math.trunc(client.readyTimestamp / 1000)}:D> | <t:${Math.trunc(client.readyTimestamp / 1000)}:R>`,
+                    value: func.timestamp(client.readyTimestamp),
                     inline: false
                 },
             )
