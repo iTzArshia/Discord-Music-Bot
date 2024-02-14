@@ -37,5 +37,5 @@ Soon
 ## ❤️ Donations
 You can **[support](https://reymit.ir/itz_arshia)** me by donating if you like the project!
 > Only available for Iranians :(
-
+#
 Made with ❤️ and JavaScript, Don't Forget to ⭐
