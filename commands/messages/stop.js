@@ -15,6 +15,7 @@ module.exports = {
     try {
 
       await queue.stop();
+      if (client.distubeSettings.leaveOnStop) await queue.voice.leave();
 
       const stopEmbed = new Discord.EmbedBuilder()
         .setColor(config.MainColor)
