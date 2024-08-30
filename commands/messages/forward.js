@@ -1,61 +1,52 @@
-const Discord = require('discord.js');
-const config = require('../../config.json');
+const Discord = require("discord.js");
+const config = require("../../config.json");
 
 module.exports = {
-  name: "Forward",
-  aliases: ["FW"],
-  description: "Forwards the playing song.",
-  memberVoice: true,
-  botVoice: true,
-  sameVoice: true,
-  queueNeeded: true,
+    name: "Forward",
+    aliases: ["FW"],
+    description: "Forwards the playing song.",
+    memberVoice: true,
+    botVoice: true,
+    sameVoice: true,
+    queueNeeded: true,
 
-  async execute(client, message, args, cmd, memberVC, botVC, queue) {
+    async execute(client, message, args, cmd, memberVC, botVC, queue) {
+        const time = Number(args[0]);
 
-    const time = Number(args[0]);
+        if (!args[0] || isNaN(time)) {
+            const noArgsEmbed = new Discord.EmbedBuilder()
+                .setColor(config.ErrorColor)
+                .setDescription("Please provide time (in seconds) to go forward!\n**Example:** `10` for 10 seconds forward!")
+                .setFooter({
+                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    iconURL: message.author.displayAvatarURL({ size: 1024 }),
+                });
 
-    if (!args[0] || isNaN(time)) {
+            return await message.reply({ embeds: [noArgsEmbed] });
+        }
 
-      const noArgsEmbed = new Discord.EmbedBuilder()
-        .setColor(config.ErrorColor)
-        .setDescription('Please provide time (in seconds) to go forward!\n**Example:** `10` for 10 seconds forward!')
-        .setFooter({
-          text: `Commanded by ${message.author.globalName || message.author.username}`,
-          iconURL: message.author.displayAvatarURL({ size: 1024 })
-        });
+        try {
+            await queue.seek(queue.currentTime + time);
 
-      return await message.reply({ embeds: [noArgsEmbed] });
+            const seekEmbed = new Discord.EmbedBuilder()
+                .setColor(config.MainColor)
+                .setDescription(`forwarded the song for ${time} seconds.`)
+                .setFooter({
+                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    iconURL: message.author.displayAvatarURL({ size: 1024 }),
+                });
 
-    };
+            return await message.reply({ embeds: [seekEmbed] });
+        } catch (error) {
+            const errorEmbed = new Discord.EmbedBuilder()
+                .setColor(config.ErrorColor)
+                .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
+                .setFooter({
+                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    iconURL: message.author.displayAvatarURL({ size: 1024 }),
+                });
 
-    try {
-
-      await queue.seek(queue.currentTime + time);
-
-      const seekEmbed = new Discord.EmbedBuilder()
-        .setColor(config.MainColor)
-        .setDescription(`forwarded the song for ${time} seconds.`)
-        .setFooter({
-          text: `Commanded by ${message.author.globalName || message.author.username}`,
-          iconURL: message.author.displayAvatarURL({ size: 1024 })
-        });
-
-      return await message.reply({ embeds: [seekEmbed] });
-
-    } catch (error) {
-
-      const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.ErrorColor)
-        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
-        .setFooter({
-          text: `Commanded by ${message.author.globalName || message.author.username}`,
-          iconURL: message.author.displayAvatarURL({ size: 1024 })
-        });
-
-      return await message.reply({ embeds: [errorEmbed] });
-
-    };
-
-  },
-
+            return await message.reply({ embeds: [errorEmbed] });
+        }
+    },
 };

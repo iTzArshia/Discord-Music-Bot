@@ -1,48 +1,39 @@
-const Discord = require('discord.js');
-const config = require('../../config.json');
+const Discord = require("discord.js");
+const config = require("../../config.json");
 
 module.exports = {
-  data: new Discord.SlashCommandBuilder()
-    .setName("stop")
-    .setDescription("Stops the queue."),
-  memberVoice: true,
-  botVoice: true,
-  sameVoice: true,
-  queueNeeded: true,
+    data: new Discord.SlashCommandBuilder().setName("stop").setDescription("Stops the queue."),
+    memberVoice: true,
+    botVoice: true,
+    sameVoice: true,
+    queueNeeded: true,
 
-  async execute(client, interaction, memberVC, botVC, queue) {
-  
-    await interaction.deferReply();
+    async execute(client, interaction, memberVC, botVC, queue) {
+        await interaction.deferReply();
 
-    try {
+        try {
+            await queue.stop();
+            if (client.distubeSettings.leaveOnStop) await queue.voice.leave();
 
-      await queue.stop();
-      if (client.distubeSettings.leaveOnStop) await queue.voice.leave();
+            const stopEmbed = new Discord.EmbedBuilder()
+                .setColor(config.MainColor)
+                .setDescription("Stopped playing.")
+                .setFooter({
+                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
+                });
 
-      const stopEmbed = new Discord.EmbedBuilder()
-        .setColor(config.MainColor)
-        .setDescription("Stopped playing.")
-        .setFooter({
-          text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL({ size: 1024 })
-        });
+            return await interaction.editReply({ embeds: [stopEmbed] });
+        } catch (error) {
+            const errorEmbed = new Discord.EmbedBuilder()
+                .setColor(config.ErrorColor)
+                .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
+                .setFooter({
+                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
+                });
 
-      return await interaction.editReply({ embeds: [stopEmbed] });
-
-    } catch (error) {
-
-      const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.ErrorColor)
-        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
-        .setFooter({
-          text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL({ size: 1024 })
-        });
-
-      return await interaction.editReply({ embeds: [errorEmbed] });
-
-    };
-
-  },
-
+            return await interaction.editReply({ embeds: [errorEmbed] });
+        }
+    },
 };

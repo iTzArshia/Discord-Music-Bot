@@ -1,47 +1,38 @@
-const Discord = require('discord.js');
-const config = require('../../config.json');
+const Discord = require("discord.js");
+const config = require("../../config.json");
 
 module.exports = {
-  data: new Discord.SlashCommandBuilder()
-    .setName("leave")
-    .setDescription("Leaves from your current Voice Channel."),
-  memberVoice: true,
-  botVoice: true,
-  sameVoice: true,
-  queueNeeded: false,
+    data: new Discord.SlashCommandBuilder().setName("leave").setDescription("Leaves from your current Voice Channel."),
+    memberVoice: true,
+    botVoice: true,
+    sameVoice: true,
+    queueNeeded: false,
 
-  async execute(client, interaction, memberVC, botVC, queue) {
-   
-    await interaction.deferReply();
+    async execute(client, interaction, memberVC, botVC, queue) {
+        await interaction.deferReply();
 
-    try {
+        try {
+            await client.distube.voices.leave(interaction.guild);
 
-      await client.distube.voices.leave(interaction.guild);
+            const leaveEmbed = new Discord.EmbedBuilder()
+                .setColor(config.MainColor)
+                .setDescription("I've disconnected from your Voice Channel.")
+                .setFooter({
+                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
+                });
 
-      const leaveEmbed = new Discord.EmbedBuilder()
-        .setColor(config.MainColor)
-        .setDescription("I\'ve disconnected from your Voice Channel.")
-        .setFooter({
-          text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL({ size: 1024 })
-        });
+            return await interaction.editReply({ embeds: [leaveEmbed] });
+        } catch (error) {
+            const errorEmbed = new Discord.EmbedBuilder()
+                .setColor(config.ErrorColor)
+                .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
+                .setFooter({
+                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
+                });
 
-      return await interaction.editReply({ embeds: [leaveEmbed] });
-
-    } catch (error) {
-
-      const errorEmbed = new Discord.EmbedBuilder()
-        .setColor(config.ErrorColor)
-        .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
-        .setFooter({
-          text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL({ size: 1024 })
-        });
-
-      return await interaction.editReply({ embeds: [errorEmbed] });
-
-    };
-
-  },
-
+            return await interaction.editReply({ embeds: [errorEmbed] });
+        }
+    },
 };
