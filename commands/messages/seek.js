@@ -21,7 +21,7 @@ module.exports = {
         .setColor(config.ErrorColor)
         .setDescription('Please provide position (in seconds) to seek!\n**Example:** `10` for 10th second of song.')
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
 
@@ -37,7 +37,7 @@ module.exports = {
         .setColor(config.MainColor)
         .setDescription(`Seeked to ${func.suffix(time)} second of the song.`)
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });;
 
@@ -49,7 +49,7 @@ module.exports = {
         .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
 

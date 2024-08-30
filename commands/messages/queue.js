@@ -23,7 +23,7 @@ module.exports = {
         .setTitle(`${message.guild.name}'s Queue [${i + 1}/${Math.ceil(n)}]`)
         .setDescription(queueSongs.slice(i * 20, (i + 1) * 20).join('\n'))
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
 
@@ -55,7 +55,7 @@ module.exports = {
         !(int.channel.permissionsFor(int.member).has('ManageMessages') && int.customId === 'messageDelete')
         && (int.member.id !== message.member.id)
       ) return await int.reply({
-        content: `This button is only works for ${message.user.tag}`,
+        content: `This button is only works for ${message.author.globalName || message.author.username}`,
         ephemeral: true
       });
 

@@ -40,7 +40,7 @@ module.exports = {
                 },
             )
             .setFooter({
-                text: `Commanded by ${interaction.user.tag}`,
+                text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
                 iconURL: interaction.user.displayAvatarURL({ size: 1024 })
             });
 

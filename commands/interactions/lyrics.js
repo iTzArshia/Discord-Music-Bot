@@ -26,7 +26,7 @@ module.exports = {
                 .setDescription(data.lyrics)
                 .setThumbnail(queue.songs[0]?.thumbnail)
                 .setFooter({
-                    text: `Commanded by ${interaction.user.tag}`,
+                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({ size: 1024 })
                 });
 
@@ -40,7 +40,7 @@ module.exports = {
                 .setDescription(`I can't find ${queue.songs[0].name}'s lyrics`)
                 .setThumbnail(queue.songs[0]?.thumbnail)
                 .setFooter({
-                    text: `Commanded by ${interaction.user.tag}`,
+                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({ size: 1024 })
                 });
 

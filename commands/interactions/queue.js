@@ -25,7 +25,7 @@ module.exports = {
         .setTitle(`${interaction.guild.name}'s Queue [${i + 1}/${Math.ceil(n)}]`)
         .setDescription(queueSongs.slice(i * 20, (i + 1) * 20).join('\n'))
         .setFooter({
-          text: `Commanded by ${interaction.user.tag}`,
+          text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
           iconURL: interaction.user.displayAvatarURL({ size: 1024 })
         });
 
@@ -57,7 +57,7 @@ module.exports = {
         !(int.channel.permissionsFor(int.member).has('ManageMessages') && int.customId === 'messageDelete')
         && (int.member.id !== interaction.user.id)
       ) return await int.reply({
-        content: `This button is only works for ${interaction.user.tag}`,
+        content: `This button is only works for ${interaction.user.globalName || interaction.user.username}`,
         ephemeral: true
       });
 

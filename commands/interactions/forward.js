@@ -29,7 +29,7 @@ module.exports = {
         .setColor(config.MainColor)
         .setDescription(`forwarded the song for ${time} seconds.`)
         .setFooter({
-          text: `Commanded by ${interaction.user.tag}`,
+          text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
           iconURL: interaction.user.displayAvatarURL({ size: 1024 })
         });
 
@@ -41,7 +41,7 @@ module.exports = {
         .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
         .setFooter({
-          text: `Commanded by ${interaction.user.tag}`,
+          text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
           iconURL: interaction.user.displayAvatarURL({ size: 1024 })
         });
 

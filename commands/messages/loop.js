@@ -19,7 +19,7 @@ module.exports = {
         .setColor(config.ErrorColor)
         .setDescription('Please enter a valid mode.\n\n**Valid Modes:** `OFF` | `SONG` | `QUEUE`')
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
 
@@ -40,7 +40,7 @@ module.exports = {
         .setColor(config.MainColor)
         .setDescription(`Loop mode changed to \`${mode}\`\n\n${func.queueStatus(queue)}`)
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
 
@@ -52,7 +52,7 @@ module.exports = {
         .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
 

@@ -18,7 +18,7 @@ module.exports = {
         .setColor(config.ErrorColor)
         .setDescription("I\'m already connected to your Voice Channel.")
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
 
@@ -34,7 +34,7 @@ module.exports = {
         .setColor(config.MainColor)
         .setDescription("I\'ve connected to your Voice Channel.")
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
 
@@ -46,7 +46,7 @@ module.exports = {
         .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
 

@@ -22,7 +22,7 @@ module.exports = {
       .setDescription(`Now playing **[${queue.songs[0].name} (${queue.songs[0].formattedDuration})](${queue.songs[0].url})** for ${voiceChannelMembers.size} ${voiceChannelMembers.size > 1 ? 'listeners' : 'listener'} in ${botVC}\n\n${func.queueStatus(queue)}`)
       .setThumbnail(queue.songs[0]?.thumbnail)
       .setFooter({
-        text: `Song requested by ${queue.songs[0].user.tag}`,
+        text: `Song requested by ${queue.songs[0].user.globalName || queue.songs[0].user.username}`,
         iconURL: queue.songs[0].user.displayAvatarURL({ size: 1024 })
       });
 

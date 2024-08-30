@@ -38,7 +38,7 @@ module.exports = {
                 },
             )
             .setFooter({
-                text: `Commanded by ${message.author.tag}`,
+                text: `Commanded by ${message.author.globalName || message.author.username}`,
                 iconURL: message.author.displayAvatarURL({ size: 1024 })
             });
 

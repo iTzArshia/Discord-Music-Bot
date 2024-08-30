@@ -95,7 +95,7 @@ client.distube
             .setColor(config.MainColor)
             .setDescription(`New playlist to the queue\n**Playlist:** ${playlist.name} (${playlist.songs.length} songs)`)
             .setFooter({
-                text: `Commanded by ${playlist.songs[0].user.tag}`,
+                text: `Commanded by ${playlist.songs[0].user.globalName || playlist.songs[0].user.username}`,
                 iconURL: playlist.songs[0].user.displayAvatarURL({ size: 1024 })
             });
 
@@ -108,7 +108,7 @@ client.distube
             .setColor(config.MainColor)
             .setDescription(`New song added to the queue\n**Song:** [${song.name} (${song.formattedDuration})](${song.url})`)
             .setFooter({
-                text: `Commanded by ${song.user.tag}`,
+                text: `Commanded by ${song.user.globalName || song.user.username}`,
                 iconURL: song.user.displayAvatarURL({ size: 1024 })
             });
 
@@ -200,7 +200,7 @@ client.distube
             .setDescription(`Now Playing **[${song.name} (${song.formattedDuration})](${song.url})** for ${voiceChannelMembers.size} ${voiceChannelMembers.size > 1 ? 'listeners' : 'listener'} in ${voiceChannel}`)
             .setThumbnail(song?.thumbnail)
             .setFooter({
-                text: `Requested by ${song.user.tag}`,
+                text: `Requested by ${song.user.globalName || song.user.username}`,
                 iconURL: song.user.displayAvatarURL({ size: 1024 })
             });
 
@@ -297,7 +297,7 @@ client.distube
                         .setColor(config.MainColor)
                         .setDescription(`**Current Queue Filters:** \`${queue.filters.names.join(', ') || 'OFF'}\`\n\n${func.queueStatus(queue)}`)
                         .setFooter({
-                            text: `Commanded by ${int.user.tag}`,
+                            text: `Commanded by ${int.user.globalName || int.user.username}`,
                             iconURL: int.user.displayAvatarURL({ size: 1024 })
                         });
 
@@ -339,7 +339,7 @@ client.distube
                         .setColor(config.MainColor)
                         .setDescription(`Loop mode changed to \`${mode}\`\n\n${func.queueStatus(queue)}`)
                         .setFooter({
-                            text: `Commanded by ${int.user.tag}`,
+                            text: `Commanded by ${int.user.globalName || int.user.username}`,
                             iconURL: int.user.displayAvatarURL({ size: 1024 })
                         });
 
@@ -353,7 +353,7 @@ client.distube
                         .setColor(config.MainColor)
                         .setDescription("Skipping to the previus song.")
                         .setFooter({
-                            text: `Commanded by ${int.user.tag}`,
+                            text: `Commanded by ${int.user.globalName || int.user.username}`,
                             iconURL: int.user.displayAvatarURL({ size: 1024 })
                         });
 
@@ -373,7 +373,7 @@ client.distube
                         .setColor(config.MainColor)
                         .setDescription(`${queue.playing ? 'Resumed' : 'Paused'} the song for you.`)
                         .setFooter({
-                            text: `Commanded by ${int.user.tag}`,
+                            text: `Commanded by ${int.user.globalName || int.user.username}`,
                             iconURL: int.user.displayAvatarURL({ size: 1024 })
                         });
 
@@ -387,7 +387,7 @@ client.distube
                         .setColor(config.MainColor)
                         .setDescription("Skipping to the next song.")
                         .setFooter({
-                            text: `Commanded by ${int.user.tag}`,
+                            text: `Commanded by ${int.user.globalName || int.user.username}`,
                             iconURL: int.user.displayAvatarURL({ size: 1024 })
                         });
 
@@ -406,7 +406,7 @@ client.distube
                         .setColor(config.MainColor)
                         .setDescription(`Volume changed to \`${queue.volume}\`\n\n${func.queueStatus(queue)}`)
                         .setFooter({
-                            text: `Commanded by ${int.user.tag}`,
+                            text: `Commanded by ${int.user.globalName || int.user.username}`,
                             iconURL: int.user.displayAvatarURL({ size: 1024 })
                         });
 
@@ -420,7 +420,7 @@ client.distube
                         .setColor(config.MainColor)
                         .setDescription(`Backwarded the song for 10 seconds.`)
                         .setFooter({
-                            text: `Commanded by ${int.user.tag}`,
+                            text: `Commanded by ${int.user.globalName || int.user.username}`,
                             iconURL: int.user.displayAvatarURL({ size: 1024 })
                         });
 
@@ -434,7 +434,7 @@ client.distube
                         .setColor(config.MainColor)
                         .setDescription("Stopped playing.")
                         .setFooter({
-                            text: `Commanded by ${int.user.tag}`,
+                            text: `Commanded by ${int.user.globalName || int.user.username}`,
                             iconURL: int.user.displayAvatarURL({ size: 1024 })
                         });
 
@@ -450,7 +450,7 @@ client.distube
                         .setColor(config.MainColor)
                         .setDescription(`forwarded the song for 10 seconds.`)
                         .setFooter({
-                            text: `Commanded by ${int.user.tag}`,
+                            text: `Commanded by ${int.user.globalName || int.user.username}`,
                             iconURL: int.user.displayAvatarURL({ size: 1024 })
                         });
 
@@ -464,7 +464,7 @@ client.distube
                     .setColor(config.ErrorColor)
                     .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
                     .setFooter({
-                        text: `Commanded by ${int.user.tag}`,
+                        text: `Commanded by ${int.user.globalName || int.user.username}`,
                         iconURL: int.user.displayAvatarURL({ size: 1024 })
                     });
 
@@ -488,7 +488,7 @@ client.distube
             .setColor(config.ErrorColor)
             .setDescription('Searching canceled')
             .setFooter({
-                text: `Commanded by ${message.author.tag}`,
+                text: `Commanded by ${message.author.globalName || message.author.username}`,
                 iconURL: message.author.displayAvatarURL({ size: 1024 })
             });
 
@@ -502,7 +502,7 @@ client.distube
             .setColor(config.ErrorColor)
             .setDescription('Invalid number of result.')
             .setFooter({
-                text: `Commanded by ${message.author.tag}`,
+                text: `Commanded by ${message.author.globalName || message.author.username}`,
                 iconURL: message.author.displayAvatarURL({ size: 1024 })
             });
 
@@ -515,7 +515,7 @@ client.distube
             .setColor(config.ErrorColor)
             .setDescription('No result found!')
             .setFooter({
-                text: `Commanded by ${message.author.tag}`,
+                text: `Commanded by ${message.author.globalName || message.author.username}`,
                 iconURL: message.author.displayAvatarURL({ size: 1024 })
             });
 
@@ -531,7 +531,7 @@ client.distube
             .setTitle('Choose an option from below')
             .setDescription(`${result.map(song => `**${++i}**. ${song.name} (${song.formattedDuration})`).join('\n')}\n\n*Enter anything else or wait 30 seconds to cancel!*`)
             .setFooter({
-                text: `Commanded by ${message.author.tag}`,
+                text: `Commanded by ${message.author.globalName || message.author.username}`,
                 iconURL: message.author.displayAvatarURL({ size: 1024 })
             });
 

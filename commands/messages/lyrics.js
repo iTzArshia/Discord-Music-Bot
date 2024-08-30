@@ -24,7 +24,7 @@ module.exports = {
                 .setDescription(data.lyrics)
                 .setThumbnail(queue.songs[0]?.thumbnail)
                 .setFooter({
-                    text: `Commanded by ${message.author.tag}`,
+                    text: `Commanded by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 })
                 });
 
@@ -38,7 +38,7 @@ module.exports = {
                 .setDescription(`I can't find ${queue.songs[0].name}'s lyrics`)
                 .setThumbnail(queue.songs[0]?.thumbnail)
                 .setFooter({
-                    text: `Commanded by ${message.author.tag}`,
+                    text: `Commanded by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 })
                 });
 

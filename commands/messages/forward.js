@@ -20,7 +20,7 @@ module.exports = {
         .setColor(config.ErrorColor)
         .setDescription('Please provide time (in seconds) to go forward!\n**Example:** `10` for 10 seconds forward!')
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
 
@@ -36,7 +36,7 @@ module.exports = {
         .setColor(config.MainColor)
         .setDescription(`forwarded the song for ${time} seconds.`)
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
 
@@ -48,7 +48,7 @@ module.exports = {
         .setColor(config.ErrorColor)
         .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
         .setFooter({
-          text: `Commanded by ${message.author.tag}`,
+          text: `Commanded by ${message.author.globalName || message.author.username}`,
           iconURL: message.author.displayAvatarURL({ size: 1024 })
         });
 
