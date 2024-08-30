@@ -1,10 +1,10 @@
 /*
     Author: iTz Arshia
-    Github: https://github.com/iTzArshia/iTz-DJ
-    Current Version: 1.0.0
-    DiscordJs Version: 14.8.0
-    DisTube Version: 4.0.4
-    @discordjs/voice Version: 0.15.0
+    Github: https://github.com/iTzArshia/Discord-Music-Bot
+    Current Version: 2.0.0
+    DiscordJs Version: 14.15.3
+    DisTube Version: 5.0.2
+    @discordjs/voice Version: 0.17.0
 */
 
 const Discord = require('discord.js');
