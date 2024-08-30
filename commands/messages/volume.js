@@ -26,6 +26,18 @@ module.exports = {
         }
 
         try {
+            if (volume > 200 || volume < 0) {
+                const volumeEmbed = new Discord.EmbedBuilder().setColor(config.ErrorColor).setFooter({
+                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    iconURL: message.author.displayAvatarURL({ size: 1024 }),
+                });
+
+                if (volume > 200) volumeEmbed.setDescription("You can't make volume more than `200`");
+                if (volume < 0) volumeEmbed.setDescription("You can't make volume less than `0`");
+
+                return await message.reply({ embeds: [volumeEmbed] });
+            }
+
             await queue.setVolume(volume);
 
             const volumeEmbed = new Discord.EmbedBuilder()
