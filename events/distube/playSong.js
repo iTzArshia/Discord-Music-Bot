@@ -178,8 +178,41 @@ module.exports = async (client, queue, song) => {
             } else if (int.customId.startsWith("vol")) {
                 const volumeUpDown = int.customId.split("-")[1];
 
-                if (volumeUpDown === "up") await queue.setVolume(queue.volume + 10);
-                else if (volumeUpDown === "down") await queue.setVolume(queue.volume - 10);
+                if (volumeUpDown === "up") {
+                    
+                    if (queue.volume === 200) {
+
+                        const volumeEmbed = new Discord.EmbedBuilder()
+                    .setColor(config.ErrorColor)
+                    .setDescription("You can't make volume more than `200`")
+                    .setFooter({
+                        text: `Commanded by ${int.user.globalName || int.user.username}`,
+                        iconURL: int.user.displayAvatarURL({ size: 1024 }),
+                    });
+
+                        return await int.editReply({ embeds: [volumeEmbed] });
+                    }
+                    await queue.setVolume(queue.volume + 10);
+
+                }
+
+                else if (volumeUpDown === "down") {
+                    
+                    if (queue.volume === 0) {
+
+                        const volumeEmbed = new Discord.EmbedBuilder()
+                        .setColor(config.ErrorColor)
+                        .setDescription("You can't make volume less than `0`")
+                        .setFooter({
+                            text: `Commanded by ${int.user.globalName || int.user.username}`,
+                            iconURL: int.user.displayAvatarURL({ size: 1024 }),
+                        });
+
+                        return await int.editReply({ embeds: [volumeEmbed] });
+                    }
+                    await queue.setVolume(queue.volume - 10);
+
+                }
 
                 const volumeEmbed = new Discord.EmbedBuilder()
                     .setColor(config.MainColor)
