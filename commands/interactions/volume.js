@@ -18,6 +18,18 @@ module.exports = {
         const volume = interaction.options.getInteger("volume");
 
         try {
+            if (volume > 200 || volume < 0) {
+                const volumeEmbed = new Discord.EmbedBuilder().setColor(config.ErrorColor).setFooter({
+                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
+                });
+
+                if (volume > 200) volumeEmbed.setDescription("You can't make volume more than `200`");
+                if (volume < 0) volumeEmbed.setDescription("You can't make volume less than `0`");
+
+                return await interaction.editReply({ embeds: [volumeEmbed] });
+            }
+
             await queue.setVolume(volume);
 
             const volumeEmbed = new Discord.EmbedBuilder()
