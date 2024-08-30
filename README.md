@@ -6,6 +6,7 @@
     <a href="https://discord.gg/nKrBshQvcK"> <img src="https://badgen.net/discord/members/nKrBshQvcK" alt="iTz Development Discord"/> </a>
     <a href="https://discord.gg/8hr9CRqmfc"> <img src="https://badgen.net/discord/members/8hr9CRqmfc" alt="iTz Club Discord"/> </a>
 </div>
+
 # 📝 Introduction
 Welcome to my Advanced Discord Music Bot! This open-source project is designed to enhance your Discord experience by providing seamless music playback from a wide array of platforms. Built with JavaScript, utilizing [Node.js v18.17.0](https://nodejs.org/en), [Discord.js v14](discord.js.org/), and [DisTube v5](https://distube.js.org/), this bot allows you to play songs from popular services such as YouTube, SoundCloud, Spotify, Deezer, Apple Music, and even Discord links, along with support for over 700 additional websites.
 
@@ -30,7 +31,6 @@ Join us in creating a vibrant music community on Discord!
 2. **[Node.js v18.17.0](https://nodejs.org/en/download/)** or higher
 > NOTE: You don't need any API Key to set up the bot! the only thing you need is Node.js and a Discord bot Token to run your bot!
 # 🚀 Getting Started
-## ⚙️ Configuration
 Go to `config.json` and fill out the values:
 ```json
 {
@@ -48,9 +48,9 @@ Open your terminal and install the required packages with
 npm install
 ```
 After installation finishes run `node register.js` to deploy slash commands and then run `node index.js` in the terminal to start the bot.
-## 📸 Screenshots
+# 📸 Screenshots
 Soon
-## ❤️ Donations
+# ❤️ Support
 You can **[support](https://reymit.com/itz_arshia)** me by donating if you like the project!
 > You can make international, crypto, or Tomanian donations through Reymit
 ##
