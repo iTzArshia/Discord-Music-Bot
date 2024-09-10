@@ -11,7 +11,7 @@ module.exports = {
     async execute(client, interaction, memberVC, botVC, queue) {
         await interaction.deferReply();
 
-        if (queue.playing) {
+        if (!queue.paused) {
             const pauseEmbed = new Discord.EmbedBuilder()
                 .setColor(config.MainColor)
                 .setDescription("Queue isn't paused.")
