@@ -42,4 +42,7 @@ client.distube = new DisTube(client, {
     emitAddSongWhenCreatingQueue: true, // Whether or not emitting addSong event when creating a new Queue
     joinNewVoiceChannel: false, // Whether or not joining the new voice channel when using DisTube#play method
     plugins: distubePlugins,
+    ffmpeg: {
+        path: require("ffmpeg-static"), // If you don't want to use ffmpeg-static you have to remove this!
+    },
 });
