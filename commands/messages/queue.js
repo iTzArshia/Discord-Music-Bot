@@ -60,18 +60,13 @@ module.exports = {
         let currentPage = 0;
 
         collector.on("collect", async (int) => {
-            if (
-                !(int.channel.permissionsFor(int.member).has("ManageMessages") && int.customId === "messageDelete") &&
-                int.member.id !== message.member.id
-            )
+            if (int.member.id !== message.member.id)
                 return await int.reply({
                     content: `This button is only works for ${message.author.globalName || message.author.username}`,
                     ephemeral: true,
                 });
 
-            if (int.customId !== "messageDelete") await collector.resetTimer();
-
-            if (int.customId === "start") {
+            if (int.customId === "page-start") {
                 currentPage = 0;
                 group = new Discord.ActionRowBuilder().addComponents([
                     startButton.setDisabled(true),
@@ -80,7 +75,7 @@ module.exports = {
                     endButton.setDisabled(false),
                 ]);
                 int.update({ embeds: [embeds[currentPage]], components: [group] });
-            } else if (int.customId === "back") {
+            } else if (int.customId === "page-back") {
                 --currentPage;
                 if (currentPage === 0) {
                     group = new Discord.ActionRowBuilder().addComponents([
@@ -98,11 +93,7 @@ module.exports = {
                     ]);
                 }
                 int.update({ embeds: [embeds[currentPage]], components: [group] });
-            } else if (int.customId === "messageDelete") {
-                await int.deferUpdate();
-                await int.deleteReply().catch(() => null);
-                await message.delete().catch(() => null);
-            } else if (int.customId === "forward") {
+            } else if (int.customId === "page-forward") {
                 currentPage++;
                 if (currentPage === embeds.length - 1) {
                     group = new Discord.ActionRowBuilder().addComponents([
@@ -120,7 +111,7 @@ module.exports = {
                     ]);
                 }
                 int.update({ embeds: [embeds[currentPage]], components: [group] });
-            } else if (int.customId === "end") {
+            } else if (int.customId === "page-end") {
                 currentPage = embeds.length - 1;
                 group = new Discord.ActionRowBuilder().addComponents([
                     startButton.setDisabled(false),
