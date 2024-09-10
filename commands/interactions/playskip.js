@@ -27,11 +27,18 @@ module.exports = {
         await interaction.editReply({ embeds: [searchEmbed] });
 
         try {
+            // await client.distube.play(memberVC, query, {
+            //     member: interaction.member,
+            //     textChannel: interaction.channel,
+            //     skip: true,
+            // });
+
             await client.distube.play(memberVC, query, {
                 member: interaction.member,
                 textChannel: interaction.channel,
-                skip: true,
+                position: 1,
             });
+            await queue.skip();
 
             await interaction.deleteReply();
         } catch (error) {

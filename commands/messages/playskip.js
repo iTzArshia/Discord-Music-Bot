@@ -25,12 +25,20 @@ module.exports = {
         }
 
         try {
+            // await client.distube.play(memberVC, string, {
+            //     member: message.member,
+            //     textChannel: message.channel,
+            //     message,
+            //     skip: true,
+            // });
+
             await client.distube.play(memberVC, string, {
                 member: message.member,
                 textChannel: message.channel,
                 message,
-                skip: true,
+                position: 1,
             });
+            await queue.skip();
         } catch (error) {
             const errorEmbed = new Discord.EmbedBuilder()
                 .setColor(config.ErrorColor)
