@@ -12,7 +12,7 @@ module.exports = {
         await interaction.deferReply();
 
         const queueSongs = queue.songs.map(
-            (song, i) => `${i === 0 ? "**Playing:**" : `**${i}.**`} ${song.name} (${song.formattedDuration}) - ${song.user}`
+            (song, i) => `${i === 0 ? "**Playing:**" : `${i}.`} ${song.name} (${song.formattedDuration}) - ${song.user}`
         );
         const n = queue.songs.length / 20;
         const embeds = [];
