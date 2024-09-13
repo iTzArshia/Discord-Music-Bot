@@ -13,14 +13,15 @@ module.exports = {
 
         if (queue.paused) {
             const pauseEmbed = new Discord.EmbedBuilder()
-                .setColor(config.MainColor)
+                .setColor(config.WarnColor)
+                .setTitle("⚠️ Warn")
                 .setDescription("Queue is already paused.")
                 .setFooter({
-                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await interaction.editReply({ embeds: [pauseEmbed] });
+            return interaction.editReply({ embeds: [pauseEmbed] });
         }
 
         try {
@@ -28,23 +29,25 @@ module.exports = {
 
             const pauseEmbed = new Discord.EmbedBuilder()
                 .setColor(config.MainColor)
+                .setTitle("⏸️ Pause")
                 .setDescription("Paused the song for you.")
                 .setFooter({
-                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await interaction.editReply({ embeds: [pauseEmbed] });
+            await interaction.editReply({ embeds: [pauseEmbed] });
         } catch (error) {
             const errorEmbed = new Discord.EmbedBuilder()
                 .setColor(config.ErrorColor)
+                .setTitle("❌ Error")
                 .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
                 .setFooter({
-                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await interaction.editReply({ embeds: [errorEmbed] });
+            await interaction.editReply({ embeds: [errorEmbed] });
         }
     },
 };

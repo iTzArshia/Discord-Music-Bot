@@ -16,6 +16,7 @@ module.exports = {
 
         const nowEmbed = new Discord.EmbedBuilder()
             .setColor(config.MainColor)
+            .setTitle("💿 Now Playing")
             .setDescription(
                 `Now playing **[${queue.songs[0].name} (${queue.songs[0].formattedDuration})](${queue.songs[0].url})** for ${
                     voiceChannelMembers.size
@@ -48,6 +49,6 @@ module.exports = {
                 inline: true,
             });
 
-        return await interaction.editReply({ embeds: [nowEmbed] });
+        await interaction.editReply({ embeds: [nowEmbed] });
     },
 };

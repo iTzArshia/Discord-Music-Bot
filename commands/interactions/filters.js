@@ -53,23 +53,25 @@ module.exports = {
 
             const filtersEmbed = new Discord.EmbedBuilder()
                 .setColor(config.MainColor)
+                .setTitle("🎧 Filter")
                 .setDescription(`**Current Queue Filters:** \`${queue.filters.names.join(", ") || "OFF"}\`\n\n${func.queueStatus(queue)}`)
                 .setFooter({
-                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await interaction.editReply({ embeds: [filtersEmbed] });
+            await interaction.editReply({ embeds: [filtersEmbed] });
         } catch (error) {
             const errorEmbed = new Discord.EmbedBuilder()
                 .setColor(config.ErrorColor)
+                .setTitle("❌ Error")
                 .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
                 .setFooter({
-                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await interaction.editReply({ embeds: [errorEmbed] });
+            await interaction.editReply({ embeds: [errorEmbed] });
         }
     },
 };

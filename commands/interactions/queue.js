@@ -20,10 +20,10 @@ module.exports = {
         for (let i = 0; n > i; i++) {
             const queueEmbed = new Discord.EmbedBuilder()
                 .setColor(config.MainColor)
-                .setTitle(`${interaction.guild.name}'s Queue [${i + 1}/${Math.ceil(n)}]`)
+                .setTitle(`📃 ${interaction.guild.name}'s Queue [${i + 1}/${Math.ceil(n)}]`)
                 .setDescription(queueSongs.slice(i * 20, (i + 1) * 20).join("\n"))
                 .setFooter({
-                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
                 });
 
@@ -61,7 +61,7 @@ module.exports = {
 
         collector.on("collect", async (int) => {
             if (int.member.id !== interaction.user.id)
-                return await int.reply({
+                return int.reply({
                     content: `This button is only works for ${interaction.user.globalName || interaction.user.username}`,
                     ephemeral: true,
                 });
@@ -125,7 +125,7 @@ module.exports = {
 
         collector.on("end", async (collected, reason) => {
             if (["messageDelete", "messageDeleteBulk"].includes(reason)) return;
-            return await reply.edit({
+            await reply.edit({
                 components: [
                     new Discord.ActionRowBuilder().addComponents(
                         startButton.setDisabled(true),

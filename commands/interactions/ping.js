@@ -15,10 +15,7 @@ module.exports = {
 
         const embed = new Discord.EmbedBuilder()
             .setColor(config.MainColor)
-            .setAuthor({
-                name: `Pong!`,
-                iconURL: client.user.displayAvatarURL({ size: 1024 }),
-            })
+            .setTitle("🏓 Pong!")
             .addFields(
                 {
                     name: `📡 Ping:`,
@@ -39,10 +36,10 @@ module.exports = {
                 }
             )
             .setFooter({
-                text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
                 iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
             });
 
-        return await interaction.editReply({ embeds: [embed] });
+        await interaction.editReply({ embeds: [embed] });
     },
 };

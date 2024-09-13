@@ -20,24 +20,26 @@ module.exports = {
             await client.distube.jump(interaction.guild, songId).then(async (song) => {
                 const skippedEmbed = new Discord.EmbedBuilder()
                     .setColor(config.MainColor)
+                    .setTitle("⏭️ Skip To")
                     .setDescription(`Skipped to the **${songId}. [${song.name} (${song.formattedDuration})](${song.url})**`)
                     .setFooter({
-                        text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                        text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
                         iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
                     });
 
-                return await interaction.editReply({ embeds: [skippedEmbed] });
+                await interaction.editReply({ embeds: [skippedEmbed] });
             });
         } catch (error) {
             const errorEmbed = new Discord.EmbedBuilder()
                 .setColor(config.ErrorColor)
+                .setTitle("❌ Error")
                 .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
                 .setFooter({
-                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await interaction.editReply({ embeds: [errorEmbed] });
+            await interaction.editReply({ embeds: [errorEmbed] });
         }
     },
 };

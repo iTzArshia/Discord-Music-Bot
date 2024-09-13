@@ -17,23 +17,25 @@ module.exports = {
 
             const stopEmbed = new Discord.EmbedBuilder()
                 .setColor(config.MainColor)
+                .setTitle("🚫 Stop")
                 .setDescription("Stopped playing.")
                 .setFooter({
-                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await interaction.editReply({ embeds: [stopEmbed] });
+            await interaction.editReply({ embeds: [stopEmbed] });
         } catch (error) {
             const errorEmbed = new Discord.EmbedBuilder()
                 .setColor(config.ErrorColor)
+                .setTitle("❌ Error")
                 .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
                 .setFooter({
-                    text: `Commanded by ${interaction.user.globalName || interaction.user.username}`,
+                    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await interaction.editReply({ embeds: [errorEmbed] });
+            await interaction.editReply({ embeds: [errorEmbed] });
         }
     },
 };
