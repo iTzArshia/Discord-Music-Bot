@@ -8,8 +8,9 @@ module.exports = async (client, queue, song) => {
 
     const embed = new Discord.EmbedBuilder()
         .setColor(config.MainColor)
+        .setTitle("💿 Now Playing")
         .setDescription(
-            `Now Playing **[${song.name} (${song.formattedDuration})](${song.url})** for ${voiceChannelMembers.size} ${
+            `Playing **[${song.name} (${song.formattedDuration})](${song.url})** for ${voiceChannelMembers.size} ${
                 voiceChannelMembers.size > 1 ? "listeners" : "listener"
             } in ${voiceChannel}`
         )
