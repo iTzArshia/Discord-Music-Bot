@@ -49,7 +49,9 @@ npm install
 ```
 After installation finishes run `node register.js` to deploy slash commands and then run `node index.js` in the terminal to start the bot.
 # 📸 Screenshots
-Soon
+![Search](https://github.com/user-attachments/assets/4cf184c1-4bfc-4e85-bf35-066ce575e838)
+![Queue](https://github.com/user-attachments/assets/f983d781-3c06-45e9-bfb0-17d926979443)
+![Now Playing](https://github.com/user-attachments/assets/70c16d33-80f6-4960-98d8-e19350b303a3)
 # ❤️ Support
 You can **[support](https://reymit.com/itz_arshia)** me by donating if you like the project!
 > You can make international, crypto, or Tomanian donations through Reymit
