@@ -11,8 +11,7 @@ client.distubeSettings = {
     leaveOnEmpty: true, // Whether or not leaving voice channel if the voice channel is empty after DisTubeOptions.emptyCooldown seconds.
     leaveOnFinish: false, // Whether or not leaving voice channel when the queue ends.
     leaveOnStop: true, // Whether or not leaving voice channel after using DisTube#stop function.
-    searchSongs: 5, // Limit of search results emits in DisTube#event:searchResult event when DisTube#play method executed. If searchSongs <= 1, play the first result.
-    searchCooldown: 30, // Built-in search cooldown in seconds. (When searchSongs is bigger than 0)
+    searchSongs: 10, // DONT SET IT MORE THAN 25!!! | Limit of search results emits in DisTube#event:searchResult event when DisTube#play method executed. If searchSongs <= 1, play the first result.
     emptyCooldown: 60, // Built-in leave on empty cooldown in seconds. (When leaveOnEmpty is true)
     directLink: true, // Whether or not play direct link of the song.
     deleteAfterFinish: false, // Deletes Now Playing Message after song finished.
