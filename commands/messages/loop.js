@@ -6,6 +6,8 @@ module.exports = {
     name: "Loop",
     aliases: ["Repeat"],
     description: "Changes loop mode.",
+    usage: "Help <OFF / Song / Queue>",
+    category: "Queue Commands",
     memberVoice: true,
     botVoice: true,
     sameVoice: true,
@@ -14,14 +16,15 @@ module.exports = {
     async execute(client, message, args, cmd, memberVC, botVC, queue) {
         if (!args[0] || !["off", "song", "queue"].includes(args[0].toLowerCase())) {
             const noArgsEmbed = new Discord.EmbedBuilder()
-                .setColor(config.ErrorColor)
+                .setColor(config.WarnColor)
+                .setTitle("⚠️ Warn")
                 .setDescription("Please enter a valid mode.\n\n**Valid Modes:** `OFF` | `SONG` | `QUEUE`")
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [noArgsEmbed] });
+            return message.reply({ embeds: [noArgsEmbed] });
         }
 
         try {
@@ -34,23 +37,25 @@ module.exports = {
 
             const loopEmbed = new Discord.EmbedBuilder()
                 .setColor(config.MainColor)
+                .setTitle("🔁 Loop")
                 .setDescription(`Loop mode changed to \`${mode}\`\n\n${func.queueStatus(queue)}`)
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [loopEmbed] });
+            await message.reply({ embeds: [loopEmbed] });
         } catch (error) {
             const errorEmbed = new Discord.EmbedBuilder()
                 .setColor(config.ErrorColor)
+                .setTitle("❌ Error")
                 .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [errorEmbed] });
+            await message.reply({ embeds: [errorEmbed] });
         }
     },
 };

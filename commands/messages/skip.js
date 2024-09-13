@@ -5,6 +5,7 @@ module.exports = {
     name: "Skip",
     aliases: ["Next", "N"],
     description: "Skips the current song.",
+    category: "Queue Commands",
     memberVoice: true,
     botVoice: true,
     sameVoice: true,
@@ -16,23 +17,25 @@ module.exports = {
 
             const skippedEmbed = new Discord.EmbedBuilder()
                 .setColor(config.MainColor)
+                .setTitle("⏭️ Skip")
                 .setDescription("Skipping to the next song.")
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [skippedEmbed] });
+            await message.reply({ embeds: [skippedEmbed] });
         } catch (error) {
             const errorEmbed = new Discord.EmbedBuilder()
                 .setColor(config.ErrorColor)
+                .setTitle("❌ Error")
                 .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [errorEmbed] });
+            await message.reply({ embeds: [errorEmbed] });
         }
     },
 };

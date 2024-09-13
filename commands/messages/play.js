@@ -5,6 +5,8 @@ module.exports = {
     name: "Play",
     aliases: ["P", "start"],
     description: "Plays song for you.",
+    usage: "Play <Song Name / Song URL / Playlist URL>",
+    category: "Play Commands",
     memberVoice: true,
     botVoice: false,
     sameVoice: true,
@@ -14,14 +16,15 @@ module.exports = {
         const string = args.join(" ");
         if (!string) {
             const stringEmbed = new Discord.EmbedBuilder()
-                .setColor(config.ErrorColor)
+                .setColor(config.WarnColor)
+                .setTitle("⚠️ Warn")
                 .setDescription("Please enter a song url or query to search.")
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [stringEmbed] });
+            return message.reply({ embeds: [stringEmbed] });
         }
 
         try {
@@ -33,13 +36,14 @@ module.exports = {
         } catch (error) {
             const errorEmbed = new Discord.EmbedBuilder()
                 .setColor(config.ErrorColor)
+                .setTitle("❌ Error")
                 .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [errorEmbed] });
+            await message.reply({ embeds: [errorEmbed] });
         }
     },
 };

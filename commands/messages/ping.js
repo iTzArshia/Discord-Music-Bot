@@ -7,6 +7,7 @@ module.exports = {
     name: "Ping",
     aliases: ["L", "Latency"],
     description: "Shows the bot's latency.",
+    category: "Utilities Commands",
     memberVoice: false,
     botVoice: false,
     sameVoice: false,
@@ -15,10 +16,7 @@ module.exports = {
     async execute(client, message, args, cmd, memberVC, botVC, queue) {
         const embed = new Discord.EmbedBuilder()
             .setColor(config.MainColor)
-            .setAuthor({
-                name: `Pong!`,
-                iconURL: client.user.displayAvatarURL({ size: 1024 }),
-            })
+            .setTitle("🏓 Pong!")
             .addFields(
                 {
                     name: `📡 Ping:`,
@@ -39,10 +37,10 @@ module.exports = {
                 }
             )
             .setFooter({
-                text: `Commanded by ${message.author.globalName || message.author.username}`,
+                text: `Requested by ${message.author.globalName || message.author.username}`,
                 iconURL: message.author.displayAvatarURL({ size: 1024 }),
             });
 
-        return await message.reply({ embeds: [embed] });
+        await message.reply({ embeds: [embed] });
     },
 };

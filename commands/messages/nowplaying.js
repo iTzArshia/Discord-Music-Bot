@@ -6,6 +6,7 @@ module.exports = {
     name: "NowPlaying",
     aliases: ["NP", "Now", "Song", "Music", "Playing", "Current"],
     description: "Shows the current playing song.",
+    category: "Song Commands",
     memberVoice: true,
     botVoice: true,
     sameVoice: true,
@@ -16,6 +17,7 @@ module.exports = {
 
         const nowEmbed = new Discord.EmbedBuilder()
             .setColor(config.MainColor)
+            .setTitle("💿 Now Playing")
             .setDescription(
                 `Now playing **[${queue.songs[0].name} (${queue.songs[0].formattedDuration})](${queue.songs[0].url})** for ${
                     voiceChannelMembers.size
@@ -48,6 +50,6 @@ module.exports = {
                 inline: true,
             });
 
-        return await message.reply({ embeds: [nowEmbed] });
+        await message.reply({ embeds: [nowEmbed] });
     },
 };

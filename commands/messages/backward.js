@@ -2,9 +2,11 @@ const Discord = require("discord.js");
 const config = require("../../config.json");
 
 module.exports = {
-    name: "BackWard",
+    name: "Backward",
     aliases: ["BW", "Rewind"],
     description: "Backwards the playing song.",
+    usage: "Backward <Seconds>",
+    category: "Song Commands",
     memberVoice: true,
     botVoice: true,
     sameVoice: true,
@@ -15,14 +17,15 @@ module.exports = {
 
         if (!args[0] || isNaN(time)) {
             const noArgsEmbed = new Discord.EmbedBuilder()
-                .setColor(config.ErrorColor)
+                .setColor(config.WarnColor)
+                .setTitle("⚠️ Warn")
                 .setDescription("Please provide time (in seconds) to go backward!\n**Example:** `10` for 10 seconds backward.")
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [noArgsEmbed] });
+            return message.reply({ embeds: [noArgsEmbed] });
         }
 
         try {
@@ -30,23 +33,25 @@ module.exports = {
 
             const seekEmbed = new Discord.EmbedBuilder()
                 .setColor(config.MainColor)
+                .setTitle("⏪ Backward")
                 .setDescription(`Backwarded the song for ${time} seconds.`)
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [seekEmbed] });
+            await message.reply({ embeds: [seekEmbed] });
         } catch (error) {
             const errorEmbed = new Discord.EmbedBuilder()
                 .setColor(config.ErrorColor)
+                .setTitle("❌ Error")
                 .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [errorEmbed] });
+            await message.reply({ embeds: [errorEmbed] });
         }
     },
 };

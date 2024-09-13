@@ -5,6 +5,7 @@ module.exports = {
     name: "Resume",
     aliases: ["R", "UnPause"],
     description: "Resumes the current song.",
+    category: "Song Commands",
     memberVoice: true,
     botVoice: true,
     sameVoice: true,
@@ -13,14 +14,15 @@ module.exports = {
     async execute(client, message, args, cmd, memberVC, botVC, queue) {
         if (!queue.paused) {
             const pauseEmbed = new Discord.EmbedBuilder()
-                .setColor(config.MainColor)
+                .setColor(config.WarnColor)
+                .setTitle("⚠️ Warn")
                 .setDescription("Queue isn't paused.")
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [pauseEmbed] });
+            return message.reply({ embeds: [pauseEmbed] });
         }
 
         try {
@@ -28,23 +30,25 @@ module.exports = {
 
             const pauseEmbed = new Discord.EmbedBuilder()
                 .setColor(config.MainColor)
+                .setTitle("▶️ Resume")
                 .setDescription("Resumed the song for you.")
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [pauseEmbed] });
+            await message.reply({ embeds: [pauseEmbed] });
         } catch (error) {
             const errorEmbed = new Discord.EmbedBuilder()
                 .setColor(config.ErrorColor)
+                .setTitle("❌ Error")
                 .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [errorEmbed] });
+            await message.reply({ embeds: [errorEmbed] });
         }
     },
 };

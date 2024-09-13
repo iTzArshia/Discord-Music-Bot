@@ -4,7 +4,8 @@ const config = require("../../config.json");
 module.exports = {
     name: "Queue",
     aliases: ["Q", "List", "Playlist"],
-    description: "Shows the server current queue.",
+    description: "Shows the server current queue.", 
+    category: "Queue Commands",
     memberVoice: true,
     botVoice: true,
     sameVoice: true,
@@ -20,10 +21,10 @@ module.exports = {
         for (let i = 0; n > i; i++) {
             const queueEmbed = new Discord.EmbedBuilder()
                 .setColor(config.MainColor)
-                .setTitle(`${message.guild.name}'s Queue [${i + 1}/${Math.ceil(n)}]`)
+                .setTitle(`📃 ${message.guild.name}'s Queue [${i + 1}/${Math.ceil(n)}]`)
                 .setDescription(queueSongs.slice(i * 20, (i + 1) * 20).join("\n"))
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
@@ -61,7 +62,7 @@ module.exports = {
 
         collector.on("collect", async (int) => {
             if (int.member.id !== message.member.id)
-                return await int.reply({
+                await int.reply({
                     content: `This button is only works for ${message.author.globalName || message.author.username}`,
                     ephemeral: true,
                 });
@@ -125,7 +126,7 @@ module.exports = {
 
         collector.on("end", async (collected, reason) => {
             if (["messageDelete", "messageDeleteBulk"].includes(reason)) return;
-            return await reply.edit({
+            await reply.edit({
                 components: [
                     new Discord.ActionRowBuilder().addComponents(
                         startButton.setDisabled(true),

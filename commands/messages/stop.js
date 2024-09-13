@@ -5,6 +5,7 @@ module.exports = {
     name: "Stop",
     aliases: ["OFF", "Exit", "Quit"],
     description: "Stops the queue.",
+    category: "Queue Commands",
     memberVoice: true,
     botVoice: true,
     sameVoice: true,
@@ -17,23 +18,25 @@ module.exports = {
 
             const stopEmbed = new Discord.EmbedBuilder()
                 .setColor(config.MainColor)
+                .setTitle("🚫 Stop")
                 .setDescription("Stopped playing.")
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [stopEmbed] });
+            await message.reply({ embeds: [stopEmbed] });
         } catch (error) {
             const errorEmbed = new Discord.EmbedBuilder()
                 .setColor(config.ErrorColor)
+                .setTitle("❌ Error")
                 .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
                 .setFooter({
-                    text: `Commanded by ${message.author.globalName || message.author.username}`,
+                    text: `Requested by ${message.author.globalName || message.author.username}`,
                     iconURL: message.author.displayAvatarURL({ size: 1024 }),
                 });
 
-            return await message.reply({ embeds: [errorEmbed] });
+            await message.reply({ embeds: [errorEmbed] });
         }
     },
 };
