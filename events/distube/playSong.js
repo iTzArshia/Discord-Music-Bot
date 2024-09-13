@@ -54,7 +54,7 @@ module.exports = async (client, queue, song) => {
     filters.addOptions(options);
     const row1 = new Discord.ActionRowBuilder().addComponents([filters]);
 
-    const loopSongToggle = new Discord.ButtonBuilder().setCustomId("loop-song").setEmoji("🔂").setStyle(Discord.ButtonStyle.Secondary);
+    const loopSongToggle = new Discord.ButtonBuilder().setCustomId("loop").setEmoji("🔁").setStyle(Discord.ButtonStyle.Secondary);
 
     const previousSong = new Discord.ButtonBuilder().setCustomId("previous").setEmoji("⏮️").setStyle(Discord.ButtonStyle.Secondary);
 
@@ -62,7 +62,7 @@ module.exports = async (client, queue, song) => {
 
     const nextSong = new Discord.ButtonBuilder().setCustomId("next").setEmoji("⏭️").setStyle(Discord.ButtonStyle.Secondary);
 
-    const loopQueueToggle = new Discord.ButtonBuilder().setCustomId("loop-queue").setEmoji("🔁").setStyle(Discord.ButtonStyle.Secondary);
+    const loopQueueToggle = new Discord.ButtonBuilder().setCustomId("shuffle").setEmoji("🔀").setStyle(Discord.ButtonStyle.Secondary);
 
     const volumeDown = new Discord.ButtonBuilder().setCustomId("vol-down").setEmoji("🔉").setStyle(Discord.ButtonStyle.Secondary);
 

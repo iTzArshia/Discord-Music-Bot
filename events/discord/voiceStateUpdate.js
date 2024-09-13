@@ -14,7 +14,8 @@ module.exports = async (client, oldState, newState) => {
 
             if (textChannel) {
                 const embed = new Discord.EmbedBuilder()
-                    .setColor(config.ErrorColor)
+                    .setColor(config.WarnColor)
+                    .setTitle("👋🏻 Leaving")
                     .setDescription("The voice channel is empty! Leaving the voice channel.");
 
                 await textChannel?.send({ embeds: [embed] });

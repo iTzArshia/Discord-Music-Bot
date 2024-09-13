@@ -24,56 +24,60 @@ module.exports = async (client, message) => {
             if (command.memberVoice) {
                 if (!memberVC) {
                     const inVoiceEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.ErrorColor)
+                        .setColor(config.WarnColor)
+                        .setTitle("⚠️ Warn")
                         .setDescription("You aren't connected to any Voice Channel.")
                         .setFooter({
-                            text: `Commanded by ${message.author.globalName || message.author.username}`,
+                            text: `Requested by ${message.author.globalName || message.author.username}`,
                             iconURL: message.author.displayAvatarURL({ size: 1024 }),
                         });
 
-                    return await message.reply({ embeds: [inVoiceEmbed] });
+                    return message.reply({ embeds: [inVoiceEmbed] });
                 }
             }
 
             if (command.botVoice) {
                 if (!botVC) {
                     const inVoiceEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.ErrorColor)
+                        .setColor(config.WarnColor)
+                        .setTitle("⚠️ Warn")
                         .setDescription("I'm not connected to any Voice Chnanel.")
                         .setFooter({
-                            text: `Commanded by ${message.author.globalName || message.author.username}`,
+                            text: `Requested by ${message.author.globalName || message.author.username}`,
                             iconURL: message.author.displayAvatarURL({ size: 1024 }),
                         });
 
-                    return await message.reply({ embeds: [inVoiceEmbed] });
+                    return message.reply({ embeds: [inVoiceEmbed] });
                 }
             }
 
             if (command.sameVoice) {
                 if (memberVC && botVC && memberVC.id !== botVC.id) {
                     const inVoiceEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.ErrorColor)
+                        .setColor(config.WarnColor)
+                        .setTitle("⚠️ Warn")
                         .setDescription("You aren't connected to my Voice Channel.")
                         .setFooter({
-                            text: `Commanded by ${message.author.globalName || message.author.username}`,
+                            text: `Requested by ${message.author.globalName || message.author.username}`,
                             iconURL: message.author.displayAvatarURL({ size: 1024 }),
                         });
 
-                    return await message.reply({ embeds: [inVoiceEmbed] });
+                    return message.reply({ embeds: [inVoiceEmbed] });
                 }
             }
 
             if (command.queueNeeded) {
                 if (!queue) {
                     const noQueueEmbed = new Discord.EmbedBuilder()
-                        .setColor(config.ErrorColor)
+                        .setColor(config.WarnColor)
+                        .setTitle("⚠️ Warn")
                         .setDescription("I'm not playing anything right now.")
                         .setFooter({
-                            text: `Commanded by ${message.author.globalName || message.author.username}`,
+                            text: `Requested by ${message.author.globalName || message.author.username}`,
                             iconURL: message.author.displayAvatarURL({ size: 1024 }),
                         });
 
-                    return await message.reply({ embeds: [noQueueEmbed] });
+                    return message.reply({ embeds: [noQueueEmbed] });
                 }
             }
 
@@ -82,13 +86,14 @@ module.exports = async (client, message) => {
             } catch (error) {
                 const errorEmbed = new Discord.EmbedBuilder()
                     .setColor(config.ErrorColor)
+                    .setTitle("❌ Error")
                     .setDescription(error.message.length > 4096 ? error.message.slice(0, 4093) + "..." : error.message)
                     .setFooter({
-                        text: `Commanded by ${message.author.globalName || message.author.username}`,
+                        text: `Requested by ${message.author.globalName || message.author.username}`,
                         iconURL: message.author.displayAvatarURL({ size: 1024 }),
                     });
 
-                return await message.reply({ embeds: [errorEmbed] });
+                return message.reply({ embeds: [errorEmbed] });
             }
         }
     }
