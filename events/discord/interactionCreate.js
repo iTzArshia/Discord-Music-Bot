@@ -49,16 +49,12 @@ module.exports = async (client, interaction) => {
             const memberVC = interaction.member.voice.channel || null;
             const botVC = interaction.guild.members.me.voice.channel || null;
 
-            if (memberVC && botVC && memberVC.id !== botVC.id) {
-                const inVoiceEmbed = new Discord.EmbedBuilder()
-                    .setColor(config.ErrorColor)
-                    .setDescription("You aren't connected to my Voice Channel.");
+            if (!memberVC) return interaction.reply({ content: "⚠️ You aren't connected to any Voice Channel.", ephemeral: true });
 
-                return interaction.reply({
-                    embeds: [inVoiceEmbed],
-                    ephemeral: true,
-                });
-            }
+            if (!botVC) return interaction.reply({ content: "⚠️ I'm not connected to any Voice Chnanel.", ephemeral: true });
+
+            if (memberVC && botVC && memberVC.id !== botVC.id)
+                return interaction.reply({ content: "⚠️ You aren't connected to my Voice Channel.", ephemeral: true });
 
             await interaction.deferReply();
 
@@ -85,7 +81,7 @@ module.exports = async (client, interaction) => {
                 } else if (interaction.customId === "loop") {
                     const currentLoopState = queue.repeatMode;
                     const nextLoopMode = [0, 1, 2][(currentLoopState + 1) % 3];
-                    let mode = (await queue.setRepeatMode(nextLoopMode)) 
+                    let mode = await queue.setRepeatMode(nextLoopMode);
                     mode = mode ? (mode === 2 ? "All Queue" : "This Song") : "OFF";
 
                     const loopEmbed = new Discord.EmbedBuilder()
