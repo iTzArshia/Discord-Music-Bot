@@ -65,7 +65,7 @@ module.exports = {
             collector.on("collect", async (int) => {
                 if (int.member.id !== message.author.id)
                     await int.reply({
-                        content: `This button is only works for ${message.author.globalName || message.author.username}`,
+                        content: `You can't use this, it's only works for ${message.author.globalName || message.author.username}`,
                         ephemeral: true,
                     });
 
