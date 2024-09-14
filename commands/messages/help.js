@@ -47,7 +47,7 @@ module.exports = {
                 },
                 {
                     name: "Usage:",
-                    value: config.Prefix + command.usage || "`There is no Usage for this Command`",
+                    value: command.usage ? config.Prefix + command.usage : "`There is no Usage for this Command`",
                     inline: false,
                 },
                 {
