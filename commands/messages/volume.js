@@ -6,7 +6,7 @@ module.exports = {
     name: "volume",
     aliases: ["V", "Vol", "Set", "SetVolume"],
     description: "Sets the player volume.",
-    usage: "Seek <Volume>",
+    usage: "Volume <Volume>",
     category: "Song Commands",
     memberVoice: true,
     botVoice: true,

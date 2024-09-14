@@ -5,7 +5,7 @@ module.exports = {
     name: "SkipTo",
     aliases: ["ST", "Jump"],
     description: "Skips to the provided song id in the queue.",
-    usage: "Seek <Song Number>",
+    usage: "SkipTo <Song Number>",
     category: "Queue Commands",
     memberVoice: true,
     botVoice: true,

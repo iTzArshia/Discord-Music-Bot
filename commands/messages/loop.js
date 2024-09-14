@@ -6,7 +6,7 @@ module.exports = {
     name: "Loop",
     aliases: ["Repeat"],
     description: "Changes loop mode.",
-    usage: "Help <OFF / Song / Queue>",
+    usage: "Loop <OFF / Song / Queue>",
     category: "Queue Commands",
     memberVoice: true,
     botVoice: true,
