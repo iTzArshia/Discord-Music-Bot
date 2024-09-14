@@ -16,7 +16,7 @@
     },
     "name": "discord-music-bot",
     "description": "\"Discord-Music-Bot\" an Advanced Discord Music Bot for YOU",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "main": "index.js",
     "repository": "https://github.com/iTzArshia/Discord-Music-Bot",
     "author": "iTz Arshia",
