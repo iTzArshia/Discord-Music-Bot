@@ -54,7 +54,7 @@ module.exports = {
             collector.on("collect", async (int) => {
                 if (int.member.id !== interaction.user.id)
                     await int.reply({
-                        content: `This button is only works for ${interaction.user.globalName || interaction.user.username}`,
+                        content: `⚠️ You can't use this, it's only works for ${interaction.user.globalName || interaction.user.username}`,
                         ephemeral: true,
                     });
 
