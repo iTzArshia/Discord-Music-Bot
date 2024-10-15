@@ -13,6 +13,7 @@ Welcome to my Advanced Discord Music Bot! This open-source project is designed t
 With a rich set of features and commands, this bot is not only powerful but also user-friendly. Whether you're hosting a party or just hanging out with friends, our bot ensures that your favorite tunes are just a command away. Explore the various functionalities and see the bot in action through the provided **[Screenshots](https://github.com/iTzArshia/Discord-Music-Bot#-screenshots)**!
 
 Join us in creating a vibrant music community on Discord!
+
 ## 🔥 Features
 - No API Key Required: Simple setup with no need for API keys.
 - Multi-Platform Support: Stream music from YouTube, SoundCloud, Spotify, Apple Music, Deezer, and over 700 additional websites.
@@ -25,11 +26,13 @@ Join us in creating a vibrant music community on Discord!
 - Queue Management: Create and manage a queue of songs for uninterrupted playback.
 - Shuffle Mode: Enjoy a randomized playback experience with the shuffle feature.
 - And many many more features waiting for you...
+
 ## 🚧 Requirements
 1. Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**  
    1.1. Enable "Message Content Intent" in Discord Developer Portal
 2. **[Node.js v18.17.0](https://nodejs.org/en/download/)** or higher
 > NOTE: You don't need any API Key to set up the bot! the only thing you need is Node.js and a Discord bot Token to run your bot!
+
 # 🚀 Getting Started
 Go to `config.json` and fill out the values:
 ```json
@@ -42,20 +45,23 @@ Go to `config.json` and fill out the values:
 }
 ```
 ⚠️ **Note: Never commit or share your token publicly** ⚠️
+
 ## 🧠 installation
 Open your terminal and install the required packages with
 ```sh
 npm install
 ```
 After installation finishes run `node register.js` to deploy slash commands and then run `node index.js` in the terminal to start the bot.
-# 📸 Screenshots
 
+# 📸 Screenshots
 ![Help](https://github.com/user-attachments/assets/7e6eb7e6-ee15-465d-a3f5-30ec58bc7443)
 ![Now Playing](https://github.com/user-attachments/assets/70c16d33-80f6-4960-98d8-e19350b303a3)
 ![Search](https://github.com/user-attachments/assets/4cf184c1-4bfc-4e85-bf35-066ce575e838)
 ![Queue](https://github.com/user-attachments/assets/f983d781-3c06-45e9-bfb0-17d926979443)
+
 # ❤️ Support
 You can **[support](https://reymit.com/itz_arshia)** me by donating if you like the project!
 > You can make international, crypto, or Tomanian donations through Reymit
+
 ##
 Made with ❤️ and JavaScript, Don't Forget to ⭐
